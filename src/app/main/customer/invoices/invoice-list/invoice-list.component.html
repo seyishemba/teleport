@@ -1,0 +1,30 @@
+<app-main-page [pageTitle]="'Invoices'" [filterPills]="filterPillsList" (addFilterPill)="onAddFilterPill($event)"
+  [addEntityCTALabel]="'New Invoice'" [hasTable]="true" [dropDownSortingList]="dropDownSortingList"
+  [emptyTableIcon]="'request_quote'" (removeFilterPill)="onRemoveFilterPill($event)" [columns]="tableColumns"
+  [tableData]="invoiceList">
+
+  <pilgrim-table *ngIf="invoiceList.length > 0" [tableContainerClass]="''" [tableClass]="'w-full text-sm'"
+    [tableHeadClass]="'bg-gray-100'" [columns]="tableColumns"
+    [columnTemplates]="{ pin: pinColumn, status: statusColumn, view:viewColumn }" [dataSource]="invoiceList"
+    [tableBodyRowClass]="'p-6 transition duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl'"
+    (onRowClick)="onViewInvoice($event)"></pilgrim-table>
+
+  <ng-template #pinColumn>
+    <img src="../../../../assets/icons/pin.svg" alt="">
+  </ng-template>
+
+  <ng-template #statusColumn let-item="item">
+    <app-state-pill *ngIf="item.status == 'Paid'" [pillText]="item.status"
+      [pillStyle]="'table-state-pill table-state-pill-success'"></app-state-pill>
+    <app-state-pill *ngIf="item.status == 'Pending'" [pillText]="'Unpaid'"
+      [pillStyle]="'table-state-pill table-state-pill-warning'"></app-state-pill>
+  </ng-template>
+
+  <ng-template #viewColumn let-item="item">
+    <!-- <app-table-view-btn></app-table-view-btn> -->
+  </ng-template>
+
+  <app-modal *ngIf="viewInvoice" (closeModal)="onCloseInvoiceView()">
+    <!-- <app-invoice [invoice]="selectedInvoice"></app-invoice> -->
+  </app-modal>
+</app-main-page>

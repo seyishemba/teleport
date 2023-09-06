@@ -1,0 +1,23 @@
+<div class="relative w-full">
+    <app-input-box #inputBoxComponent [inputBoxId]="dropDownBoxId" [floatingLabelId]="floatingLabelId" [label]="label"
+        (focusEvent)="onFocus()" (blurEvent)="onBlur()" [(ngModel)]="searchText" (input)="onSearch($event)">
+    </app-input-box>
+    <ng-container *ngIf="customIcon">
+        <mat-icon class="absolute top-3 right-3">{{customIcon}}</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="!customIcon">
+        <mat-icon class="absolute top-3 right-3">{{ isDropdownOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </ng-container>
+
+    <div name="" id="{{dropDownBoxId}}"
+        class="absolute top-12 z-50 w-full flex flex-col border rounded-md bg-white p-drop-down pb-4 shadow-lg {{customInputStyle}} {{isDropdownOpen ? 'block' : 'hidden'}}">
+        <div *ngIf="options.length > 0" class="max-h-40 overflow-y-auto">
+            <div *ngFor="let option of filteredOptions"
+                class="w-full body-txt p-drop-down rounded hover:bg-primary50 cursor-pointer"
+                (mousedown)="onOptionSelect(option)">
+                {{option.label ? option.label : option.description ? option.description : ''}}</div>
+        </div>
+        <app-input-box [label]="'Enter custom value'" [floatingLabelId]="'custom-dropdown-option'"
+            [inputBoxId]="'custom-dropdown-option'"></app-input-box>
+    </div>
+</div>

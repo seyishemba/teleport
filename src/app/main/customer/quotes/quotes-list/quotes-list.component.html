@@ -1,0 +1,50 @@
+<app-main-page
+    [pageTitle]="'Quotes'"
+    [filterPills]="filterPillsList"
+    (addFilterPill)="onAddFilterPill($event)"
+    [addEntityCTALabel]="''"
+    [hasTable]="true"
+    [dropDownSortingList]="dropDownSortingList"
+    [emptyTableIcon]="'request_page'"
+    (removeFilterPill)="onRemoveFilterPill($event)"
+    [tableData]="quotesList"
+    [hasAddEntityCTA]="false"
+>
+    <pilgrim-table
+        *ngIf="quotesList.length > 0"
+        [tableContainerClass]="''"
+        [tableClass]="'w-full text-sm'"
+        [tableHeadClass]="'bg-gray-100'"
+        [columns]="tableColumns"
+        [columnTemplates]="{ view: viewColumn, amount: amountColumn, status: statusColumn }"
+        [dataSource]="quotesList"
+        [tableBodyRowClass]="'p-6 transition duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl'"
+        (onRowClick)="onViewDetail($event)"
+    ></pilgrim-table>
+    <ng-template #amountColumn let-item="item">
+        <span>{{ formatMoney(item.amount) }}</span>
+    </ng-template>
+    <ng-template #viewColumn let-item="item">
+        <app-table-view-btn></app-table-view-btn>
+    </ng-template>
+    <ng-template #statusColumn let-item="item">
+        <app-state-pill
+            *ngIf="item.status == 'Signed'"
+            [pillText]="item.status"
+            [pillStyle]="'table-state-pill table-state-pill-success'"
+        ></app-state-pill>
+        <app-state-pill
+            *ngIf="item.status == 'Withdrawn'"
+            [pillText]="item.status"
+            [pillStyle]="'table-state-pill table-state-pill-error'"
+        ></app-state-pill>
+        <app-state-pill
+            *ngIf="item.status == 'Pending'"
+            [pillText]="item.status"
+            [pillStyle]="'table-state-pill table-state-pill-warning'"
+        ></app-state-pill>
+    </ng-template>
+    <!-- <app-modal *ngIf="isAddQuote" (closeModal)="closeAddQuote()">
+        <app-add-quote (closeAddQuote)="closeAddQuote()"></app-add-quote>
+    </app-modal> -->
+</app-main-page>

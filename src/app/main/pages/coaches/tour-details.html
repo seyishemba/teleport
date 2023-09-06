@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Book a tour</title>
+
+    <!-- fonts start -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- fonts end -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/regular.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/solid.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="../assets/js/include-html.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        custom_blue: "#1877F2",
+                        custom_black: "#101828",
+                        custom_gray: "#667085",
+                        custom_shadow_black: "#013C9F",
+                    },
+                    width: {
+                        custom_26: "100px",
+                        custom_50: "200px",
+                    },
+                    height: {
+                        custom_65: "65px",
+                    },
+                    fontFamily: {
+                        outfit: ["Outfit"],
+                        noto_sans: ["Noto Sans"],
+                    },
+                    spacing: {
+                        custom_11: "10px",
+                        custom_14: "14px",
+                    },
+                    borderRadius: {
+                        custom_1xl: "14px",
+                    },
+                    borderWidth: {
+                        custom_3: "3px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body>
+    <div class="h-screen w-full md:pr-[20px] flex flex-col md:flex-row">
+        <!-- this is sidebar -->
+        <div w3-include-html="../sidebar.html"></div>
+        <div w3-include-html="../mobile-nav.html"></div>
+
+        <!-- <div w3-include-html="content.html"></div> -->
+        <script>
+            includeHTML();
+        </script>
+        <!-- end of sidebar section -->
+
+        <!-- main content and top header section -->
+        <div class="w-full lg:w-4/5 ml-auto flex flex-col main py-6 lg:pl-10 md:px-5 lg:pr-3 px-2 my-16 md:mt-0">
+            <!-- this is the header section -->
+            <!-- <div w3-include-html="../../leasing-agent/header.html"></div> -->
+            <!-- end of header section -->
+            <div class="w-full h-full my-16 lg:my-0">
+                <!-- this is the content section -->
+                <div class="flex-row justify-between items-center pb-4 md:flex mb-3">
+                    <div class="flex flex-col gap-2 mb-2">
+                        <div class="flex gap-2 items-center">
+                            <a href="./tours.html">
+                                <i class='bx bx-arrow-back text-[#101828] text-2xl'></i>
+                            </a>
+                            <div class="italic"><span class="text-[#667085]">Connect 2023</span></div>
+                        </div>
+                        <h1
+                            class="font-noto_sans text-[#101828] no-italic font-normal text-xl leading-[1rem] text-black">
+                            Taylor Swift's 2023 Tour
+                        </h1>
+                    </div>
+                    <a href="../contract/contract-details.html">
+                        <button
+                            class="bg-white border rounded-full  border-custom_blue h-10 flex gap-3 items-center px-6 py-custom_11 text-sm">
+                            <span class="text-custom_blue">View Contract</span>
+                            <i class="fa fa-eye text-custom_blue" aria-hidden="true"></i>
+                        </button>
+                    </a>
+                </div>
+                <hr />
+                <div class="flex flex-col gap-y-5 lg:flex-row w-full justify-between mt-5">
+                    <div class="w-full lg:max-w-max border rounded-md p-3 md:px-10 lg:px-3 lg:mx-2">
+                        <div class="w-full">
+                            <div class="flex gap-2 justify-between md:justify-start">
+                                <span class="text-xl">Tour Details</span>
+                                <div onclick="editBunkConfiguration()"
+                                class="mx-2 flex gap-3 items-center py-1 w-28 bg-[#EDF6FF] rounded-full px-[5px] cursor-pointer">
+                                <span class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="#1877F2"
+                                        d="M8.707 19.707L18 10.414 13.586 6 3.293 15.293a1.003 1.003 0 0 0-.263.464L3 21l5.242-1.03c.176-.044.337-.135.465-.263zM21 7.414a2 2 0 0 0 0-2.828L19.414 3a2 2 0 0 0-2.828 0L15 4.586 19.414 9 21 7.414z" />
+                                    </svg>
+                                </span>
+                                <span class="text-xs text-[#1877F2]">Edit Config</span>
+                            </div>
+                            </div>
+                            <div class="w-full mt-5 hidden lg:block">
+                                <div>
+                                    <table class="is-hoverable w-full text-left text-xs font-light table-fixed">
+                                        <thead class="bg-[#F5F5F5]">
+                                            <th class="whitespace-nowrap py-3 font-normal w-[15%] text-center">
+                                                Coach Type</th>
+                                            <th class="whitespace-nowrap py-3 font-normal w-[15%]">
+                                                <span class="justify-start">Coach Name</span>
+                                            </th>
+                                            <th class="whitespace-nowrap py-3 font-normal w-[15%]">
+                                                <span class="justify-start">Bunk Config</span>
+                                            </th>
+                                            <th class="whitespace-nowrap py-3 font-normal w-[15%]"><span
+                                                    class="flex w-full justify-start px-5">Trailer</span></th>
+                                            <th class="whitespace-nowrap py-3 font-normal w-[15%]">
+                                                <span class="flex w-full justify-start">Date Assigned</span>
+                                            </th>
+                                            <th class="whitespace-nowrap py-3  font-normal w-[20%]"><span
+                                                    class="flex w-full justify-start">Driver</span></th>
+                                            <th class="whitespace-nowrap py-3 font-normal w-[20%]"><span
+                                                    class="flex w-full justify-start">Co-Driver</span></th>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="h-14">
+                                                <td class="text-left">
+                                                    <span class="flex justify-start px-5">Star</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/dakota.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Dakota</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">12</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">XD-45</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-3">20/04/2023</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="/assets/images/user1.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Jessica O.</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user2.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Felix J.</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="h-14">
+                                                <td class="text-left">
+                                                    <span class="flex justify-start px-5">Band</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/cp1.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Ace</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">18</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">N/A</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-3">20/04/2023</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user3.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Aaron P.</span>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user4.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Frank S.</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="h-14">
+                                                <td class="text-left">
+                                                    <span class="flex justify-start px-5">Crew</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/coach3.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Chippewa</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">4</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">N/A</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-3">20/04/2023</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user5.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Nadia A.</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user6.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Avery L.</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="h-14">
+                                                <td class="text-left">
+                                                    <span class="flex justify-start px-5">Crew</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/dakota.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Dakota</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">4</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-5">XD-81</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span class="w-full flex justify-start px-3">20/04/2023</span>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user7.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Kelvin R.</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user8.png"
+                                                            class="h-8 w-8 rounded-full" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Nicholas M.</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="w-full grid gap-3 lg:hidden mb-10 md:mb-16 mt-5">
+                                    <!--Driver Details for mobile and table view-->
+                                    <div
+                                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                        <!--First Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Type </span>
+                                                </div>
+                                                <div class="flex justify-left items-center">
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <p>Star</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Name</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/dakota.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Dakota</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Second Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div class="flex flex-col">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Trailer</span>
+                                                    </div>
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <span>XD-45</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Bunk Config</span>
+                                                    </div>
+                                                    <div class="grid justify-center sm:text-xs md:text-lg">
+                                                        <span>12</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Date Assigned</span>
+                                                </div>
+                                                <div class="grid sm:text-xs md:text-lg">
+                                                    <span>10/28/2023</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Third Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="/assets/images/user1.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Jessica O.</span>
+                                                            <span class="text-[#B5B5B5]">Class A, TN</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Co Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user2.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Felix J.</span>
+                                                            <span class="text-[#B5B5B5]">Class B, AZ</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                        <!--First Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Type </span>
+                                                </div>
+                                                <div class="flex justify-left items-center">
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <p>Star</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Name</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/dakota.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Dakota</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Second Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div class="flex flex-col">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Trailer</span>
+                                                    </div>
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <span>XD-45</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Bunk Config</span>
+                                                    </div>
+                                                    <div class="grid justify-center sm:text-xs md:text-lg">
+                                                        <span>12</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Date Assigned</span>
+                                                </div>
+                                                <div class="grid sm:text-xs md:text-lg">
+                                                    <span>10/28/2023</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Third Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="/assets/images/user1.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Jessica O.</span>
+                                                            <span class="text-[#B5B5B5]">Class A, TN</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Co Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user2.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Felix J.</span>
+                                                            <span class="text-[#B5B5B5]">Class B, AZ</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                        <!--First Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Type </span>
+                                                </div>
+                                                <div class="flex justify-left items-center">
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <p>Star</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Name</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/dakota.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Dakota</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Second Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div class="flex flex-col">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Trailer</span>
+                                                    </div>
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <span>XD-45</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Bunk Config</span>
+                                                    </div>
+                                                    <div class="grid justify-center sm:text-xs md:text-lg">
+                                                        <span>12</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Date Assigned</span>
+                                                </div>
+                                                <div class="grid sm:text-xs md:text-lg">
+                                                    <span>10/28/2023</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Third Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="/assets/images/user1.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Jessica O.</span>
+                                                            <span class="text-[#B5B5B5]">Class A, TN</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Co Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user2.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Felix J.</span>
+                                                            <span class="text-[#B5B5B5]">Class B, AZ</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                        <!--First Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Type </span>
+                                                </div>
+                                                <div class="flex justify-left items-center">
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <p>Star</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Coach Name</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/dakota.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <span>Dakota</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Second Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div class="flex flex-col">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Trailer</span>
+                                                    </div>
+                                                    <div class="grid sm:text-xs md:text-lg">
+                                                        <span>XD-45</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center justify-between">
+                                                    <div class="my-2">
+                                                        <span id="headerTitle" class="text-[#667085]">Bunk Config</span>
+                                                    </div>
+                                                    <div class="grid justify-center sm:text-xs md:text-lg">
+                                                        <span>12</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Date Assigned</span>
+                                                </div>
+                                                <div class="grid sm:text-xs md:text-lg">
+                                                    <span>10/28/2023</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Third Column Data-->
+                                        <div class="text-left grid grid-rows-2 gap-2">
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="/assets/images/user1.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Jessica O.</span>
+                                                            <span class="text-[#B5B5B5]">Class A, TN</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="my-2">
+                                                    <span id="headerTitle" class="text-[#667085]">Co Driver</span>
+                                                </div>
+                                                <div class="grid text-xs md:text-lg">
+                                                    <div class="flex items-center gap-3 justify-start">
+                                                        <img src="../../assets/images/user2.png"
+                                                            class="h-8 w-8 rounded-md" />
+                                                        <div class="flex flex-col">
+                                                            <span class="text-[#101828]">Felix J.</span>
+                                                            <span class="text-[#B5B5B5]">Class B, AZ</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border lg:w-[30%] rounded-md p-3 flex flex-col">
+                        <div class="mb-2 text-center">
+                            <span class="text-[#101828]">Cost & Statuses</span>
+                        </div>
+                        <div class="flex row gap-5">
+                            <div class="flex flex-col">
+                                <span class="text-[#667085] font-thin text-sm">Tour</span>
+                                <div class="flex items-center gap-2 bg-[#ECFDF3] py-2 px-5 rounded-full">
+                                    <span class="inline-block w-[5px] h-[5px] bg-[#12B76A] rounded-full"></span>
+                                    <span class="text-[#027A48] text-xs">Agreed</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-thin text-[#667085] text-sm">Contract</span>
+                                <div class="flex items-center gap-2 bg-[#FFF0D9] py-2 px-5 rounded-full">
+                                    <span class="inline-block w-[5px] h-[5px] bg-[#FFA800] rounded-full"></span>
+                                    <span class="text-[#C58201] text-xs">Agreed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mt-10">
+                            <span class="text-[#667085] text-sm font-thin">Total Cost</span>
+                            <span class="text-[#1877F2] text-3xl font-medium">$18,932.06</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-y-5 md:flex-row w-full justify-between mt-5 pb-10">
+                    <div class="w-full md:w-[50%] rounded-md border p-3">
+                        <div class="flex justify-between">
+                            <span class="text-2xl text-[#101828]">Route Details</span>
+                            <div onclick="editBunkConfiguration()"
+                        class="mx-2 flex gap-3 items-center py-1 w-20 bg-[#EDF6FF] rounded-full px-[5px] cursor-pointer">
+                        <span class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                <path fill="#1877F2"
+                                d="M8.707 19.707L18 10.414 13.586 6 3.293 15.293a1.003 1.003 0 0 0-.263.464L3 21l5.242-1.03c.176-.044.337-.135.465-.263zM21 7.414a2 2 0 0 0 0-2.828L19.414 3a2 2 0 0 0-2.828 0L15 4.586 19.414 9 21 7.414z" />
+                            </svg>
+                        </span>
+                        <span class="text-xs text-[#1877F2]">Edit</span>
+                    </div>
+                        </div>
+                        <div class="flex-col">
+                            <div class="flex gap-5 border-b py-2 items-end mb-3">
+                                <div class="flex flex-col gap-1 w-[40%]">
+                                    <span class="text-[#667085] text-sm">Pickup - Details</span>
+                                    <span class="text-sm">Bridgestone Arena</span>
+                                    <span class="text-[#667085] text-sm">Nashville, TN</span>
+                                </div>
+                                <div class="w-[30%]">
+                                    <span class="text-sm">03/17/2023</span>
+                                </div>
+                                <div class="w-[30%]">
+                                    <span class="text-sm">09:26 CST</span>
+                                </div>
+                            </div>
+                            <div class="flex border-b py-2 items-end mb-3">
+                                <div class="flex flex-col gap-1 w-[40%]">
+                                    <span class="text-[#667085] text-sm">Stop 1 - Details</span>
+                                    <span class="text-sm">Mars Music Hall</span>
+                                    <span class="text-[#667085] text-sm">Huntsville AL</span>
+                                </div>
+                                <div class="w-30%">
+                                    <span class="text-sm">03/17/2023</span>
+                                </div>
+                            </div>
+                            <div class="flex border-b py-2 items-end mb-3">
+                                <div class="flex flex-col gap-1 w-[40%]">
+                                    <span class="text-[#667085] text-sm">Stop 2 - Details</span>
+                                    <span class="text-sm">Zydeco</span>
+                                    <span class="text-[#667085] text-sm">Huntsville AL</span>
+                                </div>
+                                <div class="w-[30%]">
+                                    <span class="text-sm">03/17/2023</span>
+                                </div>
+                            </div>
+                            <div class="flex border-b py-2 items-end mb-3">
+                                <div class="flex flex-col gap-1 w-[40%]">
+                                    <span class="text-[#667085] text-sm">Dropoff - Details</span>
+                                    <span class="text-sm">The Walmart AMP</span>
+                                    <span class="text-[#667085] text-sm">Rogers, AK</span>
+                                </div>
+                                <div class="w-[30%]">
+                                    <span class="text-sm">03/17/2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-[45%] rounded-md border p-5">
+                        <div class="flex flex-col gap-4">
+                            <span class="text-xl">Additional Data</span>
+                            <p class="text-[#667085] text-sm">Please I need this very urgent and i will really
+                                appreciate if this can be attended to ASAP. Thanks</p>
+                            <div class="flex flex-col gap-5">
+                                <div class="flex gap-2 items-center bg-[#EDF6FF] rounded-md p-1">
+                                    <div
+                                    class="w-20 bg-[#1877F2] rounded-md flex items-center justify-center h-20 cursor-pointer hover:transform hover:scale-110 transition duration-500 ease-in-out">
+                                    <span class="text-white text-2xl font-bold">PDF</span>
+                                </div>
+                                    <span class="text-[#1877F2]">ADDITIONAL.PDF</span>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <img src="../../assets/images/customer-content/customer-content-1.png" alt=""
+                                    class="w-20 h-20 cursor-pointer hover:transform hover:scale-110 transition duration-500 ease-in-out" />
+                                    <span>FINAL_IMAGE.PNG</span>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <img src="../../assets/images/customer-content/customer-content-6.png" alt=""
+                                    class="w-20 h-20 cursor-pointer hover:transform hover:scale-110 transition duration-500 ease-in-out" />
+                                    <span>COMP_TOUR.MP4</span>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Pop Up Module for Bunk Configuration-->
+                <div>
+                    <div class="mt-8 hidden w-full" id="bunk-configuration">
+                        <div
+                            class="w-full h-screen absolute top-0 left-0 flex items-center justify-center scroll-smooth overflow-hidden ">
+                            <section
+                                class="modal overflow-y-auto w-[95%] fixed md:w-[70%] lg:w-[35%] max-h-[90%] z-[100] mx-auto bg-white rounded-xl flex-col p-6 md:p-10">
+                                <div class="mx-2 flex justify-between items-center z-50">
+                                    <h1 class="font-bold text-2xl my-3">Edit Bunk Configuration?</h1>
+                                    <div onclick="closeBunkConfiguration()" class="cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" style="background-color: #CED4DA; border-radius: 50%;">
+                                            <path fill="none" d="M0 0h24v24H0z"></path>
+                                            <path stroke="white" stroke-width="1" d="M18 6L6 18M6 6l12 12"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!--Vehicle Details-->
+                                <div>
+                                    <!--Content-->
+                                    <div>
+                                        <p>You will be charged $250 as a change fee after the initial setup.</p>
+                                    </div>
+                                </div>
+                                <div class="flex justify-start md:justify-end w-full col-span-3 md:col-span-2 mt-6">
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <button onclick="closeBunkConfiguration()"
+                                            class="border border-[#013C9F] text-center text-[#013C9F] rounded-md px-2 lg:px-3 flex gap-3 justify-center items-center h-12 text-xs lg:text-sm">
+                                            Cancel
+                                        </button>
+
+                                        <button
+                                            class="border border-[#013C9F] text-center bg-[#013C9F] text-white rounded-md px-2 lg:px-3 flex gap-3 justify-center items-center h-12 text-xs lg:text-sm">
+                                            Yes, Edit Configuration
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div
+                            class="overlay bg-black/70 backdrop-blur-[2px] fixed top-0 left-0 right-0 sm bottom-0 w-screen h-screen z-[51]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End main content and top header section -->
+    </div>
+
+
+    <script src="../../leasing-agent/schedule/edit-tour-at-a-glance.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- <script src="tour.js"></script> -->
+
+    <script>
+        const successbtn = document.querySelector(".submit-btn");
+
+
+        $(document).ready(function () {
+            $("#showTourInfoData").css("display", "block");
+            $("#showTourCoachesData").css("display", "none");
+            $("#showTourRoutingData").css("display", "none");
+            $("#showTourSummaryData").css("display", "none");
+            $("#hideMainText").css("display", "block");
+            $("#successActionDiv").css("display", "none");
+        });
+
+
+
+
+        function submit() {
+            const modal = document.getElementById('bookingModal');
+            const processingModal = document.getElementById("processing-modal");
+            const successModal = document.getElementById("success-modal");
+
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+
+            processingModal.classList.remove("hidden");
+            processingModal.classList.add("flex");
+
+            setTimeout(function () {
+                processingModal.classList.add("hidden");
+                successModal.classList.remove("hidden");
+                successModal.classList.add("flex");
+            }, 3000);
+        }
+
+        function showModal() {
+            const modal = document.getElementById('bookingModal');
+            const infoForm = document.getElementById('info')
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            infoForm.classList.remove('hidden');
+            infoForm.classList.add('flex');
+
+        }
+
+        function showleg() {
+            const noLeg = document.getElementById('noLeg');
+            const hasLeg = document.getElementById('hasLeg')
+
+            noLeg.classList.add('hidden');
+            noLeg.classList.remove('flex');
+            hasLeg.classList.remove('hidden');
+            hasLeg.classList.add('flex');
+
+        }
+
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            const infoForm = document.getElementById('info')
+            const coachesForm = document.getElementById('coaches');
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            infoForm.classList.remove('flex');
+            infoForm.classList.add('hidden');
+            coachesForm.classList.remove('flex');
+            coachesForm.classList.add('hidden');
+            routingForm.classList.remove('flex');
+            routingForm.classList.add('hidden');
+            additionForm.classList.remove('flex');
+            additionForm.classList.add('hidden');
+        }
+
+        function goToCoachesForm() {
+            const infoForm = document.getElementById('info')
+            const coachesForm = document.getElementById('coaches');
+            infoForm.classList.remove('flex');
+            infoForm.classList.add('hidden');
+            coachesForm.classList.remove('hidden');
+            coachesForm.classList.add('flex');
+
+        }
+
+        function goToRouteForm() {
+            const coachesForm = document.getElementById('coaches');
+            const routingForm = document.getElementById('routing');
+            coachesForm.classList.remove('flex');
+            coachesForm.classList.add('hidden');
+            routingForm.classList.remove('hidden');
+            routingForm.classList.add('flex');
+
+        }
+
+        function goToAdditionalDataForm() {
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            routingForm.classList.remove('flex');
+            routingForm.classList.add('hidden');
+            additionForm.classList.remove('hidden');
+            additionForm.classList.add('flex');
+
+        }
+
+        function goToSummaryForm() {
+            const additionForm = document.getElementById('addtion');
+            const summaryForm = document.getElementById('summary');
+            additionForm.classList.remove('flex');
+            additionForm.classList.add('hidden');
+            summaryForm.classList.remove('hidden');
+            summaryForm.classList.add('flex');
+
+        }
+
+        function goToPreviousForm() {
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+
+            additionForm.classList.remove('flex');
+            additionForm.classList.add('hidden');
+            routingForm.classList.remove('hidden');
+            routingForm.classList.add('flex');
+
+        }
+
+        function backToCoachesForm() {
+            const routingForm = document.getElementById('routing');
+            const coachesForm = document.getElementById('coaches');
+
+            routingForm.classList.remove('flex');
+            routingForm.classList.add('hidden');
+            coachesForm.classList.remove('hidden');
+            coachesForm.classList.add('flex');
+        }
+
+        function backToAdditionForm() {
+            const additionForm = document.getElementById('addtion');
+            const summaryForm = document.getElementById('summary');
+
+            summaryForm.classList.remove('flex');
+            summaryForm.classList.add('hidden');
+            additionForm.classList.remove('hidden');
+            additionForm.classList.add('flex');
+        }
+
+        function backToInfoForm() {
+            const coachesForm = document.getElementById('coaches');
+            const infoForm = document.getElementById('info')
+
+            coachesForm.classList.remove('flex');
+            coachesForm.classList.add('hidden');
+            infoForm.classList.remove('hidden');
+            infoForm.classList.add('flex');
+        }
+
+        function gotoDashboard() {
+            window.location.href = "../../leasing-agent/overview/index.html";
+        }
+
+        //Edit Bunk Configuration//
+        function editBunkConfiguration() {
+            var bunkConfiguration = document.getElementById('bunk-configuration')
+            bunkConfiguration.classList.remove('hidden')
+        }
+
+        //Close Bunk Configuration//
+        function closeBunkConfiguration() {
+            var bunkConfiguration = document.getElementById('bunk-configuration')
+            bunkConfiguration.classList.add('hidden')
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<app-details-page [previousPageTitle]="'Contracts'" [pageTitle]="''">
+    <div class="absolute -top-3 right-0 w-[45%] flex items-center justify-between gap-2">
+        <button class="btn btn-small btn-light-filled px-2 rounded-full">
+            <mat-icon class="text-primary300">chat</mat-icon>
+        </button>
+        <span
+            class="state-pill h-full px-5 py-3 text-sm {{
+                contract?.status === 'Draft' || contract?.status === 'Sent'
+                    ? 'state-pill-warning'
+                    : contract?.status === 'Signed'
+                    ? 'state-pill-success'
+                    : 'state-pill-error'
+            }}"
+        >
+            {{ contract?.status }}
+        </span>
+        <button class="btn btn-small btn-light-filled">Download</button>
+        <button *ngIf="contract?.status !== 'Signed'" class="btn btn-small btn-filled">Sign Contract</button>
+    </div>
+
+    <div class="px-6 py-10 flex flex-col gap-10 text-sm text-gray-700 rounded-lg border border-border-default">
+        <div class="flex flex-col items-center gap-7">
+            <div class="flex justify-center items-center">
+                <img src="../../../../assets/images/logo-black.webp" alt="" />
+            </div>
+
+            <h3 class="text-xl flex items-center justify-center">
+                {{ contract?.template?.title }}
+            </h3>
+
+            <p class="w-1/2 text-center flex justify-center">{{ contract?.template?.introduction }}</p>
+
+            <div class="w-3/5 flex justify-between">
+                <div class="flex flex-col gap-3">
+                    <h6 class="font-bold">Client Information</h6>
+                    <div class="flex flex-col">
+                        <span>{{ contract?.customer?.name }}</span>
+                        <span>{{ contract?.customer?.address }}</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h6 class="font-bold">Tour Details</h6>
+                    <div class="flex flex-col">
+                        <span>{{ contract?.tourRequest?.tourName }}</span>
+                        <span>{{ contract?.tourRequest?.route?.pickup?.date }}</span>
+                        <span>{{ contract?.tourRequest?.quote?.amount }}</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h6 class="font-bold">Draw Signature</h6>
+                    <div class="flex flex-col">
+                        <div class="w-30 h-14 border border-border-default rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-5">
+            <div>
+                {{ contract?.template?.body }}
+            </div>
+
+            <div *ngFor="let section of contract?.sections; let i = index" class="px-2 py-1 flex flex-col gap-1">
+                <p>{{ i + 1 }}</p>
+                <p>{{ section.title }}</p>
+                <p>{{ section.details }}</p>
+            </div>
+        </div>
+    </div>
+</app-details-page>

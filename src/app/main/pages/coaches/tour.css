@@ -1,0 +1,527 @@
+body {
+	background: #edf6ff;
+}
+
+button.button-clear {
+	background: none !important;
+}
+
+.tour-text-head {
+	position: absolute;
+	width: 551px;
+	height: 40px;
+	left: 545px;
+	top: 81px;
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #101828;
+}
+
+.onboading {
+	color: red;
+}
+
+.tour-form-label {
+	margin-bottom: 6px !important;
+}
+
+.logo-text {
+	margin-top: 13.91%;
+	margin-bottom: 11.01%;
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 27px;
+	display: flex;
+	align-items: center;
+	color: #1877f2;
+	margin-left: -63.22px;
+}
+
+.bg-img-container {
+	position: absolute;
+	width: 902px;
+	height: 982px;
+	left: 608px;
+	top: 0px;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 64.06%, rgba(0, 0, 0, 0.8) 92.71%), url(assets/images/register/bg-img.png);
+}
+
+.register-card {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	gap: 10px;
+	position: absolute;
+	width: 362px;
+	height: 982x;
+	left: 131px;
+	top: 270px;
+	background: #ffffff;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+	border-radius: 7px;
+}
+
+.form-label-text {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+	color: #232324;
+}
+
+.form-control {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+	gap: 10px;
+	width: 300px;
+	height: 50px;
+	background: #ffffff;
+	border: 1px solid #232324;
+	border-radius: 7px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.form-input-checkbox {
+	left: 16.67%;
+	right: 16.67%;
+	top: 25%;
+	bottom: 29.17%;
+	border: 1.6666px solid #ffffff;
+}
+
+.form-label-remember-me-text {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+	color: #232324;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.form-label-forgot-password-text {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+	color: #1877f2;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.form-submit-btn {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	gap: 10px;
+	width: 300px;
+	height: 40px;
+	background: #1877f2;
+	border-bottom: 3px solid #1877f2;
+	border-radius: 14px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.form-submit-text {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 23px;
+	color: #ffffff;
+}
+
+.register-nav-tab {
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	border-left: 10px;
+	margin-bottom: 20px;
+	/* border-bottom: 1.6666px solid #ccc; */
+}
+
+.nav-link.active {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 25px;
+	color: #1877f2;
+	border-bottom: 1.6666px solid #1877f2;
+}
+
+.nav-link {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 25px;
+	color: #b5b5b5;
+	border-bottom: 1.6666px solid #ccc;
+}
+
+.add-space-top {
+	margin-top: 38px;
+}
+
+.social-media-icon {
+	width: 84px;
+	height: 38px;
+}
+
+.onboarding-card {
+	margin-top: -100px;
+	padding: 50px;
+	gap: 50px;
+	position: absolute;
+	width: 854px;
+	/* height: 712px; */
+	left: 388px;
+	top: 252px;
+	background: #ffffff;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+	border-radius: 20px;
+	margin-bottom: 124px !important;
+}
+
+.circle-active {
+	border-radius: 50%;
+	width: 23px;
+	height: 23px;
+	background: #1877f2;
+	border: 0.7px solid #d0d5dd;
+	color: #fff;
+	text-align: center;
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+	margin-right: 10px;
+}
+
+.circle {
+	border-radius: 50%;
+	width: 23px;
+	height: 23px;
+	background: #fff;
+	border: 0.7px solid #d0d5dd;
+	color: #000;
+	text-align: center;
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+	margin-right: 10px;
+}
+
+.onboarding-nav-text {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	color: #101828;
+}
+
+.onboarding-nav-text-sp {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	color: #101828;
+	margin-left: -25px;
+}
+
+.arrow-icon-onboarding {
+	margin-left: 10px;
+	color: #101828;
+}
+
+.onboarding-border-line {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 35px;
+	margin-bottom: 50px;
+	width: 390px;
+	height: 2px;
+	background: #d0d5dd;
+}
+
+.form-control-onboarding {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px 20px;
+	margin-bottom: -8px !important;
+	gap: 10px;
+	width: 100%;
+	height: 44px;
+	background: #ffffff;
+	border: 1px solid #d0d5dd;
+	border-radius: 7px;
+}
+
+.form-control-onboarding-full {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px 20px;
+	gap: 10px;
+	width: 100%;
+	height: 44px;
+	background: #ffffff;
+	border: 1px solid #d0d5dd;
+	border-radius: 7px;
+}
+
+.form-control-onboarding-sm {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px 20px;
+	margin-left: -10px;
+	gap: 10px;
+	width: 98px;
+	height: 44px;
+	/* pure white */
+	background: #ffffff;
+	/* Border color */
+	border: 1px solid #d0d5dd;
+	border-radius: 7px;
+}
+
+select:invalid {
+	color: #b5b5b5;
+}
+
+select option:first-child {
+	color: #b5b5b5;
+}
+
+select:invalid option:not(:first-child) {
+	color: #000;
+}
+
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+
+	/* disabled */
+	color: #b5b5b5;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+
+	/* disabled */
+	color: #b5b5b5;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+
+	/* disabled */
+	color: #b5b5b5;
+}
+
+.onboarding-btn-space-top {
+	margin-top: 20px;
+}
+
+.onboarding-btn-space-bottom {
+	margin-bottom: 60px;
+}
+
+.onboard-submit-btn-outline {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	gap: 10px;
+	width: 123px;
+	height: 40px;
+	background: #ffffff;
+	border: 1px solid #1877f2;
+	border-radius: 14px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.onboard-submit-btn-solid {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	gap: 10px;
+	width: 123px;
+	height: 40px;
+	background: #1877f2;
+	border-bottom: 3px solid #1877f2;
+	border-radius: 14px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.onboard-submit-txt-outline {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+	color: #1877f2;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.onboard-submit-txt-solid {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+	color: #ffffff;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+button {
+	border: none;
+}
+
+.powered-by-txt {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #667085;
+	position: absolute;
+	left: 241px;
+	top: 725px;
+}
+
+.powered-by-txt-login {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #667085;
+	position: absolute;
+	left: 121px;
+	top: 520px;
+}
+
+.form-check-custom {
+	margin-left: -20px !important;
+}
+
+#successActionDiv {
+	margin-top: 200px;
+}
+
+.btn-no-bg {
+	background: none !important;
+}
+
+.onboarding-btn-space-top-last {
+	margin-top: 60px;
+}
+
+.border-line-dotted {
+	border: 1px dashed #d0d5dd;
+	border-radius: 7px;
+}
+
+.bolden-text-p {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	color: #101828;
+}
+
+.faint-text-p {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+	color: #667085;
+}
+
+.main-summary-head {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+	display: flex;
+	align-items: center;
+	color: #101828;
+}
+
+.border-line-css {
+	border-bottom: 1px solid #d0d5dd;
+	border-width: 30px;
+}

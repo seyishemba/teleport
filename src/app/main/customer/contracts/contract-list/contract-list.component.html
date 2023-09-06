@@ -1,0 +1,64 @@
+<app-main-page
+    [pageTitle]="'Contracts'"
+    [filterPills]="filterPillsList"
+    (addFilterPill)="onAddFilterPill($event)"
+    [hasTable]="true"
+    [dropDownSortingList]="dropDownSortingList"
+    [emptyTableIcon]="'request_quote'"
+    (removeFilterPill)="onRemoveFilterPill($event)"
+    [columns]="tableColumns"
+    [tableData]="contractList"
+>
+    <pilgrim-table
+        *ngIf="contractList.length > 0"
+        [tableContainerClass]="''"
+        [tableClass]="'w-full text-sm'"
+        [tableHeadClass]="'bg-gray-100'"
+        [columns]="tableColumns"
+        [columnTemplates]="{
+            pinned: pinnedColumn,
+            status: statusColumn,
+            'tour.status': tourStatusColumn,
+            'driver.name': driverColumn,
+            view: viewColumn
+        }"
+        [dataSource]="contractList"
+        [tableBodyRowClass]="'p-6 transition duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl'"
+        (onRowClick)="onRowClick($event)"
+    ></pilgrim-table>
+
+    <ng-template #pinnedColumn let-item="item">
+        <img src="../../../../assets/icons/pin.svg" alt="" />
+    </ng-template>
+
+    <ng-template #statusColumn let-item="item">
+        <app-state-pill
+            *ngIf="item.status == 'Draft'"
+            [pillText]="item.status"
+            [pillStyle]="'table-state-pill table-state-pill-warning'"
+        ></app-state-pill>
+    </ng-template>
+
+    <ng-template #tourStatusColumn let-item="item">
+        <app-state-pill
+            *ngIf="item.tour.status == 'pending'"
+            [pillText]="item.tour.status"
+            [pillStyle]="'table-state-pill table-state-pill-warning'"
+        ></app-state-pill>
+        <app-state-pill
+            *ngIf="item.tour.status == 'completed'"
+            [pillText]="item.tour.status"
+            [pillStyle]="'table-state-pill table-state-pill-success'"
+        ></app-state-pill>
+    </ng-template>
+
+    <ng-template #driverColumn let-item="item">
+        <div class="flex gap-1 items-center">
+            <img [src]="item.tour.assignedDrivers[0].profileImage" class="h-10 w-10 rounded-full" alt="Driver" />
+            <span>{{ item.tour.assignedDrivers[0].name }}</span>
+        </div>
+    </ng-template>
+    <ng-template #viewColumn>
+        <app-table-view-btn></app-table-view-btn>
+    </ng-template>
+</app-main-page>

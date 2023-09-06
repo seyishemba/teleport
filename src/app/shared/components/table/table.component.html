@@ -1,0 +1,52 @@
+<div class="flex justify-between items-center mb-related">
+    <div class="max-w-[60%] h-fit pb-2 flex justify-between items-end gap-10">
+        <!-- Search Component -->
+        <div class="relative w-[15vw]">
+            <app-input-box [inputBoxId]="pageTitle.toLowerCase() + '-table-search'"
+                [floatingLabelId]="pageTitle.toLowerCase() + '-table-search'" [label]="'Search table'"
+                [customInputStyle]="'pl-8 rounded-full text-gray-700'" [customLabelStyle]="'left-8 text-gray-700'"
+                (inputEvent)="onSearch($event)">
+            </app-input-box>
+            <mat-icon class="absolute top-3 left-2 text-gray-700">search</mat-icon>
+        </div>
+
+        <!-- Dropdown filter pills -->
+        <div class="flex justify-between items-center gap-3">
+            <button class="pill bg-gray-50 border-0 hover:bg-primary300 hover:text-white cursor-pointer"
+                [disabled]="tableData.length <= 0">
+                <span>All</span>
+                <mat-icon class="hover:text-white">expand_more</mat-icon>
+            </button>
+            <ng-container *ngFor="let pill of dropDownFilterPills">
+                <button class="pill bg-gray-50 border-0 hover:bg-primary300 hover:text-white cursor-pointer"
+                    [disabled]="tableData.length <= 0">
+                    <span>{{ pill }}</span>
+                    <mat-icon class="hover:text-white">expand_more</mat-icon>
+                </button>
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- Table pagination controls -->
+    <!-- <div class="flex justify-between items-center gap-2">
+        <button class="pill bg-primary50 border-0 min-w-0 px-[1px] py-[1px]" [disabled]="tableData.length <= 0">
+            <mat-icon class="text-primary500 scale-50">chevron_left</mat-icon>
+        </button>
+        <button class="pill bg-primary50 border-0 min-w-0 px-[1px] py-[1px]" [disabled]="tableData.length <= 0">
+            <mat-icon class="text-primary500 scale-50">chevron_right</mat-icon>
+        </button>
+    </div> -->
+</div>
+<div *ngIf="tableData.length <= 0" class="h-[70vh] flex justify-center items-center flex-grow border">
+    <div class="flex flex-col items-center gap-20">
+        <mat-icon class="scale-[5.0] text-gray-800">{{emptyTableIcon}}</mat-icon>
+        <div class="flex flex-col items-center gap-2">
+            <span class="text-sm">You don't have any {{tableName.toLowerCase()}}. <span *ngIf="hasAddEntityCTA">Let's
+                    fix that.</span></span>
+            <button class="btn btn-small btn-filled" (click)="onAddEntity()"
+                *ngIf="hasAddEntityCTA">{{addEntityCTALabel}}</button>
+        </div>
+    </div>
+</div>
+<!-- Table goes here -->
+<ng-content></ng-content>

@@ -1,0 +1,27 @@
+<app-main-page [pageTitle]="'Invoice Schedules'" [addEntityCTALabel]="'New Invoice'" [hasTable]="true"
+  [emptyTableIcon]="'request_quote'" [columns]="tableColumns" [tableData]="invoiceList">
+
+  <pilgrim-table *ngIf="invoiceList.length > 0" [tableContainerClass]="''" [tableClass]="'w-full text-sm'"
+    [tableHeadClass]="'bg-gray-100'" [columns]="tableColumns"
+    [columnTemplates]="{ pin: pinColumn, status: statusColumn, view:viewColumn }" [dataSource]="invoiceList"
+    (onRowClick)="getId($event)"
+    [tableBodyRowClass]="'p-6 transition duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl'"></pilgrim-table>
+
+  <ng-template #pinColumn>
+    <img src="../../../../assets/icons/pin.svg" alt="">
+  </ng-template>
+
+  <ng-template #statusColumn let-item="item">
+    <app-state-pill *ngIf="item.status == 'Completed'" [pillText]="item.status"
+      [pillStyle]="'table-state-pill table-state-pill-success'"></app-state-pill>
+    <app-state-pill *ngIf="item.status == 'In progress'" [pillText]="item.status"
+      [pillStyle]="'table-state-pill table-state-pill-warning'"></app-state-pill>
+    <app-state-pill *ngIf="item.status == 'Cancelled'" [pillText]="item.status"
+      [pillStyle]="'table-state-pill table-state-pill-error'"></app-state-pill>
+  </ng-template>
+
+  <ng-template #viewColumn let-item="item">
+    <!-- <app-table-view-btn></app-table-view-btn> -->
+    <img src="../../../../assets/images/eye-.svg" />
+  </ng-template>
+</app-main-page>

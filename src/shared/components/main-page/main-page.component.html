@@ -1,0 +1,55 @@
+<div class="p-5 bg-white min-h-screen">
+
+  <!-- Page Title -->
+    <div class="page-title">
+      {{pageTitle}}
+    </div>
+  <div *ngIf="subPages.length > 0" class="flex divide-x rounded-full border border-gray-400 w-max mt-5">
+    <span (click)="onSwitchPage(page.title)" class="cursor-pointer text-xs {{page.selected && 'bg-background-accent'}} {{page.selected ? 'text-primary300' : 'text-gray-400'}} uppercase px-3 py-2 {{i==0 && 'rounded-l-full'}} {{i === subPages.length-1 && 'rounded-r-full'}}" *ngFor="let page of subPages; let i =index">{{page.title}}</span>
+  </div>
+  <!-- Table & related components -->
+  <div *ngIf="hasTable" class="m-non-related">
+
+    <!-- Filter pills and Add Entity CTA -->
+    <div class="w-full flex justify-between items-center">
+      <!-- Filter Pills Component -->
+      <div class="w-[50%]">
+        <span class="text-gray-500 text-sm">Selected Filters</span>
+        <div class="w-full pb-2 overflow-x-auto flex items-center gap-2">
+          <ng-container *ngIf="filterPills.length > 0">
+            <div *ngFor="let pill of filterPills; let index = index">
+              <div class="pill">
+                <span>
+                  {{ (pill.length < 25) ? pill : pill.replace(pill.slice(25), '..' )}} </span>
+                    <mat-icon class="text-disabled cursor-pointer" (click)="onRemoveFilter(index)">close</mat-icon>
+              </div>
+            </div>
+          </ng-container>
+          <button class="pill pr-3 pl-1 border-0 text-primary300 bg-background-accent cursor-pointer"
+            (click)="onAddFilterButtonClick()" [disabled]="tableData?.length <= 0">
+            <mat-icon class="text-primary300">add</mat-icon>
+            <span>Add Filter</span>
+          </button>
+          <input id="filter-input" *ngIf="isAddFilterButtonClicked" [(ngModel)]="filterText"
+            (keyup.enter)="onAddFilter()" (blur)="onAddFilter()" type="text" class="pill">
+        </div>
+      </div>
+
+      <button class="my-btn btn-small btn-filled gap-2" (click)="onAddEntity()" *ngIf="hasAddEntityCTA">
+        <mat-icon class="text-white">add</mat-icon>
+        <span>{{addEntityCTALabel}}</span>
+      </button>
+    </div>
+
+
+    <!-- Table Component -->
+    <app-table *ngIf="hasTable" [dropDownFilterPills]="dropDownSortingList" [pageTitle]="pageTitle"
+      [addEntityCTALabel]="addEntityCTALabel" [emptyTableIcon]="emptyTableIcon" [tableData]="tableData"
+      (addEntityEvent)="onAddEntity()" [hasAddEntityCTA]="hasAddEntityCTA" (searchTable)="onSearchTable($event)">
+
+      <!-- Table goes here -->
+      <ng-content></ng-content>
+    </app-table>
+  </div>
+
+</div>

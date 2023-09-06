@@ -1,0 +1,45 @@
+<div appBsModal #createModal="bs-modal"
+    style="width: 50%; max-width: 80%;height:max-content; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    class="modal fade h-max" tabindex="-1" role="dialog" size="md" aria-labelledby="createModal" aria-hidden="true"
+    [config]="{ backdrop: 'static', keyboard: !saving }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div [formGroup]="routeForm" *ngIf="active">
+                <div class="my-3">
+                    <!-- <app-input-box label="City" formControlName="location"></app-input-box> -->
+                    <input class="form-control form-control-solid rounded-lg fs-h6" label="City"
+                        formControlName="location" placeholder="City" />
+                </div>
+                <div class="my-3">
+                    <!-- <app-input-box formType="datetime-local" formControlName="departure_date"></app-input-box> -->
+                    <input type="datetime-local" class="form-control form-control-solid rounded-lg fs-h6"
+                        formControlName="departure_date" />
+                </div>
+                <div class="my-3">
+                    <!-- <app-input-box label="Leg miles" formType="number" formControlName="leg_miles"></app-input-box> -->
+                    <input type="number" class="form-control form-control-solid rounded-lg fs-h6"
+                        placeholder="Leg miles" formControlName="leg_miles" />
+                </div>
+                <div class="my-3">
+                    <!-- <app-input-box label="Drive Time" formType="number"
+                        formControlName="leg_drive_time"></app-input-box> -->
+
+                    <input type="number" class="form-control form-control-solid rounded-lg fs-h6"
+                        placeholder="Drive Time" formControlName="leg_drive_time" />
+                </div>
+
+                <div class="ml-3">
+                    <button
+                        class="bg-[bg-[#f1f3f5]] text-[#013c9f] border border-[#f1f3f5] hover:border-[#013c9f] focus:ring-4 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2"
+                        (click)="close()">Cancel</button>
+                    <button
+                        class="bg-[#013c9f] text-white hover:[#013c9f] focus:ring-1 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2 {{this.routeForm.invalid?'bg-[#3e5a8b]':''}}"
+                        (click)="close()" [disabled]="this.routeForm.invalid">Save</button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

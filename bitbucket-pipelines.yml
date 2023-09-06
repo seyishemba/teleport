@@ -1,0 +1,15 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    development:
+      - step:
+          name: "Deployment to Production"
+          deployment: production
+          script:
+            - echo "BEGIN deployment to Production..."
+            - apt-get update && apt-get install -y openssh-client
+            - ssh-keyscan  194.113.75.24>> ~/.ssh/known_hosts
+            - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+            - chmod 600 ~/.ssh/id_rsa
+            - ssh -o StrictHostKeyChecking=no root@194.113.75.24 '/root/deploy_scripts/dev.sh'

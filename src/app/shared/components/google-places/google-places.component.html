@@ -1,0 +1,5 @@
+<div class="w-full relative">
+    <app-select-dropdown [dropDownBoxId]="componentInstanceId"
+        [floatingLabelId]="componentInstanceLabelId" [label]="componentInstanceLabel"
+        [options]="predictions" (inputEvent)="onSearch($event)" [customIcon]="'location_on'" (optionSelected)="selectPrediction($event)" (touchedEvent)="onBlur()"></app-select-dropdown>
+</div>

@@ -1,0 +1,428 @@
+/* You can add global styles to this file, and also import other style files */
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+@import url('./styles._meta.css');
+@import url('./styles.typography.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply mobile:text-[calc((0.75rem)+(0.875-0.75)*((100vw-20rem)/(120-20)))] tablet:text-[calc((0.875rem)+(1.5-0.875)*((100vw-48rem)/(120-48)))] mobile:min-h-[0vw] larger-screens:text-xl;
+  }
+
+  /* input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    @apply bg-primary500;
+  } */
+
+  input[type="date"],
+  input[type="time"] {
+    &::-webkit-calendar-picker-indicator {
+      @apply opacity-0 pointer-events-none;
+    }
+  }
+  /* .webkit-datetime {
+    &::-webkit-datetime-edit {
+      @apply opacity-0 pointer-events-none;
+    }
+  } */
+  .webkit-datetime:focus {
+    &::-webkit-datetime-edit {
+      @apply opacity-100 pointer-events-none;
+    }
+  }
+
+  mat-icon {
+    @apply scale-75 text-gray-700 disabled:text-gray-500;
+  }
+
+  .pill:disabled > mat-icon {
+    @apply text-gray-500;
+  }
+}
+
+@layer components {
+  /* SPACING */
+  .p-modal {
+    @apply px-8 py-6;
+  }
+
+  /* Texts */
+  .page-title {
+    @apply text-3xl text-heading;
+    font-family: "Noto Sans Regular"
+  }
+
+  .page-sub-title {
+    @apply text-md text-subtitle;
+  }
+
+  .section-header {
+    @apply text-md text-heading uppercase;
+  }
+
+  .body-txt {
+    @apply text-sm text-body;
+  }
+  .body-sub-txt {
+    @apply text-xs text-gray-500;
+  }
+
+  .table-header {
+    @apply text-xs text-heading bg-background-secondary;
+  }
+
+  .table-body-txt {
+    @apply text-xs text-body;
+  }
+
+  .txt-link {
+    @apply underline text-primary300;
+  }
+
+  /* BUTTONS */
+  .my-btn {
+    /* @apply h-[40px] min-h-[0vw] px-[10px] text-sm font-medium text-center uppercase flex flex-row items-center justify-center rounded-2xl cursor-pointer disabled:pointer-events-none transition duration-200 ease-in-out; */
+
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 0.875rem;
+    border-radius: 1rem; 
+    font-weight: 500; 
+    line-height: 1.25rem; 
+    text-align: center; 
+    text-transform: uppercase; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+    transition-duration: 200ms; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+    cursor: pointer; 
+    height: 40px;
+  }
+
+  .btn-outlined {
+    @apply text-primary300 border border-primaryB hover:border-primaryA focus:outline focus:ring-1 focus:ring-primaryA focus:ring-opacity-75;
+  }
+
+  .btn-light-filled {
+    @apply text-primary300 bg-primary50;
+  }
+
+  .btn-filled {
+    @apply text-white bg-primaryB border-b-4 border-primaryA hover:bg-primaryA focus:outline-none focus:ring-1 focus:ring-primaryA focus:ring-opacity-75 disabled:bg-disabled disabled:text-subtitle disabled:border-gray-500;
+  }
+  
+  .btn-default-light-round{
+    @apply py-1 mb-2 ml-0 mr-2 font-semibold bg-primary200  text-primary300 hover:text-primary300 px-4 text-sm rounded-full cursor-pointer;
+  }
+  .btn-default{
+    @apply py-2 mb-2 ml-0 mr-2 font-bold bg-[#009ef7] hover:bg-[#0095e8] text-white hover:text-white border border-[#009ef7] px-4 text-sm rounded-md cursor-pointer;
+  }
+  /* filter tile */
+  .filterTile{
+    @apply bg-gray-300 text-gray-600 rounded-2xl flex items-center justify-center px-2 text-xs cursor-pointer gap-2;
+  }
+
+
+  .btn-small {
+    @apply px-6 py-2;
+  }
+
+  .btn-medium {
+    @apply px-12 py-2;
+  }
+
+  .btn-large {
+    @apply px-24 py-2;
+  }
+
+  /* MODALS */
+  .modal-container {
+    @apply w-screen h-screen fixed z-[997] top-0 left-0 flex items-center justify-center;
+  }
+
+  .modal-overlay {
+    @apply w-screen h-screen fixed top-0 left-0 right-0 bottom-0 z-[998] bg-black/60 backdrop-blur-[2px];
+  }
+
+  .my-modal {
+    @apply relative z-[999] bg-white rounded-xl p-modal;
+    @apply max-w-[95%] max-h-[95%] overflow-y-auto mx-auto;
+    @apply tablet:min-w-[40%] tablet:min-h-[50%];
+    @apply desktop:min-w-[30%] desktop:min-h-[50%];
+  }
+
+  /* PILLS */
+  .pill {
+    @apply min-w-[70px] pl-3 pr-2 py-[2px] text-xs border rounded-full flex justify-between items-center gap-1 disabled:bg-gray-200 disabled:text-gray-500 disabled:pointer-events-none;
+  }
+
+  .state-pill, .btn-pill {
+    @apply relative flex items-center pr-2 text-2xs uppercase rounded-full;
+  }
+
+  .state-pill-warning {
+    @apply text-yellow-900 bg-yellow-50;
+  }
+
+  .state-pill-success {
+    @apply text-teal-900 bg-teal-50;
+  }
+
+  .state-pill-error {
+    @apply text-red-900 bg-red-50;
+  }
+
+  .state-pill-info, .btn-pill-edit {
+    @apply text-primary300 bg-background-accent;
+  }
+
+  .btn-pill-edit > mat-icon {
+    @apply text-primary300 scale-50;
+  }
+
+  /* Step-through pills */
+  .step-through-pill {
+    @apply w-[5%] h-[5%] flex items-center justify-center text-center border rounded-full;
+  }
+
+  /* INPUT BOX */
+  .input-box {
+    @apply w-full h-full px-4 py-5 body-txt border rounded-lg appearance-none focus:outline-primary300 disabled:pointer-events-none disabled:bg-disabled disabled:text-subtitle disabled:border-none transition-all duration-300;
+  }
+
+  .floating-label {
+    @apply absolute top-4 left-4 body-txt pointer-events-none transition-all duration-300;
+  }
+
+  .table-hover{
+    @apply p-6 transition duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .login-text-link{
+    @apply text-[#ADB5BD] hover:text-primary300
+  }
+
+}
+
+
+/* registration/login background image */
+.page-wrapper {
+  background: url('./assets/images/signin_bg.svg') center center;
+  background-repeat:no-repeat ;
+  background-size: cover;
+}
+
+/* background effect for image... got to be done in css */
+.custom-blue-shadow {
+  box-shadow: -1px 4px 8px 4px rgba(237, 246, 255, 1), 2px 4px 8px 4px rgba(237, 246, 255, 0.6);
+}
+
+/* styling menu on active  */
+.app-sidebar .menu .menu-item .menu-link.active{
+  background-color: #1877F2 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* You can add global styles to this file, and also import other style files */
+/* .margin-left-5 {
+    margin-left: 5px !important;
+}
+
+.margin-right-5 {
+    margin-right: 5px !important;
+}
+
+.margin-top-5 {
+    margin-top: 5px !important;
+}
+
+.margin-top-15 {
+    margin-top: 15px !important;
+}
+
+.margin-bottom-5 {
+    margin-bottom: 5px !important;
+}
+
+.margin-bottom-5 {
+    margin-bottom: 5px !important;
+}
+
+.margin-bottom-15 {
+    margin-bottom: 15px !important;
+}
+
+.padding-left-5 {
+    padding-left: 5px !important;
+}
+
+.padding-right-5 {
+    padding-right: 5px !important;
+}
+
+.padding-top-5 {
+    padding-top: 5px !important;
+}
+
+.padding-bottom-5 {
+    padding-bottom: 5px !important;
+}
+
+.width-percent-5 {
+    width: 5%;
+}
+
+.width-percent-10 {
+    width: 10%;
+}
+
+.width-percent-15 {
+    width: 15%;
+}
+
+.width-percent-20 {
+    width: 20%;
+}
+
+.width-percent-30 {
+    width: 30%;
+}
+
+.width-percent-40 {
+    width: 40%;
+}
+
+.width-percent-50 {
+    width: 50%;
+}
+
+.width-percent-100 {
+    width: 100%;
+} */
+
+/* Sweet alert */
+/* 
+body.swal2-height-auto {
+    height: inherit !important;
+}
+
+.swal2-popup.swal2-toast {
+    padding: 10px 12px !important;
+    display: block !important;
+}
+
+.swal2-popup.swal2-toast .swal2-header,
+.swal2-popup.swal2-toast .swal2-title,
+.swal2-popup.swal2-toast .swal2-content {
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+.swal2-popup.swal2-toast .swal2-title {
+    margin-bottom: 4px !important;
+}
+
+.swal2-icon.swal2-info::before,
+.swal2-icon.swal2-warning::before,
+.swal2-icon.swal2-success::before,
+.swal2-icon.swal2-error::before {
+    content: "";
+}
+
+@keyframes glowing {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.glowing {
+    animation: glowing 2s infinite;
+}
+
+.root-initial-loader .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(51, 51, 51, 0.8);
+    z-index: 99999 !important;
+    width: 100%;
+    height: 100%;
+}
+
+.root-initial-loader i {
+    position: absolute;
+    color: rgb(91, 167, 234);
+    z-index: 100000 !important;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.root-initial-loader .fa-spin-2x {
+    -webkit-animation: fa-spin 1s infinite linear;
+    animation: fa-spin 1s infinite linear;
+}
+ngx-spinner .loading-text {
+    font-weight: bold;
+    color: white;
+    font-size: 1.3em;
+}
+
+bs-days-calendar-view + bs-days-calendar-view {
+    margin-left: 10px;
+}
+
+bs-days-calendar-view {
+    display: inline-block;
+    border-radius: 4px 0 0 4px;
+}
+
+@media (max-width: 768px) {
+    .btn-md-icon {
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+    }
+} */

@@ -1,0 +1,56 @@
+<div
+  class="page-wrapper w-full h-screen flex justify-center items-center bg-cover bg-bottom bg-[url(./assets/images/registration-page-img.webp)]">
+  <div class="w-[80vw] desktop:w-[30vw] flex flex-col gap-10 p-8 bg-white rounded-2xl">
+    <div class="flex justify-center">
+      <img src="./assets/icons/logo-black.svg" alt="">
+    </div>
+    <form [formGroup]="loginForm!">
+      <app-input-box [label]="'Email Address'" [inputBoxId]="'auth-email'" [floatingLabelId]="'auth-email'"
+        formControlName="email">
+      </app-input-box>
+      <div class="w-[95%] text-center my-3">
+        <span class="mt-1 text-error text-xs font-normal" *ngIf="loginForm?.get('email')?.value !== '' && isEmailError">
+          Please enter a valid email address
+        </span>
+      </div>
+    </form>
+
+    <div class="flex flex-col gap-5">
+      <div class="flex justify-between gap-3">
+        <button class="my-btn btn-small w-full gap-1 pl-5 text-3xs text-subtitle font-semibold bg-gray-50">
+          <div>
+            <mat-icon class="text-subtitle">apple_logo</mat-icon>
+          </div>
+          <span>sign in with apple</span>
+        </button>
+        <button class="my-btn btn-small w-full gap-2 text-3xs text-subtitle font-semibold bg-gray-50">
+          <div>
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15.0357 6.69498H14.4987V6.66732H8.4987V9.33398H12.2664C11.7167 10.8863 10.2397 12.0007 8.4987 12.0007C6.2897 12.0007 4.4987 10.2097 4.4987 8.00065C4.4987 5.79165 6.2897 4.00065 8.4987 4.00065C9.51836 4.00065 10.446 4.38532 11.1524 5.01365L13.038 3.12798C11.8474 2.01832 10.2547 1.33398 8.4987 1.33398C4.81703 1.33398 1.83203 4.31898 1.83203 8.00065C1.83203 11.6823 4.81703 14.6673 8.4987 14.6673C12.1804 14.6673 15.1654 11.6823 15.1654 8.00065C15.1654 7.55365 15.1194 7.11732 15.0357 6.69498Z"
+                fill="#FFC107" />
+              <path
+                d="M2.60156 4.89765L4.7919 6.50398C5.38456 5.03665 6.8199 4.00065 8.49956 4.00065C9.51923 4.00065 10.4469 4.38532 11.1532 5.01365L13.0389 3.12798C11.8482 2.01832 10.2556 1.33398 8.49956 1.33398C5.9389 1.33398 3.71823 2.77965 2.60156 4.89765Z"
+                fill="#FF3D00" />
+              <path
+                d="M8.50141 14.6669C10.2234 14.6669 11.7881 14.0079 12.9711 12.9362L10.9077 11.1902C10.2159 11.7164 9.37056 12.0009 8.50141 12.0002C6.76741 12.0002 5.29507 10.8946 4.74041 9.35156L2.56641 11.0266C3.66974 13.1856 5.91041 14.6669 8.50141 14.6669Z"
+                fill="#4CAF50" />
+              <path
+                d="M15.037 6.69368H14.5V6.66602H8.5V9.33268H12.2677C12.0047 10.0715 11.5311 10.7171 10.9053 11.1897L10.9063 11.189L12.9697 12.935C12.8237 13.0677 15.1667 11.3327 15.1667 7.99935C15.1667 7.55235 15.1207 7.11602 15.037 6.69368Z"
+                fill="#1976D2" />
+            </svg>
+          </div>
+          <span>sign in with google</span>
+        </button>
+      </div>
+      <div>
+        <button class="my-btn btn-large btn-filled w-full" (click)="onNextClick()"
+          [disabled]="isEmailError">next</button>
+      </div>
+      <div class="flex justify-center gap-1 text-xs">
+        <span class="text-primary100">Powered by </span><span
+          class="border-b border-black cursor-pointer">Teleport</span>
+      </div>
+    </div>
+  </div>
+</div>

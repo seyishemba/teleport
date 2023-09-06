@@ -1,0 +1,86 @@
+<div class="w-full h-screen">
+    <div class="w-full flex justify-between p-5 items-center">
+        <div class="w-1/5">
+            <img class="w-24 h-10 object-contain" src="assets/images/logo.png" alt="">
+        </div>
+        <div class="flex flex-wrap items-center gap-3 text-sm w-full">
+            <div class="flex items-center gap-2 pl-1 pr-2 py-1 {{
+                        currentForm === FORMS.personalInfo ? 'bg-primary300 text-white rounded-full' : ''
+                    }}">
+                <span class="w-[25px] h-[25px] flex items-center justify-center text-center border rounded-full {{
+                            currentForm === FORMS.personalInfo ? 'bg-background-white text-text-state-active' : ''
+                        }}">
+                    1
+                </span>
+                <span>Personal Information</span>
+            </div>
+
+            <mat-icon>arrow_forward_ios</mat-icon>
+
+            <div class="flex items-center gap-2 pl-1 pr-2 py-1 {{
+                        currentForm === FORMS.otherDetails ? 'bg-primary300 text-white rounded-full' : ''
+                    }}">
+                <div class="w-[25px] h-[25px] flex items-center justify-center text-center border rounded-full {{
+                            currentForm === FORMS.otherDetails ? 'bg-background-white text-text-state-active' : ''
+                        }}">
+                    2
+                </div>
+                <span class="onboarding text-base font-normal">Other Details</span>
+            </div>
+
+            <mat-icon>arrow_forward_ios</mat-icon>
+
+            <div class="flex items-center gap-2 pl-1 pr-2 py-1 {{
+                        currentForm === FORMS.emergency ? 'bg-primary300 text-white rounded-full' : ''
+                    }}">
+                <div class="w-[25px] h-[25px] flex items-center justify-center text-center border rounded-full {{
+                            currentForm === FORMS.emergency ? 'bg-background-white text-text-state-active' : ''
+                        }}">
+                    3
+                </div>
+                <div>Emergency Contant</div>
+            </div>
+
+            <mat-icon>arrow_forward_ios</mat-icon>
+
+            <div class="flex items-center gap-2 pl-1 pr-2 py-1 {{
+                        currentForm === FORMS.summary ? 'bg-primary300 text-white rounded-full' : ''
+                    }}">
+                <div class="w-[25px] h-[25px] flex items-center justify-center text-center border rounded-full {{
+                            currentForm === FORMS.summary ? 'bg-background-white text-text-state-active' : ''
+                        }}">
+                    5
+                </div>
+                <div>Summary</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex w-full justify-center relative">
+        <!-- forms goes here -->
+        <div *ngIf="currentForm !== FORMS.summary"
+            class="p-5 my-12 min-w-[80%] rounded-lg shadow-md bg-white overflow-y-auto">
+
+            <!-- Personal Details -->
+            <app-personal-information *ngIf="currentForm === FORMS.personalInfo"
+                (personalInformation)="personalInfo = $event; currentForm = FORMS.otherDetails"></app-personal-information>
+
+            <!-- Other Details -->
+            <app-other-details *ngIf="currentForm === FORMS.otherDetails"
+                (otherDetailsInfo)="otherDetails = $event; currentForm = FORMS.emergency"
+                (goBack)="currentForm = FORMS.personalInfo"></app-other-details>
+
+            <!-- Emergency Contact -->
+            <app-emergency-contact *ngIf="currentForm === FORMS.emergency"
+                (emergencyInfo)="emergency = $event; currentForm = FORMS.summary"
+                (goBack)="currentForm = FORMS.otherDetails"></app-emergency-contact>
+
+        </div>
+
+
+        <!-- Summary -->
+        <app-summary class="min-w-[100%]" *ngIf="currentForm === FORMS.summary" [personalInfo]="personalInfo"
+            [otherDetails]="otherDetails" [emergency]="emergency"
+            (goBack)="currentForm = FORMS.emergency"></app-summary>
+    </div>
+</div>

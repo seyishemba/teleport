@@ -1,0 +1,159 @@
+<div class="w-full h-full">
+    <div class="h-[75%] flex p-10 justify-between ">
+        <div class="w-full pr-5 border-r-2 border-gray-400">
+            <h2 class="text-md">Personal Details</h2>
+
+            <div class="w-full h-full">
+                <div class="w-full mt-14 flex justify-between items-center gap-4">
+                    <div class="w-1/2" *ngIf="personalInfo.file">
+                        <div class="w-24 rounded-md h-24 flex justify-center items-center">
+                            <img class="object-cover w-24 h-24" [src]="url" alt="">
+                        </div>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">CDL Class</span>
+                        <p class="text-md break-all">{{personalInfo.cdlClass}}</p>
+                    </div>
+                </div>
+
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Date of Birth</span>
+                        <p class="text-md break-all">{{personalInfo.dateOFBirth | date}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Shirt Size</span>
+                        <p class="text-md break-all">{{personalInfo.shirtSize}}</p>
+                    </div>
+                </div>
+
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Email Address</span>
+                        <p class="text-md break-all">{{personalInfo.email}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Address</span>
+                        <p class="text-md break-all">{{personalInfo.address}}</p>
+                    </div>
+                </div>
+
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Phone Number</span>
+                        <p class="text-md break-all">{{personalInfo.phoneNumber}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Home Address</span>
+                        <p class="text-md break-all">{{personalInfo.homeNumber}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full px-5 border-r-2 border-gray-400">
+            <h2 class="text-md">Other Details</h2>
+            <div class="w-full h-full">
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Marital Status</span>
+                        <p class="text-md break-all">{{otherDetails.maritalStatus}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Home Airport</span>
+                        <p class="text-md break-all">{{otherDetails.homeEmail}}</p>
+                    </div>
+                </div>
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">TSA PRE-CHECK/IN</span>
+                        <p class="text-md break-all">{{otherDetails.preCheck}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Seating Preference</span>
+                        <p class="text-md break-all">{{otherDetails.seatPreference}}</p>
+                    </div>
+                </div>
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Allergies</span>
+                        <p class="text-md break-all">{{otherDetails.allergies}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Do you smoke</span>
+                        <p class="text-md break-all">{{otherDetails.doYouSmoke}}</p>
+                    </div>
+                </div>
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Passport Number</span>
+                        <p class="text-md break-all">{{otherDetails.passportNumber}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Passport Issue Date</span>
+                        <p class="text-md break-all">{{otherDetails.passportIssueDate | date}}</p>
+                    </div>
+                </div>
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Passport Expiration Date</span>
+                        <p class="text-md break-all">{{otherDetails.passportExpireDate | date}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Passport country of issue</span>
+                        <p class="text-md break-all">{{otherDetails.passportCountry}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full pl-5">
+            <h2 class="text-md">Emergency Contact</h2>
+            <div class="w-full h-full">
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Contact Name</span>
+                        <p class="text-md break-all">{{emergency.primary.fullName}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Relationship</span>
+                        <p class="text-md break-all">{{emergency.primary.relationship}}</p>
+                    </div>
+                </div>
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Phone Number</span>
+                        <p class="text-md break-all">{{emergency.primary.phoneNumber}}</p>
+                    </div>
+                </div>
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Contact Name</span>
+                        <p class="text-md break-all">{{emergency.secondary.fullName}}</p>
+                    </div>
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Relationship</span>
+                        <p class="text-md break-all">{{emergency.secondary.relationship}}</p>
+                    </div>
+                </div>
+                <div class="w-full mt-9 flex justify-between items-center gap-4">
+                    <div class="w-1/2">
+                        <span class="uppercase text-gray-400 text-xs">Phone Number</span>
+                        <p class="text-md break-all">{{emergency.secondary.phoneNumber}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex w-full mt-36 px-11 justify-between items-center">
+        <span>Before you submit the form, be sure to read our <a href="#">Terms of Service</a></span>
+
+        <div class="flex mt-5 justify-end gap-4">
+            <button class="my-btn btn-medium btn-outlined" (click)="goBack.emit()">
+                <span>GO BACK AND EDIT</span>
+            </button>
+            <button (click)="createDriver()" class="my-btn btn-large btn-filled gap-2">
+                <span>SUBMIT FORM</span>
+            </button>
+        </div>
+    </div>
+</div>

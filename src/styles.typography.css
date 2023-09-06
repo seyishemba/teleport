@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Outfit Regular';
+    src: url('../src/assets/fonts/outfit/Outfit-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Noto Sans Regular';
+    src: url('../src/assets/fonts/notosans/NotoSans-Regular.ttf');
+}
+
+
+body{
+    font-family: "Outfit Regular" !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Noto Sans Regular" !important;
+}

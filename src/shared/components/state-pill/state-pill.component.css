@@ -1,0 +1,25 @@
+.table-state-pill {
+  width: min-content;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  border-radius: 9999px;
+}
+
+.table-state-pill-warning {
+  color: #a86e04;
+  background-color: #fff9db;
+}
+
+.table-state-pill-success {
+  color: #087f5b;
+  background-color: #e6fcf5;
+}
+
+.table-state-pill-error {
+  color: #c92a2a;
+  background-color: #fff5f5;
+}

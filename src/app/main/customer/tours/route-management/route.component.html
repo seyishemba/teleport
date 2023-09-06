@@ -1,0 +1,161 @@
+<div class="flex flex-col gap-10">
+    <div></div>
+
+
+
+    <hr class="-mt-4">
+
+    <div class="mt-4 mx-5 mb-24">
+        <div><button (click)="createModal()"
+                class="bg-[#013c9f] text-white hover:[#013c9f] focus:ring-1 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2 float-right {{quickTable.invalid?'bg-dark-500':''}}"
+                [disabled]="quickTable.invalid">Add
+                Stop</button></div>
+        <form action="" [formGroup]="quickTable">
+            <table width="100%">
+                <thead class="bg-[#F1F3F5]">
+                    <tr class="text-sm bg-gray-100">
+                        <!-- <th></th> -->
+                        <th class="text-sm py-3 px-2 text-center">#</th>
+                        <th class="text-sm py-3 px-2 uppercase text-center">Location</th>
+                        <th class="text-sm py-3 px-2 uppercase text-center">Date</th>
+                        <th class="text-sm py-3 px-2 uppercase text-center">Time</th>
+                        <th class="text-sm py-3 px-2 uppercase text-center">Leg Miles</th>
+                        <th class="text-sm py-3 px-2 uppercase text-center">Leg Drive Time</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="recordsArray" cdkDropListGroup cdkDropList [cdkDropListData]="records"
+                    (cdkDropListDropped)="drop($event)">
+                    <tr align="center" *ngFor="let record of records.controls;let i = index" [formGroupName]="i"
+                        class="" (click)="checkLastRow(i)" cdkDrag>
+                        <td class="cursor-grab">
+
+                        </td>
+
+                        <td class="">
+
+                            <div class="flex flex-col items-start justify-start gap-y-2"><app-t-select [data]="garages"
+                                    formControlName="location" label="name" placeholder="Search Place"
+                                    *ngIf="i == 0 || i == (records.length - 1)"
+                                    borderStyles="border-white  hover:border-background-secondary "
+                                    (selectedData)="getSelection($event,i)"></app-t-select>
+
+                                <app-google-places *ngIf="i > 0 && i !== (records.length - 1)"
+                                    formArrayName="location"></app-google-places>
+                                <p class="text-gray-600 text-left ml-4 text-xs mb-0 ">{{(i == 0)?'Garage (Start)':(i ==
+                                    records.length-1)?'Garage (End)':'Address Here'}}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="date" id="default-input2" formControlName="departure_date"
+                                (focus)="selectAllText($event)" class="text-center">
+                        </td>
+                        <td class="">
+                            <input type="time" id="default-input2" formControlName="time"
+                                (focus)="selectAllText($event)" class="text-center">
+                        </td>
+
+                        <td>
+                            <input type="number" id="default-input2" formControlName="leg_miles"
+                                (focus)="selectAllText($event)" class="">
+                        </td>
+                        <td class="">
+                            <input type=" number" formControlName="leg_drive_time" (focus)="selectAllText($event)"
+                                class="" />
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </form>
+    </div>
+    <!-- <div
+        class="h-[95px] w-[85%] bg-[#f1f3f5] table-shadow fixed right-0 bottom-0 -z-0  rounded-l-lg flex justify-between items-center">
+        <div class="ml-3">
+            <button
+                class="bg-[bg-[#f1f3f5]] text-[#013c9f] border border-[#f1f3f5] hover:border-[#013c9f] focus:ring-4 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2">Cancel</button>
+            <button
+                class="bg-[#013c9f] text-white hover:[#013c9f] focus:ring-1 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2 {{this.quickTable.invalid?'bg-[#3e5a8b]':''}}"
+                (click)="submit()" [disabled]="this.quickTable.invalid">Save</button>
+
+        </div>
+        <div>
+            <p class="text-right px-4  text-xs text-gray-600 uppercase">Total</p>
+            <p class="text-right px-4 text-2xl text-background-primary">{{totalAmount | currency}}</p>
+        </div>
+
+    </div> -->
+
+
+</div>
+<app-modal *ngIf="showAddRoute">
+
+    <p class="text-2xl font-bold mb-7 ">Add Stop </p>
+    <div [formGroup]="routeForm">
+        <div class="my-3">
+            <app-input-box label="City" formControlName="location"></app-input-box>
+        </div>
+        <div class="my-3">
+            <app-input-box formType="datetime-local" formControlName="departure_date"></app-input-box>
+        </div>
+        <div class="my-3">
+            <app-input-box label="Leg miles" formType="number" formControlName="leg_miles"></app-input-box>
+        </div>
+        <div class="my-3">
+            <app-input-box label="Drive Time" formType="number" formControlName="leg_drive_time"></app-input-box>
+        </div>
+
+        <div class="ml-3">
+            <button
+                class="bg-[bg-[#f1f3f5]] text-[#013c9f] border border-[#f1f3f5] hover:border-[#013c9f] focus:ring-4 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2"
+                (click)="hideRouteModal()">Cancel</button>
+            <button
+                class="bg-[#013c9f] text-white hover:[#013c9f] focus:ring-1 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2 {{this.quickTable.invalid?'bg-[#3e5a8b]':''}}"
+                (click)="hideRouteModal()" [disabled]="this.quickTable.invalid">Save</button>
+
+        </div>
+
+
+    </div>
+</app-modal>
+
+<app-add-stop #addStopModal></app-add-stop>
+
+<!-- <div appBsModal #createModal="bs-modal" (onShown)="onShown()"
+    style="width: 70%; max-width: 80%; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    class="modal fade" tabindex="-1" role="dialog" size="md" aria-labelledby="createModal" aria-hidden="true"
+    [config]="{ backdrop: 'static', keyboard: !saving }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div [formGroup]="routeForm">
+                <div class="my-3">
+                    <app-input-box label="City" formControlName="location"></app-input-box>
+                </div>
+                <div class="my-3">
+                    <app-input-box formType="datetime-local" formControlName="departure_date"></app-input-box>
+                </div>
+                <div class="my-3">
+                    <app-input-box label="Leg miles" formType="number" formControlName="leg_miles"></app-input-box>
+                </div>
+                <div class="my-3">
+                    <app-input-box label="Drive Time" formType="number"
+                        formControlName="leg_drive_time"></app-input-box>
+                </div>
+
+                <div class="ml-3">
+                    <button
+                        class="bg-[bg-[#f1f3f5]] text-[#013c9f] border border-[#f1f3f5] hover:border-[#013c9f] focus:ring-4 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2"
+                        (click)="hideRouteModal()">Cancel</button>
+                    <button
+                        class="bg-[#013c9f] text-white hover:[#013c9f] focus:ring-1 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2 {{this.quickTable.invalid?'bg-[#3e5a8b]':''}}"
+                        (click)="hideRouteModal()" [disabled]="this.quickTable.invalid">Save</button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div> -->

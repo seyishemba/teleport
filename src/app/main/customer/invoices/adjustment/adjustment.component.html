@@ -1,0 +1,85 @@
+
+<div class="modal-container" (closeModal)="closeAdjustmentModal()" *ngIf="adjustmentModal">
+    <p class="text-2xl font-bold mb-7"><img src="../../../../assets/images/arrow_back.svg"
+        class="w-6 h-6 inline-block" /> {{(action ===
+    'edit')?"Edit " : "Add"}} Adjustment</p>
+<form [formGroup]="adustmentActionForm">
+    <div class="flex gap-4 mb-5">
+        <app-input-box label="Billing Cycles" formType="number" formControlName="billingCycle"></app-input-box>
+        <app-input-box label="Billing Amount" formType="number" formControlName="billingAmount"></app-input-box>
+    </div>
+    <div>
+        <app-input-box label="Effective Date" formType="date" formControlName="effectiveDate"></app-input-box>
+
+    </div>
+
+    <div class="mt-5 px-3">
+
+        <div class="text-xs text-[#ADB5BD] py-2">ADJUSTMENTS INVOICED TO-DATE</div>
+        <div class="flex justify-between">
+            <div>
+                <p class="text-xs text-[#ADB5BD]">INVOICED</p>
+                <p class="text-lg">2</p>
+            </div>
+            <div>
+                <p class="text-xs text-[#ADB5BD]">INVOICED AMOUNT</p>
+                <p class="text-lg">$25,000</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5">
+        <app-input-box label="Co-Driver, new routes" formType="text" formControlName="description"></app-input-box>
+    </div>
+</form>
+<div class="grid grid-cols-2 mt-6 gap-3">
+    <button
+        class=" bg-[bg-[#f1f3f5]] text-[#013c9f] border border-[#f1f3f5] hover:border-[#013c9f] focus:ring-4 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Cancel</button>
+    <button
+        class="bg-[#013c9f] text-white hover:[#013c9f] focus:ring-1 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2"
+        (click)="submit()">Save</button>
+
+</div>
+</div>
+
+<!-- <app-modal (closeModal)="closeAdjustmentModal()" *ngIf="adjustmentModal">
+    <p class="text-2xl font-bold mb-7"><img src="../../../../assets/images/arrow_back.svg"
+            class="w-6 h-6 inline-block" /> {{(action ===
+        'edit')?"Edit " : "Add"}} Adjustment</p>
+    <form [formGroup]="adustmentActionForm">
+        <div class="flex gap-4 mb-5">
+            <app-input-box label="Billing Cycles" formType="number" formControlName="billingCycle"></app-input-box>
+            <app-input-box label="Billing Amount" formType="number" formControlName="billingAmount"></app-input-box>
+        </div>
+        <div>
+            <app-input-box label="Effective Date" formType="date" formControlName="effectiveDate"></app-input-box>
+
+        </div>
+
+        <div class="mt-5 px-3">
+
+            <div class="text-xs text-[#ADB5BD] py-2">ADJUSTMENTS INVOICED TO-DATE</div>
+            <div class="flex justify-between">
+                <div>
+                    <p class="text-xs text-[#ADB5BD]">INVOICED</p>
+                    <p class="text-lg">2</p>
+                </div>
+                <div>
+                    <p class="text-xs text-[#ADB5BD]">INVOICED AMOUNT</p>
+                    <p class="text-lg">$25,000</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5">
+            <app-input-box label="Co-Driver, new routes" formType="text" formControlName="description"></app-input-box>
+        </div>
+    </form>
+    <div class="grid grid-cols-2 mt-6 gap-3">
+        <button
+            class=" bg-[bg-[#f1f3f5]] text-[#013c9f] border border-[#f1f3f5] hover:border-[#013c9f] focus:ring-4 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Cancel</button>
+        <button
+            class="bg-[#013c9f] text-white hover:[#013c9f] focus:ring-1 focus:ring-[#013c9f] font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2"
+            (click)="submit()">Save</button>
+
+    </div>
+
+</app-modal> -->

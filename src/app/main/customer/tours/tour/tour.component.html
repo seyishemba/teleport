@@ -1,0 +1,202 @@
+<app-details-page [previousPageTitle]="'Tours'" [pageTitle]="tourBooking?.name!">
+    <div class="flex flex-col gap-4">
+        <div class="flex gap-4">
+            <div class="w-3/4 h-[45vh] p-4 flex flex-col gap-3 overflow-y-auto border border-border-default rounded-lg">
+                <div class="flex gap-2 items-center">
+                    <h5 class="section-header">Assigned Driver(s)</h5>
+                    <button class="btn-pill btn-pill-edit">
+                        <mat-icon>edit</mat-icon>
+                        <span>edit config</span>
+                    </button>
+                </div>
+                <app-table
+                    *ngIf="!isLoading"
+                    [tableName]="'Assigned Drivers'"
+                    [tableData]="coachAssignments!"
+                    [hasAddEntityCTA]="false"
+                    [emptyTableIcon]="'people'"
+                >
+                    <pilgrim-table
+                        [tableContainerClass]="'border-0'"
+                        [columns]="driverTableColumns"
+                        [columnTemplates]="{ primaryDriver: primarydriverColumn, coDriver: codriverColumn }"
+                        [tableHeadClass]="'text-xs bg-gray-100'"
+                        [dataSource]="coachAssignments!"
+                        [tableBodyRowClass]="'text-xs'"
+                    ></pilgrim-table>
+
+                    <ng-template #primarydriverColumn let-item="item">
+                        <div class="flex gap-1 items-center">
+                            <img
+                                [src]="item?.primaryDriver?.profileImage"
+                                class="h-10 w-10 rounded-full"
+                                alt="Driver"
+                            />
+                            <span>{{ item?.primaryDriver?.name }}</span>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #codriverColumn let-item="item">
+                        <div class="flex gap-1 items-center">
+                            <img [src]="item?.coDriver?.profileImage" class="h-10 w-10 rounded-full" alt="Driver" />
+                            <span>{{ item?.coDriver?.name }}</span>
+                        </div>
+                    </ng-template>
+                </app-table>
+            </div>
+
+            <!-- Cost and Statuses -->
+            <div class="w-1/4 p-4 flex flex-col gap-3 border border-border-default rounded-lg">
+                <h5 class="section-header">Cost & Statuses</h5>
+
+                <div class="w-full flex justify-between">
+                    <div>
+                        <span>Tour</span>
+                        <span
+                            class="state-pill {{
+                                tourBooking?.status === 'pending'
+                                    ? 'state-pill-warning'
+                                    : tourBooking?.status === 'completed'
+                                    ? 'state-pill-success'
+                                    : 'state-pill-error'
+                            }}"
+                        >
+                            <mat-icon>dot</mat-icon>
+                            {{ tourBooking?.status }}
+                        </span>
+                    </div>
+                    <div>
+                        <span>Contract</span>
+                        <span
+                            class="state-pill {{
+                                tourBooking?.contract?.status === 'Draft'
+                                    ? 'state-pill-warning'
+                                    : tourBooking?.contract?.status === 'Signed'
+                                    ? 'state-pill-success'
+                                    : 'state-pill-error'
+                            }}"
+                        >
+                            <mat-icon>dot</mat-icon>
+                            {{ tourBooking?.contract?.status }}
+                        </span>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="flex flex-col">
+                    <span>Total Cost</span>
+                    <span class="text-3xl text-primary300">{{ totalCostOfTour }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Route Details -->
+        <div class="flex gap-4">
+            <div class="w-3/5 h-[60vh] p-4 flex flex-col gap-3 overflow-y-auto border border-border-default rounded-lg">
+                <div class="flex justify-between">
+                    <h5 class="section-header">Route Details</h5>
+                    <button class="btn-pill btn-pill-edit">
+                        <mat-icon>edit</mat-icon>
+                        <span>edit</span>
+                    </button>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2">
+                        <span class="text-xs text-subtitle uppercase">Start Garage - Details</span>
+                        <span>{{ tourBooking?.route?.startGarage }}</span>
+                        <hr />
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <span class="text-xs text-subtitle uppercase">Pickup - Details</span>
+                        <span>{{ tourBooking?.route?.pickup?.location }}</span>
+                        <div class="flex justify-between">
+                            <span class="text-xs text-subtitle">{{ tourBooking?.route?.pickup?.location }}</span>
+                            <span class="text-xs">{{ tourBooking?.route?.pickup?.date }}</span>
+                            <span class="text-xs">{{ tourBooking?.route?.pickup?.time }}</span>
+                        </div>
+                        <hr />
+                    </div>
+
+                    <div *ngFor="let stop of tourBooking?.route?.stops; let i = index" class="flex flex-col gap-2">
+                        <span class="text-xs text-subtitle uppercase">Stop {{ i + 1 }} - Details</span>
+                        <span>{{ stop.location }}</span>
+                        <div class="flex justify-between">
+                            <span class="text-xs text-subtitle">{{ stop.location }}</span>
+                            <span class="text-xs">{{ stop.date }}</span>
+                            <span class="text-xs">{{ stop.time }}</span>
+                        </div>
+                        <hr />
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <span class="text-xs text-subtitle uppercase">Dropoff- Details</span>
+                        <span>{{ tourBooking?.route?.dropoff?.location }}</span>
+                        <div class="flex justify-between">
+                            <span class="text-xs text-subtitle">{{ tourBooking?.route?.pickup?.location }}</span>
+                            <span class="text-xs">{{ tourBooking?.route?.pickup?.date }}</span>
+                            <span class="text-xs">{{ tourBooking?.route?.pickup?.time }}</span>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Data -->
+            <div
+                class="
+                    w-2/5
+                    max-h-[60vh]
+                    p-4
+                    flex flex-col
+                    gap-3
+                    overflow-y-auto
+                    border border-border-default
+                    rounded-lg
+                "
+            >
+                <div class="flex justify-between">
+                    <h5 class="section-header">Additional Data</h5>
+                    <button class="btn-pill btn-pill-edit">
+                        <mat-icon>edit</mat-icon>
+                        <span>edit</span>
+                    </button>
+                </div>
+
+                <p>{{ tourBooking?.comments }}</p>
+
+                <br />
+
+                <div
+                    *ngFor="let url of tourBooking?.mediaUrls"
+                    class="
+                        p-2
+                        flex
+                        items-center
+                        gap-3
+                        rounded-md
+                        hover:bg-background-accent hover:text-primary300
+                        cursor-pointer
+                    "
+                >
+                    <div
+                        class="
+                            w-16
+                            h-16
+                            flex
+                            justify-center
+                            items-center
+                            rounded-md
+                            bg-cover bg-bottom bg-[url(./assets/images/registration-page-img.webp)]
+                        "
+                    >
+                        <mat-icon class="text-white scale-90">visibility</mat-icon>
+                    </div>
+                    <span class="text-md font-normal uppercase">{{ getFileNameFromUrl(url) }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-details-page>

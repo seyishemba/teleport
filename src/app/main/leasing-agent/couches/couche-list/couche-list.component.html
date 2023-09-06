@@ -1,0 +1,252 @@
+<section class="flex justify-between gap-x-4">
+    <section class="py-8 px-4 w-full flex flex-col gap-y-6 h-screen items-start">
+        <div class="w-full">
+            <h2 class="text-4xl font-bold">Vehicles</h2>
+        </div>
+        <!-- section cta -->
+        <div class="flex justify-between items-center w-full h-max">
+            <div>
+                <span class="text-gray-400">Selected Filters</span>
+                <a class="btn-default-light-round flex items-center">
+                    <mat-icon class="material-symbols-outlined mb-0 text-md text-primary300 ">
+                        add
+                    </mat-icon> Add Filter</a>
+            </div>
+            <div>
+                <a data-toggle="modal" data-target="#exampleModalCenter" (click)="viewCouch()"
+                    class="btn-default flex items-center">
+                    <mat-icon class="material-symbols-outlined mb-0 text-white">
+                        add
+                    </mat-icon> Add Vehicle</a>
+
+            </div>
+        </div>
+
+        <!-- filter section -->
+        <div class="flex w-full justify-between items-center">
+            <!--search input field -->
+            <div class="relative h-max">
+                <input type="text" placeholder="Search within the table below"
+                    class="rounded-full py-2 pl-8 pr-6 border border-gray-300 focus:ring focus:ring-blue-300 focus:border-blue-300 w-80 placeholder-gray-400::placeholder text-sm" />
+                <div class="absolute inset-y-0 left-1 flex items-center pr-3 pointer-events-none">
+                    <mat-icon class="material-symbols-outlined text-gray-400">
+                        search
+                    </mat-icon>
+                </div>
+            </div>
+            <!-- special filters -->
+            <div class="flex gap-x-3 h-max">
+                <div class=" filterTile">
+                    All <mat-icon class="material-symbols-outlined text-gray-600">
+                        keyboard_arrow_down
+                    </mat-icon>
+                </div>
+                <div class=" filterTile">
+                    Status <mat-icon class="material-symbols-outlined text-[#C1C2C5]">
+                        keyboard_arrow_down
+                    </mat-icon>
+                </div>
+                <div class=" filterTile">
+                    Date <mat-icon class="material-symbols-outlined text-[#C1C2C5]">
+                        keyboard_arrow_down
+                    </mat-icon>
+                </div>
+                <div class=" filterTile">
+                    Tour Date <mat-icon class="material-symbols-outlined text-[#C1C2C5]">
+                        keyboard_arrow_down
+                    </mat-icon>
+                </div>
+                <div class=" filterTile">
+                    Amount <mat-icon class="material-symbols-outlined text-[#C1C2C5]">
+                        keyboard_arrow_down
+                    </mat-icon>
+                </div>
+            </div>
+            <!-- pagination -->
+            <div class="flex gap-2 items-center justify-center h-max">
+                <span>1-12 of 172</span>
+                <mat-icon
+                    class="material-symbols-outlined bg-gray-300 text-[#013C9F] rounded-full  p-1 w-max !flex items-center justify-center cursor-pointer">
+                    keyboard_arrow_left
+                </mat-icon>
+                <mat-icon
+                    class="material-symbols-outlined bg-gray-300 text-[#013C9F] rounded-full  p-1 w-max !flex items-center justify-center cursor-pointer">
+                    keyboard_arrow_right
+                </mat-icon>
+            </div>
+        </div>
+        <!--End filter section -->
+
+        <!-- table section view -->
+        <p-table #dataTable sortMode="multiple" [value]="primengTableHelper.records"
+            rows="{{ primengTableHelper.defaultRecordsCountPerPage }}" [paginator]="false" [lazy]="true"
+            [responsive]="primengTableHelper.isResponsive" class="w-full">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 130px">{{ 'Coach Name' | localize }} <p-sortIcon field="Coach Name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="tenancyName">
+                        {{ 'Year' | localize }}
+                        <p-sortIcon field="Year"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="name">
+                        {{ 'Make' | localize }}
+                        <p-sortIcon field="Make"></p-sortIcon>
+                    </th>
+                    <th>{{ 'Model' | localize }}
+                        <p-sortIcon field="Model"></p-sortIcon>
+
+                    </th>
+                    <th pSortableColumn="subscriptionEndDateUtc">
+                        {{ 'Owner' | localize }}
+                        <p-sortIcon field="Owner"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="isActive">
+                        {{ 'License Plate' | localize }}
+                        <p-sortIcon field="License Plate"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="creationTime">
+                        {{ 'Status' | localize }}
+                        <p-sortIcon field="Status"></p-sortIcon>
+                    </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body">
+                <tr class="cursor-pointer" (click)="createCouch()">
+                    <td>
+                        <div class="flex items-center justify-start gap-2">
+                            <img src="../../../../../assets/images/ace.png" class=" h-4 w-4 rounded-sm " />
+                            <span>Dakota</span>
+                        </div>
+                    </td>
+                    <td><span>2007</span></td>
+                    <td><span>Prevost</span></td>
+                    <td><span>XL2</span></td>
+                    <td><span>TJ2</span></td>
+                    <td><span>Ahsjd-98</span></td>
+                    <td><span
+                            class=" bg-[#E6FCF5] text-[#087F5B] flex items-center justify-center px-2 gap-3 w-max rounded-full uppercase">
+                            <div class="w-2 h-2 rounded-full bg-success"></div>active
+                        </span></td>
+                </tr>
+                <!-- <tr>
+                    <td>
+                        <div class="flex items-center justify-start gap-2">
+                            <img src="../../../../../assets/images/ace.png" class=" h-4 w-4 rounded-sm " />
+                            <span class="p-column-title">{{ 'Buzz' | localize }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="p-column-title">{{ '2007' | localize }}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">{{ 'Prevost' | localize }}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">{{ 'XLS' | localize }}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">{{ 'TJC' | localize }}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">{{ 'A034-823' | localize }}</span>
+                    </td>
+                    <td>
+                        <span
+                            class=" bg-[#FFF5F5] text-[#C92A2A] flex items-center justify-center px-2 gap-3 w-max rounded-full uppercase">
+                            <div class="w-2 h-2 rounded-full bg-success"></div> <span class="p-column-title">{{
+                                'In Active' | localize }}</span>
+
+                        </span>
+                    </td>
+
+                </tr> -->
+            </ng-template>
+        </p-table>
+        <table class="table table-sm table-striped w-full text-start text-sm">
+            <!-- <thead class="bg-[#F1F3F5]">
+                <tr>
+                    <td><span>Coach Name</span></td>
+                    <td><span>Year</span></td>
+                    <td><span>Make</span></td>
+                    <td><span>Model </span></td>
+                    <td><span>Owner</span></td>
+                    <td><span>License Plate</span></td>
+                    <td><span>Status</span></td>
+
+                </tr>
+            </thead> -->
+            <tbody>
+                <tr class="cursor-pointer" (click)="createCouch()">
+                    <td>
+                        <div class="flex items-center justify-start gap-2">
+                            <img src="../../../../../assets/images/ace.png" class=" h-4 w-4 rounded-sm " />
+                            <span>Dakota</span>
+                        </div>
+                    </td>
+                    <td><span>2007</span></td>
+                    <td><span>Prevost</span></td>
+                    <td><span>XL2</span></td>
+                    <td><span>TJ2</span></td>
+                    <td><span>Ahsjd-98</span></td>
+                    <td><span
+                            class=" bg-[#E6FCF5] text-[#087F5B] flex items-center justify-center px-2 gap-3 w-max rounded-full uppercase">
+                            <div class="w-2 h-2 rounded-full bg-success"></div>active
+                        </span></td>
+                </tr>
+                <tr class="cursor-pointer" data-toggle="modal" data-target="#viewvehicle">
+                    <td>
+                        <div class="flex items-center justify-start gap-2">
+                            <img src="../../../../../assets/images/ace.png" class=" h-4 w-4 rounded-sm " />
+                            <span>Ace</span>
+                        </div>
+                    </td>
+                    <td><span>2007</span></td>
+                    <td><span>Prevost</span></td>
+                    <td><span>XL2</span></td>
+                    <td><span>TJ2</span></td>
+                    <td><span>Ahsjd-98</span></td>
+                    <td><span
+                            class=" bg-[#FFF5F5] text-[#C92A2A] flex items-center justify-center px-2 gap-3 w-max rounded-full uppercase">
+                            <div class="w-2 h-2 rounded-full bg-success"></div>In active
+                        </span></td>
+                </tr>
+                <tr class="cursor-pointer" data-toggle="modal" data-target="#viewvehicle">
+                    <td>
+                        <div class="flex items-center justify-start gap-2">
+                            <img src="../../../../../assets/images/ace.png" class=" h-4 w-4 rounded-sm " />
+                            <span>Geyhound</span>
+                        </div>
+                    </td>
+                    <td><span>2007</span></td>
+                    <td><span>Prevost</span></td>
+                    <td><span>XL2</span></td>
+                    <td><span>TJ2</span></td>
+                    <td><span>Ahsjd-98</span></td>
+                    <td><span
+                            class=" bg-[#FFF9DB] text-[#A86E04] flex items-center justify-center px-2 gap-3 w-max rounded-full uppercase">
+                            <div class="w-2 h-2 rounded-full bg-success"></div>In progress
+                        </span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- empty state -->
+        <!-- <div class="mx-auto w-2/5 flex flex-col items-center gap-y-3">
+            <img src="../../../../../assets/images/directions_bus.png" alt="" />
+            <p class="text-xl text-center">You don’t have any quote. Click on the button to create one.</p>
+            <a data-toggle="modal" data-target="#exampleModalCenter" class="btn-default flex items-center"
+                (click)="viewCouch()">
+                <mat-icon class="material-symbols-outlined mb-0 text-white">
+                    add
+                </mat-icon> Add Vehicle</a>
+        </div> -->
+        <!--End of  empty state -->
+
+    </section>
+
+    <app-create-or-edit-couch #couchModal></app-create-or-edit-couch>
+    <app-couch #createCouchModal></app-couch>
+
+</section>

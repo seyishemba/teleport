@@ -1,0 +1,2549 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Book a tour</title>
+
+    <!-- fonts start -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- fonts end -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/regular.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/solid.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="../assets/js/include-html.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        custom_blue: "#1877F2",
+                        custom_black: "#101828",
+                        custom_gray: "#667085",
+                        custom_shadow_black: "#013C9F",
+                    },
+                    width: {
+                        custom_26: "100px",
+                        custom_50: "200px",
+                    },
+                    height: {
+                        custom_65: "65px",
+                    },
+                    fontFamily: {
+                        outfit: ["Outfit"],
+                        noto_sans: ["Noto Sans"],
+                    },
+                    spacing: {
+                        custom_11: "10px",
+                        custom_14: "14px",
+                    },
+                    borderRadius: {
+                        custom_1xl: "14px",
+                    },
+                    borderWidth: {
+                        custom_3: "3px",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body>
+    <div class="h-screen w-full md:pr-[20px] flex flex-col md:flex-row">
+        <!-- this is sidebar -->
+        <div w3-include-html="../sidebar.html"></div>
+        <div w3-include-html="../mobile-nav.html"></div>
+
+        <!-- <div w3-include-html="content.html"></div> -->
+        <script>
+            includeHTML();
+        </script>
+        <!-- end of sidebar section -->
+
+        <!-- main content and top header section -->
+        <div class="w-full lg:w-4/5 ml-auto flex flex-col main py-6 md:px-10 px-2 my-10 lg:my-0 pt-10">
+            <!-- this is the header section -->
+            <!-- <div w3-include-html="../../leasing-agent/header.html"></div> -->
+            <!-- end of header section -->
+            <div class="w-full h-full">
+                <!-- this is the content section -->
+
+                <!-- <div class="flex-row justify-between items-center pb-4 md:flex">
+                    <div class="flex flex-col">
+                        <h1 class="font-noto_sans no-italic font-normal text-[31.3px] leading-[60px] text-black">
+                            Tours
+                        </h1>
+                    </div>
+                    <button onclick="showModal()"
+                        class="bg-custom_blue border-solid border-b-custom_3 border-b-custom_shadow_black h-10 text-white px-6 py-custom_11 text-sm rounded-custom_1xl">
+                        Request a Quote
+                    </button>
+                </div> -->
+                <div class="flex flex-col main">
+                    <div class="flex justify-between lg:my-5">
+                        <div class="w-full md:w-1/2">
+                            <span class="text-3xl">Tours</span>
+                        </div>
+                        <div class="w-full flex flex-row md:w-1/2 gap-3 justify-end items-center">
+                            <button onclick="showModal()"
+                                class="bg-custom_blue border-solid border-b-custom_3 border-b-custom_shadow_black h-10 text-white px-2 py-custom_11 text-sm rounded-custom_1xl">
+                                Request a Quote
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <span class="text-[#667085] font-light">Selected Filters</span>
+                    <div class="flex flex-row gap-2 flex-wrap">
+                        <div class="px-4 py-2 rounded-full border flex gap-3 items-center text-xs xl:text-sm">
+                            <span>06/20 - 07/26</span>
+                            <i class='bx bx-x'></i>
+                        </div>
+                        <div class="px-4 py-2  rounded-full border flex gap-3 items-center text-xs xl:text-sm">
+                            <span>07/11 - 08/14</span>
+                            <i class='bx bx-x'></i>
+                        </div>
+                        <div class="px-4 py-2  rounded-full border flex gap-3 items-center text-xs xl:text-sm">
+                            <span>All</span>
+                            <i class='bx bx-x'></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-5 my-5 justify-between lg:flex-row lg:flex-wrap lg:gap-5">
+                    <div class="flex flex-wrap gap-5">
+                        <div class="px-2 rounded-full w-full md:max-w-[10rem] border flex gap-1 items-center">
+                            <i class='bx bx-search text-[#667085]'></i>
+                            <input type="text" placeholder="Search within the table below"
+                                class="placeholder:text-xs text-xs xl:text-sm rounded-full text-[#667085] h-8 px-1 w-full focus:outline-none" />
+                        </div>
+                        <div class="flex gap-2 flex-wrap">
+                            <div class="flex gap-2 items-center px-2 pl-4 py-1 rounded-full bg-[#F4F4F4]">
+                                <select class="bg-transparent text-sm">
+                                    <option>Tour Status</option>
+                                </select>
+                            </div>
+                            <div class="flex gap-2 items-center px-2 pl-4 py-1 rounded-full bg-[#F4F4F4]">
+                                <select class="bg-transparent text-sm">
+                                    <option>Tour Dates</option>
+                                </select>
+                            </div>
+                            <div class="flex gap-2 items-center px-2 pl-4 py-1 rounded-full bg-[#F4F4F4]">
+                                <select class="bg-transparent text-sm">
+                                    <option>Contract Status</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between md:justify-end gap-10 lg:gap-3 lg:ml-auto">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs xl:text-sm">1-12 of 172</span>
+                            <i class='bx bx-chevron-left text-xl leading-[1rem] text-[#101828] bg-[#D0D5DD]'></i>
+                            <i class='bx bx-chevron-right text-xl leading-[1rem] text-[#101828] bg-[#D0D5DD]'></i>
+                        </div>
+                        <button id="add-column" onclick="customizeTable()"
+                            class="border border-[#013C9F] rounded-md px-2 lg:px-3 flex gap-3 items-center h-10 text-xs xl:text-sm lg:text-base">
+                            <i class='bx bx-plus rounded-full text-s3 leading-[0.875rem] text-white bg-[#013C9F]'></i>
+                            <span class="text-[#013C9F]">Add Column</span>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-full py-5 hidden lg:block">
+                        <div class="border border-x-gray-300 rounded-md p-5 overflow-x-auto is-scrollbar-hidden">
+                            <table class="is-hoverable w-full text-left text-sm font-light table-auto">
+                                <thead class="bg-[#F5F5F5]">
+                                    <th class="whitespace-nowrap rounded-tl-lg px-2 py-3 font-normal">Pinned</th>
+                                    <th class="whitespace-nowrap py-3 font-normal">
+                                        <span class="justify-start">Tour Name</span>
+                                    </th>
+                                    <th class="whitespace-nowrap py-3 font-normal">
+                                        <span class="justify-start">Bus Name</span>
+                                    </th>
+                                    <th class="whitespace-nowrap py-3 font-normal"><span
+                                            class="flex w-full justify-left">Tour Dates</span></th>
+                                    <th class="whitespace-nowrap py-3 font-normal">
+                                        <span class="flex w-full justify-start">Primary Driver</span>
+                                    </th>
+                                    <th class="whitespace-nowrap py-3 font-normal">
+                                        <span class="flex w-full justify-start">Co-Driver</span>
+                                    </th>
+                                    <th class="whitespace-nowrap py-3  font-normal"><span
+                                            class="flex w-full justify-center">Contract Status</span></th>
+                                </thead>
+                                <tbody>
+                                    <tr class="h-14 hover:bg-gray-100" onclick="navigateToPage('./tour-details.html')">
+                                        <td class="">
+                                            <img src="../../assets/icons/pinned.svg" class="ml-4" alt="" />
+                                        </td>
+                                        <td class="">
+                                            <span class="justify-start">Pilgrim Connect 2023</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">Urban Oasis</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">04/20 - 06/20</span>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="/assets/images/user1.png" class="rounded-full" />
+                                                <span>Matthew F.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user2.png" class="rounded-full" />
+                                                <span>Prince A.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="justify-center flex items-center h-full">
+                                                <div
+                                                    class="flex gap-2 py-1 w-24 bg-[#FFF0D9] rounded-full px-[3px] items-center justify-center">
+                                                    <span
+                                                        class="inline-block bg-[#FFC700] w-[5px] h-[5px] rounded-full"></span>
+                                                    <span class="text-xs xl:text-sm text-[#C58201]">InProgress</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr class="h-14 hover:bg-gray-100" onclick="navigateToPage('./tour-details.html')">
+                                        <td class="">
+                                            <img src="../../assets/icons/pinned.svg" class="ml-4" alt="" />
+                                        </td>
+                                        <td class="">
+                                            <span class="justify-start">Taylor Swift 2023 Tour</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">Skyline Shuttle</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">04/13 - 06/13</span>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user2.png" class="rounded-full" />
+                                                <span>Esther R.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user3.png" class="rounded-full" />
+                                                <span>James W.</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="justify-center flex items-center h-full">
+                                                <div
+                                                    class="flex gap-2 py-1 w-20 bg-[#ECFDF3] rounded-full px-[3px] items-center justify-center">
+                                                    <span
+                                                        class="inline-block bg-[#12B76A] w-[5px] h-[5px] rounded-full"></span>
+                                                    <span class="text-xs xl:text-sm text-[#027A48]">Signed</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr class="h-14 hover:bg-gray-100" onclick="navigateToPage('./tour-details.html')">
+                                        <td class="">
+                                            <img src="../../assets/icons/unpinned.svg" class="ml-4" alt="" />
+                                        </td>
+                                        <td class="">
+                                            <span class="justify-start">WHO Covid Tour</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">Urban Starline</span>
+                                        </td>
+                                        <td class="py-2">
+                                            <div class="flex flex-col">
+                                                <span class="text-left justify-left">03/20 - 06/30</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user3.png" class="rounded-full" />
+                                                <span>Eric S.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user4.png" class="rounded-full" />
+                                                <span>John K.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="justify-center flex items-center h-full">
+                                                <div
+                                                    class="flex gap-2 py-1 w-24 bg-[#FFF0D9] rounded-full px-[3px] items-center justify-center">
+                                                    <span
+                                                        class="inline-block bg-[#FFC700] w-[5px] h-[5px] rounded-full"></span>
+                                                    <span class="text-xs xl:text-sm text-[#C58201]">InProgress</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr class="h-14 hover:bg-gray-100" onclick="navigateToPage('./tour-details.html')">
+                                        <td class="">
+                                            <img src="../../assets/icons/unpinned.svg" class="ml-4" alt="" />
+                                        </td>
+                                        <td class="">
+                                            <span class="justify-start">Afro-Fest 2023</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">Cityscape Coaches</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">03/18/ - 03/18</span>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user4.png" class="rounded-full" />
+                                                <span>Jane Q.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user5.png" class="rounded-full" />
+                                                <span>Joseph R.</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="justify-center flex items-center h-full">
+                                                <div
+                                                    class="flex gap-2 py-1 w-24 bg-[#FFCDC2] rounded-full px-[3px] items-center justify-center">
+                                                    <span
+                                                        class="inline-block bg-[#C70D0D] w-[5px] h-[5px] rounded-full"></span>
+                                                    <span class="text-xs xl:text-sm text-[#AB0000]">Cancelled</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr class="h-14 hover:bg-gray-100" onclick="navigateToPage('./tour-details.html')">
+                                        <td class="">
+                                            <img src="../../assets/icons/unpinned.svg" class="ml-4" alt="" />
+                                        </td>
+                                        <td class="">
+                                            <span class="justify-start">Brazil Carnival 2023</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">GoTransit Group</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">03/08 - 07/08</span>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user5.png" class="rounded-full" />
+                                                <span>Florence K.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user6.png" class="rounded-full" />
+                                                <span>Michael L.</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="justify-center flex items-center h-full">
+                                                <div
+                                                    class="flex gap-2 py-1 w-20 bg-[#ECFDF3] rounded-full px-[3px] items-center justify-center">
+                                                    <span
+                                                        class="inline-block bg-[#12B76A] w-[5px] h-[5px] rounded-full"></span>
+                                                    <span class="text-xs xl:text-sm text-[#027A48]">Signed</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr class="h-14 hover:bg-gray-100" onclick="navigateToPage('./tour-details.html')">
+                                        <td class="">
+                                            <img src="../../assets/icons/unpinned.svg" class="ml-4" alt="" />
+                                        </td>
+                                        <td class="">
+                                            <span class="justify-start">BBC World Tour</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">RouteMaster Buses</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">02/18/ - 06/18</span>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user6.png" class="rounded-full" />
+                                                <span>Jaden O.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="/assets/images/user1.png" class="rounded-full" />
+                                                <span>Rose T.</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="justify-center flex items-center h-full">
+                                                <div
+                                                    class="flex gap-2 py-1 w-20 bg-[#ECFDF3] rounded-full px-[3px] items-center justify-center">
+                                                    <span
+                                                        class="inline-block bg-[#12B76A] w-[5px] h-[5px] rounded-full"></span>
+                                                    <span class="text-xs xl:text-sm text-[#027A48]">Signed</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr class="h-14 hover:bg-gray-100" onclick="navigateToPage('./tour-details.html')">
+                                        <td class="">
+                                            <img src="../../assets/icons/unpinned.svg" class="ml-4" alt="" />
+                                        </td>
+                                        <td class="">
+                                            <span class="justify-start">Pilgrim Connect 2022</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">MetroLink</span>
+                                        </td>
+                                        <td class="">
+                                            <span class="w-full flex justify-left">02/09/ - 05/09</span>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user7.png" class="rounded-full" />
+                                                <span>Roman S.</span>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="../../assets/images/user8.png" class="rounded-full" />
+                                                <span>William H.</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="justify-center flex items-center h-full">
+                                                <div
+                                                    class="flex gap-2 py-1 w-24 bg-[#FFCDC2] rounded-full px-[3px] items-center justify-center">
+                                                    <span
+                                                        class="inline-block bg-[#C70D0D] w-[5px] h-[5px] rounded-full"></span>
+                                                    <span class="text-xs xl:text-sm text-[#AB0000]">Cancelled</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--Tab View for table in mobile view-->
+                    <div>
+                        <div class="w-full grid gap-3 lg:hidden mb-10 md:mb-16">
+                            <!--Driver Details for mobile and table view-->
+                            <div class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                <!--First Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                        </div>
+                                        <div class="flex justify-left items-center">
+                                            <div class="grid sm:text-xs md:text-lg">
+                                                <p>Pilgrim Connect 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Primary Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Nicholas Anderson</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Second Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Dates</span>
+                                        </div>
+                                        <div class="grid sm:text-xs md:text-lg">
+                                            <span>10/28 - 12/12</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Co. Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>James Wade</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Third Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div class="flex gap-1">
+                                        <div>
+                                            <div class="my-2">
+                                                <span id="headerTitle" class="text-[#667085]">Contract Status</span>
+                                            </div>
+                                            <div class="grid text-xs md:text-lg">
+                                                <span
+                                                    class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#FFF0D9] text-[#FFA800]">
+                                                    <span class="h-2 w-2 bg-[#C58201] rounded-full mr-1"></span>
+                                                    Inprogress
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full">
+                                        <div>
+                                            <div class="my-2">
+                                                <span id="headerTitle" class="text-[#667085]">Bus Name</span>
+                                            </div>
+                                            <div class="grid text-xs md:text-lg">
+                                                <span>TransCity Travel</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="my-2">
+                                            <div class="flex flex-col gap-1 ml-1 justify-end">
+                                                <img src="../../assets/icons/bxs-pin.svg" alt="pinIcon" class="mr-3">
+                                                <a href="./tour-details.html">
+                                                    <img src="../../assets/icons/eye.svg" class="w-4" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                <!--First Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                        </div>
+                                        <div class="flex justify-left items-center">
+                                            <div class="grid sm:text-xs md:text-lg">
+                                                <p>Taylor Swift 2023 Tou</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Primary Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p> Eric Samex</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Second Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Dates</span>
+                                        </div>
+                                        <div class="grid sm:text-xs md:text-lg">
+                                            <span>08/28 - 09/30</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Co. Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p> Michael Brooks</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Contract Status</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                                <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                                Signed
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Third Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Contract Status</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                                <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                                Signed
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full">
+                                        <div>
+                                            <div class="my-2">
+                                                <span id="headerTitle" class="text-[#667085]">Bus Name</span>
+                                            </div>
+                                            <div class="grid text-xs md:text-lg">
+                                                <span>Transit Titans</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="my-2">
+                                            <div class="flex flex-col gap-1 ml-1 justify-end">
+                                                <img src="../../assets/icons/bxs-pin.svg" alt="pinIcon" class="mr-3">
+                                                <a href="./tour-details.html">
+                                                    <img src="../../assets/icons/eye.svg" class="w-4" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                <!--First Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                        </div>
+                                        <div class="flex justify-left items-center">
+                                            <div class="grid sm:text-xs md:text-lg">
+                                                <p>WHO Covid Tour</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Primary Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Esther Raya</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Second Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Dates</span>
+                                        </div>
+                                        <div class="grid sm:text-xs md:text-lg">
+                                            <span>09/01 - 10/25</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Co. Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Prince Twain</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--Third Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Contract Status</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#FFCDC2] text-[#AB0000]">
+                                                <span class="h-2 w-2 bg-[#C70D0D] rounded-full mr-1"></span>
+                                                Cancelled
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full">
+                                        <div>
+                                            <div class="my-2">
+                                                <span id="headerTitle" class="text-[#667085]">Bus Name</span>
+                                            </div>
+                                            <div class="grid text-xs md:text-lg">
+                                                <span>Urban Oasis</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="my-2">
+                                            <div class="flex flex-col gap-1 ml-1 justify-end">
+                                                <img src="../../assets/icons/bxs-pin.svg" alt="pinIcon" class="mr-3">
+                                                <a href="./tour-details.html">
+                                                    <img src="../../assets/icons/eye.svg" class="w-4" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                <!--First Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                        </div>
+                                        <div class="flex justify-left items-center">
+                                            <div class="grid sm:text-xs md:text-lg">
+                                                <p>Pilgrim Connect 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Primary Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Nicholas Anderson</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Second Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Dates</span>
+                                        </div>
+                                        <div class="grid sm:text-xs md:text-lg">
+                                            <span>04/15 - 06/25</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Co. Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>William Ward</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--Third Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Contract Status</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#FFF0D9] text-[#FFA800]">
+                                                <span class="h-2 w-2 bg-[#C58201] rounded-full mr-1"></span>
+                                                Pending
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full">
+                                        <div>
+                                            <div class="my-2">
+                                                <span id="headerTitle" class="text-[#667085]">Bus Name</span>
+                                            </div>
+                                            <div class="grid text-xs md:text-lg">
+                                                <span>Urban Oasis</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="my-2">
+                                            <div class="flex flex-col gap-1 ml-1 justify-end">
+                                                <img src="../../assets/icons/bxs-pin.svg" alt="pinIcon" class="mr-3">
+                                                <a href="./tour-details.html">
+                                                    <img src="../../assets/icons/eye.svg" class="w-4" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                <!--First Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                        </div>
+                                        <div class="flex justify-left items-center">
+                                            <div class="grid sm:text-xs md:text-lg">
+                                                <p>Pilgrim Connect 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Primary Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Nicholas Anderson</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Second Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Dates</span>
+                                        </div>
+                                        <div class="grid sm:text-xs md:text-lg">
+                                            <span>01/26 - 05/23</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Co. Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Rosemond Banks</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Third Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Contract Status</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#FFF0D9] text-[#FFA800]">
+                                                <span class="h-2 w-2 bg-[#C58201] rounded-full mr-1"></span>
+                                                Pending
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full">
+                                        <div>
+                                            <div class="my-2">
+                                                <span id="headerTitle" class="text-[#667085]">Bus Name</span>
+                                            </div>
+                                            <div class="grid text-xs md:text-lg">
+                                                <span>Velocity Vans</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="my-2">
+                                            <div class="flex flex-col gap-1 ml-1 justify-end">
+                                                <img src="../../assets/icons/bxs-pin.svg" alt="pinIcon" class="mr-3">
+                                                <a href="./tour-details.html">
+                                                    <img src="../../assets/icons/eye.svg" class="w-4" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                                <!--First Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                        </div>
+                                        <div class="flex justify-left items-center">
+                                            <div class="grid sm:text-xs md:text-lg">
+                                                <p>Pilgrim Connect 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Primary Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Nicholas Anderson</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Second Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Tour Dates</span>
+                                        </div>
+                                        <div class="grid sm:text-xs md:text-lg">
+                                            <span>10/28 - 10/31</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Co. Driver</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <p>Paul Lake</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--Third Column Data-->
+                                <div class="text-left grid grid-rows-2 gap-2">
+                                    <div>
+                                        <div class="my-2">
+                                            <span id="headerTitle" class="text-[#667085]">Contract Status</span>
+                                        </div>
+                                        <div class="grid text-xs md:text-lg">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#FFF0D9] text-[#FFA800]">
+                                                <span class="h-2 w-2 bg-[#C58201] rounded-full mr-1"></span>
+                                                Pending
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full">
+                                        <div>
+                                            <div class="my-2">
+                                                <span id="headerTitle" class="text-[#667085]">Bus Name</span>
+                                            </div>
+                                            <div class="grid text-xs md:text-lg">
+                                                <span>Urban Starline</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="my-2">
+                                            <div class="flex flex-col gap-1 ml-1 justify-end">
+                                                <img src="../../assets/icons/bxs-pin.svg" alt="pinIcon" class="mr-3">
+                                                <a href="./tour-details.html">
+                                                    <img src="../../assets/icons/eye.svg" class="w-4" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- this is the booking process modal -->
+    <div class="fixed inset-0 z-[999] w-full h-full items-center justify-center bg-gray-900 bg-opacity-50 hidden"
+        id="bookingModal">
+
+        <!-- this is the info form -->
+        <div class="w-[90%] lg:w-[65%] flex-col lg:py-[60px] py-[20px] px-[20px] lg:px-[60px] bg-white rounded-md hidden relative"
+            id="info">
+            <div class="absolute top-[10px] right-[10px]">
+                <button class="btn-close ml-auto" onclick="closeModal()">
+                    <i class='bx bxs-x-circle text-3xl'></i>
+                </button>
+            </div>
+            <div class="hidden md:flex flex-wrap justify-between pb-[20px] md:border-b-2 gap-2">
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2 text-blue-500" onclick="">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        1
+                    </div>
+                    <div class="onboarding text-base font-normal">info</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        2
+                    </div>
+                    <div class="onboarding text-base font-normal">Coaches</div>
+                    <div>
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        3
+                    </div>
+                    <div class="onboarding text-base font-normal">Routing Details</div>
+                    <div>
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        4
+                    </div>
+                    <div class="onboarding text-base font-normal">Additional Data</div>
+                    <div>
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        5
+                    </div>
+                    <i class='bx bxs-chevron-left md:hidden my-8 md:my-0'></i>
+                    <div class="onboarding text-base font-normal my-8 md:my-0">Summary</div>
+                    <div class="fill-blue-500 hidden md:block">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="md:hidden justify-between pb-[10px] md:border-b-2 gap-2">
+                <div class="onboarding text-base font-normal"><i class='bx bxs-chevron-left md:my-0 cursor-pointer'
+                        onclick="closeModal()"></i>Info</div>
+            </div>
+            <div class="w-full flex items-center justify-center my-[30px]">
+                <form class="w-full md:w-[80%] lg:w-[80%]" action="">
+                    <label class="text-base mb-1" for="groupName">Tour Name <span class="text-red-600">*</span></label>
+                    <input name="groupName"
+                        class="w-full px-[20px] py-[10px] text-sm font-light border border-gray-300 hover:border-gray-400 rounded-md shadow-sm focus:outline-none focus:shadow-outline"
+                        type="text" placeholder="Enter title" />
+
+                </form>
+            </div>
+            <div class="flex justify-end">
+                <div class="flex justify-evenly p-4 gap-4">
+                    <button onclick="closeModal()"
+                        class="py-[8px] px-8 flex justify-center items-center text-center text-blue-500 border border-blue-500 hover:border-blue-600 hover:text-blue-600 rounded-2xl">
+                        Cancel
+                    </button>
+
+                    <button id="save-btn" onclick="goToCoachesForm()"
+                        class="py-[8px] px-8 flex items-center justify-center text-center text-white font-outfit bg-[#1877F2] border-b-4 border-b-[#013C9F] hover:bg-blue-600 transition duration-200 ease-in-out rounded-2xl">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End of info form -->
+
+        <!-- this is the coaches form -->
+        <div class="relative w-[90%] lg:w-[65%] max-h-[95%] flex-col py-[20px] overflow-x-hidden lg:py-[60px] px-[10px] lg:px-[60px] bg-white rounded-md hidden"
+            id="coaches">
+            <div class="absolute top-[10px] right-[10px]">
+                <button class="btn-close ml-auto" onclick="closeModal()">
+                    <i class='bx bxs-x-circle text-3xl'></i>
+                </button>
+            </div>
+            <div class="hidden md:flex flex-wrap justify-between pb-[20px] md:border-b-2 gap-2">
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2 text-blue-500"
+                    onclick="backToInfoForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        1
+                    </div>
+                    <div class="onboarding text-base font-normal">info</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center text-blue-500 gap-2">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        2
+                    </div>
+                    <div class="onboarding text-base font-normal">Coaches</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        3
+                    </div>
+                    <div class="onboarding text-base font-normal">Routing Details</div>
+                    <div>
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        4
+                    </div>
+                    <div class="onboarding text-base font-normal">Additional Data</div>
+                    <div>
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        5
+                    </div>
+                    <i class='bx bxs-chevron-left md:hidden my-8 md:my-0'></i>
+                    <div class="onboarding text-base font-normal my-8 md:my-0">Summary</div>
+                    <div class="fill-blue-500 hidden md:block">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="md:hidden justify-between pb-[10px] md:border-b-2 gap-2">
+                <div class="onboarding text-base font-normal"><i class='bx bxs-chevron-left md:my-0 cursor-pointer'
+                        onclick="backToInfoForm()"></i>Coaches</div>
+            </div>
+            <div class="w-full h-full flex items-start justify-center my-[30px] overflow-x-auto">
+                <form action="" class="w-full lg:w-[80%] gap-3 flex flex-col">
+                    <div class="flex flex-col gap-4 md:flex-row justify-between">
+                        <div class="w-full md:w-[48%]">
+                            <label class="text-base" for="firstName">Number of Star Coaches <span
+                                    class="text-red-600">*</span></label>
+                            <input type="number" min="0" name="starCoaches" id="starCoaches"
+                                class="border border-gray-300 text-sm font-light rounded-lg block w-full px-[20px] py-[10px]">
+                        </div>
+
+                        <!--Custom DropDown-->
+                        <div class="w-full lg:w-[48%] relative">
+                            <div onclick="toggleDropdown()" class="grid">
+                                <label for="star-bunk-configuration">Star Bunk Configuration<span
+                                        class="text-red-600">*</span></label>
+                                <!-- Dropdown Icon SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6 text-gray-500 absolute -bottom-1 right-3 transform -translate-y-1/2 pointer-events-none"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <input type="text" readonly id="bunk-text-input"
+                                    class="select-btn bg-white py-2 px-4 items-center justify-between cursor-pointer border rounded-lg"
+                                    placeholder="Choose an Option">
+                            </div>
+                            <div class="bg-white content hidden z-50 absolute top-0 left-0 right-0 mt-6 border p-2 shadow-lg rounded-lg"
+                                id="dropdown-content">
+                                <div class="relative search">
+                                    <!-- Search Icon SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 text-gray-500 absolute top-1/2 right-4 transform -translate-y-1/2"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.5 15.5l5.5 5.5" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M11 16a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+                                    </svg>
+                                    <input type="text" name="search" id="search" placeholder="search"
+                                        class="w-full text-md px-4 py-2 outline-none border rounded-lg">
+                                </div>
+                                <ul id="options" class="mt-2 max-h-[200px] overflow-auto options">
+                                    <li
+                                        class="bunk-option p-4 hover:bg-blue-100 bg-white flex cursor-pointer rounded-lg my-2 mr-2">
+                                        2 Bunks</li>
+                                    <li
+                                        class="bunk-option p-4 hover:bg-blue-100 bg-white flex cursor-pointer rounded-lg my-2 mr-2">
+                                        4 Bunks</li>
+                                    <li
+                                        class="bunk-option p-4 hover:bg-blue-100 bg-white flex cursor-pointer rounded-lg my-2 mr-2">
+                                        6 Bunks</li>
+                                    <li
+                                        class="not-available hidden p-4 hover:bg-gray-50 bg-white cursor-pointer rounded-lg my-2 mr-2">
+                                        Not available</li>
+                                </ul>
+                                <div class="flex justify-between mt-4">
+                                    <input type="text" name="custom-number" id="custom-number"
+                                        placeholder="Enter Maximum Number of Bunks"
+                                        class="w-full text-md px-4 py-2 outline-none border rounded-lg">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--End of Custom Dropdown-->
+                    </div>
+                    <div class="flex flex-col gap-4 md:flex-row justify-between ">
+                        <div class="w-full md:w-[48%]">
+                            <label class="text-base" for="firstName">Number of Band Coaches <span
+                                    class="text-red-600">*</span></label>
+                            <input type="number" min="0" name="starCoaches" id="starCoaches"
+                                class="border border-gray-300 text-sm font-light rounded-lg block w-full px-[20px] py-[10px]">
+                        </div>
+
+                        <div class="w-full md:w-[48%]">
+                            <label class="text-base" for="firstName">Band Bunk Configuration<span
+                                    class="text-red-600">*</span></label>
+                            <select id="coaches"
+                                class="border border-gray-300 text-sm font-light rounded-lg block w-full px-[20px] py-[10px]">
+                                <option selected>Choose an Option</option>
+                                <option value="8">8 Bunks</option>
+                                <option value="9">9 Bunks</option>
+                                <option value="10">10 Bunks</option>
+                                <option value="11">11 Bunks</option>
+                                <option value="12">12 Bunks</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <div class="flex flex-col gap-4 md:flex-row justify-between">
+                        <div class="w-full md:w-[48%]">
+                            <label class="text-base" for="firstName">Number of Crew Coaches <span
+                                    class="text-red-600">*</span></label>
+                            <input type="number" min="0" name="starCoaches" id="starCoaches"
+                                class="border border-gray-300 text-sm font-light rounded-lg block w-full px-[20px] py-[10px]">
+                        </div>
+
+                        <div class="w-full md:w-[48%]">
+                            <label class="text-base" for="firstName">Crew Bunk Configuration<span
+                                    class="text-red-600">*</span></label>
+                            <select id="coaches"
+                                class="border border-gray-300 text-sm font-light rounded-lg block w-full px-[20px] py-[10px]">
+                                <option selected>Choose an Option</option>
+                                <option value="8">8 Bunks</option>
+                                <option value="9">9 Bunks</option>
+                                <option value="10">10 Bunks</option>
+                                <option value="11">11 Bunks</option>
+                                <option value="12">12 Bunks</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="w-full md:w-[48%]">
+                            <label class="text-base">Number of Trailers <span class="text-red-600">*</span></label>
+                            <input type="number" min="0" name="starCoaches" id="starCoaches"
+                                class="border border-gray-300 text-sm font-light rounded-lg block w-full px-[20px] py-[10px]">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="flex items-center justify-end">
+                <div class="flex justify-evenly p-4 gap-4">
+                    <button onclick="backToInfoForm()"
+                        class="py-[8px] px-8 flex justify-center items-center text-center text-blue-500 border border-blue-500 hover:border-blue-600 hover:text-blue-600 rounded-2xl">
+                        Previous
+                    </button>
+
+                    <button id="save-btn" onclick="goToRouteForm()"
+                        class="py-[8px] px-11 flex items-center justify-center text-center text-white font-outfit bg-[#1877F2] border-b-4 border-b-[#013C9F] hover:bg-blue-600 transition duration-200 ease-in-out rounded-2xl">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- this is the end of coaches form -->
+
+
+        <!-- this is the routing form -->
+        <div class="relative w-[90%] max-h-[95%] lg:w-[65%] py-[20px] lg:py-[60px] flex-col px-[20px] lg:px-[60px] bg-white rounded-md hidden"
+            id="routing">
+            <div class="absolute top-[10px] right-[10px]">
+                <button class="btn-close ml-auto" onclick="closeModal()">
+                    <i class='bx bxs-x-circle text-3xl'></i>
+                </button>
+            </div>
+            <div class="hidden md:flex flex-wrap justify-between pb-[20px] md:border-b-2 gap-2">
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2 text-blue-500"
+                    onclick="backToInfoForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        1
+                    </div>
+                    <div class="onboarding text-base font-normal">info</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center cursor-pointer text-blue-500 gap-2"
+                    onclick="backToCoachesForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        2
+                    </div>
+                    <div class="onboarding text-base font-normal">Coaches</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center text-blue-500 gap-2">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        3
+                    </div>
+                    <div class="onboarding text-base font-normal">Routing Details</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        4
+                    </div>
+                    <div class="onboarding text-base font-normal">Additional Data</div>
+                    <div>
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        5
+                    </div>
+                    <i class='bx bxs-chevron-left md:hidden my-8 md:my-0'></i>
+                    <div class="onboarding text-base font-normal my-8 md:my-0">Summary</div>
+                    <div class="fill-blue-500 hidden md:block">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="md:hidden justify-between pb-[10px] md:border-b-2 gap-2">
+                <div class="onboarding text-base font-normal"><i class='bx bxs-chevron-left md:my-0 cursor-pointer'
+                        onclick="backToCoachesForm()"></i>Routing Details</div>
+            </div>
+            <div class="w-full h-full flex items-start justify-evenly my-[10px] gap-6 overflow-auto">
+                <form id="coaches-form" class="w-full lg:w-[80%] gap-3 flex flex-col">
+                    <!-- your input fields for coaches -->
+
+                    <div class="my-2">
+                        <div class="container">
+                            <span><strong>Pickup</strong> - Details</span>
+                            <hr class="w-32 h-1 my-1 bg-gray-100 border-0 rounded md:my-1 dark:bg-gray-600">
+                            <div
+                                class="lg:my-2 lg:grid lg:grid-cols-3 gap-4 sm:grid sm:grid-cols-1 md:grid-cols-2 md:grid">
+                                <div>
+                                    <div>
+                                        <label for="location">Pickup Location</label>
+                                        <input type="text" name="location" id="pickupLocation"
+                                            placeholder="Enter a location"
+                                            class="block my-2 w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+
+                                    </div>
+                                </div>
+                                <div class="lg:mx-8 sm:mx-0 md:mx-0">
+                                    <label for="pickup-date" class="">Pickup Date</label>
+                                    <div class="relative">
+                                        <input id="pickup-date" type="date"
+                                            class="date block my-2 w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:shadow-outline-blue"
+                                            dateStyle="short" dateFormat="mdy">
+
+                                    </div>
+                                </div>
+                                <div class="md:w-full md:col-span-2 sm:grid lg:col-span-1">
+                                    <label for="location">Pickup Time</label>
+                                    <div class="relative">
+                                        <input type="time"
+                                            class="block sm:w-full md:w-full py-2 my-2 px-3 my-2 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <span><strong>Stop</strong> - Details</span>
+                            <hr class="w-32 h-1 my-1 bg-gray-100 border-0 rounded md:my-1 dark:bg-gray-600">
+                            <div
+                                class="my-2 grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 lg:justify-center lg:items-center">
+                                <div>
+                                    <label for="location">Pickup Location</label>
+                                    <input type="text" name="location" id="pickupLocation"
+                                        placeholder="Enter a location"
+                                        class="block my-2 w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+
+                                </div>
+                                <div class="md:hidden lg:block sm:hidden">
+                                    <span><br></span>
+                                </div>
+                                <div class="md:col-span-1 lg:col-span-1">
+                                    <label for="pickup-date">Pickup Date</label>
+                                    <div class="relative">
+                                        <input id="pickup-date" type="date"
+                                            class="date block my-2 md:w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            pattern="\d{4}-\d{2}-\d{2}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="form-fields">
+
+                        </div>
+                        <div class="flex justify-center items-center">
+                            <div class="w-[20%] h-0.5 bg-gray-800"></div>
+                            <button id="add-stop-btn"
+                                class="bg-transparent mx-4 flex items-center justify-center text-gray-400 font-semibold px-4 py-2 rounded-full">
+                                <div class="h-8 w-8 bg-gray-800 flex items-center justify-center rounded-lg mx-1">
+                                    <svg class="w-5 h-5 m-auto" fill="none" stroke="#ffffff" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                </div>
+                                Add Stop
+                            </button>
+                            <div class="w-[20%] h-0.5 bg-gray-800"></div>
+                        </div>
+                        <div class="">
+                            <div class="my-2">
+                                <div class="m-auto">
+                                    <span><strong>Dropoff</strong> - Details</span>
+                                    <hr class="w-32 h-1 my-1 bg-gray-100 border-0 rounded md:my-1 dark:bg-gray-600">
+                                </div>
+                                <div class="my-2 grid lg:grid-cols-3 md:grid-cols-2 items-center">
+                                    <div>
+                                        <label for="location">Dropoff Location</label>
+                                        <div>
+                                            <input type="text" name="location" id="pickupLocation"
+                                                placeholder="Enter a location"
+                                                class="block my-2 w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+
+                                        </div>
+                                    </div>
+                                    <div class="sm:hidden lg:block">
+                                        <span>
+                                            <br>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <label for="pickup-date">Drop Date</label>
+                                        <div class="relative">
+                                            <input id="pickup-date" type="date"
+                                                class="date block my-2 md:w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                pattern="\d{4}-\d{2}-\d{2}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="flex justify-end py-4">
+                <div class="flex justify-evenly px-4 gap-4">
+                    <button onclick="backToCoachesForm()"
+                        class="py-[8px] px-8 flex justify-center items-center text-center text-blue-500 border border-blue-500 hover:border-blue-600 hover:text-blue-600 rounded-2xl">
+                        Previous
+                    </button>
+
+                    <button id="save-btn" onclick="goToAdditionalDataForm()"
+                        class="py-[8px] px-11 flex items-center justify-center text-center text-white font-outfit bg-[#1877F2] border-b-4 border-b-[#013C9F] hover:bg-blue-600 transition duration-200 ease-in-out rounded-2xl">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- this is the end of routing form -->
+
+        <!-- this is the additional form -->
+        <div class="relative w-[90%] lg:w-[65%] flex-col py-[20px] lg:py-[60px] px-[20px] lg:px-[60px] bg-white rounded-md hidden overflow-auto"
+            id="addtion">
+            <div class="absolute top-[10px] right-[10px]">
+                <button class="btn-close ml-auto" onclick="closeModal()">
+                    <i class='bx bxs-x-circle text-3xl'></i>
+                </button>
+            </div>
+            <div class="hidden md:flex flex-wrap justify-between pb-[20px] md:border-b-2 gap-2">
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2 text-blue-500"
+                    onclick="backToInfoForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        1
+                    </div>
+                    <div class="onboarding text-base font-normal">info</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center cursor-pointer text-blue-500 gap-2"
+                    onclick="backToCoachesForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        2
+                    </div>
+                    <div class="onboarding text-base font-normal">Coaches</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center text-blue-500 gap-2 cursor-pointer"
+                    onclick="backToRoutingForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        3
+                    </div>
+                    <div class="onboarding text-base font-normal">Routing Details</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center text-blue-500 gap-2">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        4
+                    </div>
+                    <div class="onboarding text-base font-normal">Additional Data</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center gap-2">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center text-center border rounded-full">
+                        5
+                    </div>
+                    <i class='bx bxs-chevron-left md:hidden my-8 md:my-0'></i>
+                    <div class="onboarding text-base font-normal my-8 md:my-0">Summary</div>
+                    <div class="fill-blue-500 hidden md:block">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="md:hidden justify-between pb-[10px] md:border-b-2 gap-2">
+                <div class="onboarding text-base font-normal"><i class='bx bxs-chevron-left md:my-0 cursor-pointer'
+                        onclick="goToPreviousForm()"></i>Additional Data</div>
+            </div>
+            <div class="w-full flex items-center justify-center my-[30px]">
+                <form class="w-full lg:w-[80%]" action="">
+                    <label class="text-base" for="groupName">
+                        Comment
+                        <textarea name="groupName" rows="5"
+                            class="w-full px-[20px] py-[10px] text-sm font-light border border-gray-300 hover:border-gray-400 rounded-md shadow-sm focus:outline-none focus:shadow-outline"
+                            type="text" placeholder="Enter description here"></textarea>
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label class="text-base">
+                        Upload media
+                        <span
+                            class="flex items-center justify-center w-full h-35 lg:h-32 px-4 transition bg-white border-2 border-gray-300  rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+                            <span class="flex flex-col items-center space-y-2">
+                                <span class="p-3 rounded-full bg-custom_black bg-opacity-10"><svg width="20" height="18"
+                                        viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.3335 12.3332L10.0002 8.9999M10.0002 8.9999L6.66688 12.3332M10.0002 8.9999V16.4999M16.9919 14.3249C17.8047 13.8818 18.4467 13.1806 18.8168 12.3321C19.1868 11.4835 19.2637 10.5359 19.0354 9.63881C18.807 8.7417 18.2865 7.94616 17.5558 7.37778C16.8251 6.80939 15.9259 6.50052 15.0002 6.4999H13.9502C13.698 5.52427 13.2278 4.61852 12.5752 3.85073C11.9225 3.08295 11.1042 2.47311 10.182 2.06708C9.25967 1.66104 8.25734 1.46937 7.25031 1.50647C6.24328 1.54358 5.25777 1.80849 4.36786 2.28129C3.47795 2.7541 2.7068 3.42249 2.1124 4.23622C1.51799 5.04996 1.11579 5.98785 0.936028 6.9794C0.756269 7.97095 0.803632 8.99035 1.07456 9.96096C1.34548 10.9316 1.83291 11.8281 2.50021 12.5832"
+                                            stroke="#101828" stroke-width="1.66667" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg></span>
+
+                                <span class=" text-gray-400">
+                                    <span class="text-blue-600 underline">Click to upload</span>
+                                    or drag and drop
+                                </span>
+                                <span class=" text-gray-400">
+                                    SVG, PNG, JPG or GIF (max. 800x400px)
+                                </span>
+                                <input type="file" name="file_upload" class="hidden" accept="image/*">
+                            </span>
+                        </span>
+                    </label>
+                </form>
+            </div>
+            <div class="flex justify-end">
+                <div class="flex justify-evenly p-4 gap-4">
+                    <button onclick="goToPreviousForm()"
+                        class="py-[8px] px-8 flex justify-center items-center text-center text-blue-500 border border-blue-500 hover:border-blue-600 hover:text-blue-600 rounded-2xl">
+                        Previous
+                    </button>
+
+                    <button id="save-btn" onclick="goToSummaryForm()"
+                        class="py-[8px] px-8 flex items-center justify-center text-center text-white font-outfit bg-[#1877F2] border-b-4 border-b-[#013C9F] hover:bg-blue-600 transition duration-200 ease-in-out rounded-2xl">
+                        Finish
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- End of additional form -->
+
+
+        <!-- this is the summary form -->
+        <div class="relative max-h-[95%] md:w-[80%] lg:w-[65%] py-[20px] bg-white lg:py-[60px] flex-col px-5 md:px-[60px] md:max-h-[80%] rounded-md hidden overflow-auto"
+            id="summary">
+            <div class="absolute top-[10px] right-[10px]">
+                <button class="btn-close ml-auto" onclick="closeModal()">
+                    <i class='bx bxs-x-circle text-3xl'></i>
+                </button>
+            </div>
+            <div class="flex flex-wrap justify-between pb-[20px] md:border-b-2 gap-2">
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2 text-blue-500"
+                    onclick="backToInfoForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        1
+                    </div>
+                    <div class="onboarding text-base font-normal">info</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2  text-blue-500"
+                    onclick="backToCoachesForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        2
+                    </div>
+                    <div class="onboarding text-base font-normal">Coaches</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2 text-blue-500"
+                    onclick="backToRoutingForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        3
+                    </div>
+                    <div class="onboarding text-base font-normal">Routing Details</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-between items-center cursor-pointer gap-2 text-blue-500"
+                    onclick="backToAdditionForm()">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        4
+                    </div>
+                    <div class="onboarding text-base font-normal">Additional Data</div>
+                    <div class="fill-blue-500">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div
+                    class="w-full md:max-w-max md:relative flex md:justify-between bg-white items-center cursor-pointer gap-5 md:text-blue-500">
+                    <div
+                        class="w-[30px] h-[30px] flex items-center justify-center text-center bg-blue-500 text-white border rounded-full">
+                        5
+                    </div>
+                    <i class='bx bxs-chevron-left md:hidden my-8 cursor-pointer md:my-0'></i>
+                    <div class="onboarding text-base font-normal my-8 md:my-0">Summary</div>
+                    <div class="fill-blue-500 hidden md:block">
+                        <svg width="5" height="10" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 8.825L3.09299 5L0 1.175L0.956873 0L5 5L0.956873 10L0 8.825Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full flex flex-col items-center justify-center my-[20px] md:my-[30px]">
+                <div class=" w-full flex flex-col justify-center">
+                    <div class="flex items-center w-full justify-between mb-2">
+                        <div class="md:border-b-2 border-gray  font-semibold w-fit">
+                            General Information
+                        </div>
+                        <div class="bg-white hidden md:flex justify-end">
+                            <div class="flex justify-evenly p-2 gap-4">
+                                <button onclick="backToAdditionForm()"
+                                    class="py-[6px] md:px-10 flex justify-center items-center text-center text-blue-500 border border-blue-500 hover:border-blue-600 hover:text-blue-600 rounded-2xl">
+                                    Back
+                                </button>
+                                <button onclick="submit()"
+                                    class="py-[6px] md:px-10 flex items-center justify-center text-center text-white font-outfit bg-[#1877F2] border-b-4 border-b-[#013C9F] hover:bg-blue-600 transition duration-200 ease-in-out rounded-2xl">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row flex-wrap gap-y-2 md:flex-row md:items-center justify-between">
+                        <div class="w-[50%] md:w-[30%]">
+                            <p class="text-[#667085] font-light">Title</p>
+                            <h1 class="font-semibold">MR Allen .AA </h1>
+                        </div>
+                        <div class=" w-[50%] md:w-[30%]">
+                            <p class="text-[#667085] font-light">Email</p>
+                            <h1 class="font-semibold">allenkenn@gmail.com </h1>
+                        </div>
+                        <div class="w-[50%] md:w-[30%]">
+                            <p class="text-[#667085] font-light ">Phone Number</p>
+                            <h1 class="font-semibold">+1 615-4196646 </h1>
+                        </div>
+                        <div class="w-[50%] md:w-[30%]">
+                            <p class="text-[#667085] font-light">Tour Name</p>
+                            <h1 class="font-semibold">Wilson Tour </h1>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between w-[94%]">
+                        <!-- <div class="py-2 md:py-5">
+                       <p class="text-[#667085] font-light ">Name of Group</p>
+                       <h1 class="font-semibold">Pilgrim Connect</h1>
+                   </div> -->
+                    </div>
+                </div>
+                <div class="border-b-2 p-1 w-full mb-4"></div>
+                <div class=" w-full flex flex-col justify-center">
+                    <div class="md:border-b-2 border-gray font-semibold w-fit">
+                        Coaches Details
+                    </div>
+                    <div class="flex items-center w-full">
+                        <div class="py-2 md:py-5 w-[33%]">
+                            <p class="font-light text-[#667085]">Star Coaches</p>
+                            <h1 class="font-semibold">20</h1>
+                        </div>
+                        <div class="py-2 md:py-5 w-[33%]">
+                            <p class=" font-light text-[#667085]">Bunk configuration</p>
+                            <h1 class="font-semibold">12</h1>
+                        </div>
+                        <div class="py-2 md:py-5 w-[33%]">
+                            <p class="font-light text-[#667085]">Number of trailers</p>
+                            <h1 class="font-semibold">3</h1>
+                        </div>
+                    </div>
+                    <div class="flex items-center w-full">
+                        <div class="py-2 md:py-5 w-[33%]">
+                            <p class=" font-light text-[#667085]">Band Coaches</p>
+                            <h1 class="font-semibold">4</h1>
+                        </div>
+                        <div class="py-2 md:py-5 w-[33%]">
+                            <p class=" font-light text-[#667085]">Bunk configuration</p>
+                            <h1 class="font-semibold">6</h1>
+                        </div>
+                    </div>
+                    <div class="flex items-center w-full">
+                        <div class="py-2 md:py-5 w-[33%]">
+                            <p class=" font-light text-[#667085]">Crew Coaches</p>
+                            <h1 class="font-semibold">4</h1>
+                        </div>
+                        <div class="py-2 md:py-5 w-[33%]">
+                            <p class=" font-light text-[#667085]">Bunk configuration</p>
+                            <h1 class="font-semibold">12</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-b-2 p-1 w-full mb-4"></div>
+                <div class=" w-full flex flex-col justify-center">
+                    <div class="md:border-b-2 border-gray font-semibold w-fit">
+                        Routing Details
+                    </div>
+                    <table class="table table-auto w-full text-left text-sm font-semibold mb-3">
+                        <tbody>
+                            <tr class=" py-4">
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex flex-col gap-y-2">
+                                        <span class="flex gap-2">
+                                            Bridgerstone Arena
+                                        </span>
+                                        <span class="flex gap-2 text-[#667085] font-light">
+                                            Pickup Location
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex h-full flex-col gap-y-2 items-start">
+                                        <span>33203</span>
+                                        <div class="flex items-center gap-2 text-[#667085] font-light">
+                                            Zip-code
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex h-full flex-col gap-y-2 items-start">
+                                        <span>01/23/2023</span>
+                                        <div class="flex items-center gap-2 text-[#667085] font-light">
+                                            Pickup date
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr class="py-4">
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex flex-col gap-y-2">
+                                        <span class="flex gap-2">
+                                            Los Angeles, CA
+                                        </span>
+                                        <span class="flex gap-2 text-[#667085] font-light">
+                                            Stop Location
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex h-full flex-col gap-y-2 items-start">
+                                        <span>90001</span>
+                                        <div class="flex items-center gap-2 text-[#667085] font-light">
+                                            Zip-code
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex h-full flex-col gap-y-2 items-start">
+                                        <span>01/23/2023</span>
+                                        <div class="flex items-center gap-2 text-[#667085] font-light">
+                                            Date
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr class="py-4">
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex flex-col gap-y-2">
+                                        <span class="flex gap-2">
+                                            Los Angeles, CA
+                                        </span>
+                                        <span class="flex gap-2 text-[#667085] font-light">
+                                            Drop-off Location
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex h-full flex-col gap-y-2 items-start">
+                                        <span>90001</span>
+                                        <div class="flex items-center gap-2 text-[#667085] font-light">
+                                            Zip-code
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="pt-4 w-[33%]">
+                                    <div class="flex h-full flex-col gap-y-2 items-start">
+                                        <span>01/23/2023</span>
+                                        <div class="flex items-center gap-2 text-[#667085] font-light">
+                                            Drop-off Date
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="border-b-2 p-1 w-full mb-4"></div>
+                <div class=" w-full flex flex-col justify-center">
+                    <div class="md:border-b-2 border-gray font-semibold w-fit">
+                        Additional Data
+                    </div>
+                    <div class="border rounded-lg p-5 mt-3">
+                        <p class="w-[70%] text-[#667085]">Please I need this very urgently, and I will really
+                            appreciate if this can be attended to ASAP. Thanks</p>
+                    </div>
+                    <div class="my-4">
+                        <div class="w-full flex flex-col md:flex-row flex-wrap gap-y-2 justify-between">
+                            <div class="flex gap-2 items-center bg-[#EDF6FF] rounded-md p-1 w-full md:w-[30%]">
+                                <div
+                                    class="w-16 bg-[#1877F2] rounded-md flex items-center justify-center h-16 cursor-pointer hover:transform hover:scale-110 transition duration-500 ease-in-out">
+                                    <span class="text-white text-2xl font-bold">PDF</span>
+                                </div>
+                                <span class="text-[#1877F2]">ADDITIONAL.PDF</span>
+                            </div>
+                            <div class="flex gap-2 items-center w-full md:w-[30%]">
+                                <img src="../../assets/images/customer-content/customer-content-1.png" alt=""
+                                    class="w-16 h-16 cursor-pointer hover:transform hover:scale-110 transition duration-500 ease-in-out" />
+                                <span>FINAL_IMAGE.PNG</span>
+                            </div>
+                            <div class="flex gap-2 items-center w-full md:w-[30%]">
+                                <img src="../../assets/images/customer-content/customer-content-6.png" alt=""
+                                    class="w-16 h-16 cursor-pointer hover:transform hover:scale-110 transition duration-500 ease-in-out" />
+                                <span>COMP_TOUR.MP4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="py-2 px-5 w-full bg-white md:hidden flex justify-end">
+                    <div class="flex w-full justify-between">
+                        <button onclick="backToAdditionForm()"
+                            class="w-[40%] py-[6px] flex justify-center items-center text-center text-blue-500 border border-blue-500 hover:border-blue-600 hover:text-blue-600 rounded-2xl">
+                            Back
+                        </button>
+                        <button onclick="submit()"
+                            class="w-[55%] py-[6px] flex items-center justify-center text-center text-white font-outfit bg-[#1877F2] border-b-4 border-b-[#013C9F] hover:bg-blue-600 transition duration-200 ease-in-out rounded-2xl">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- End of summary form -->
+    </div>
+    <!-- end of booking process modal -->
+
+    <!-- End main content and top header section -->
+    </div>
+
+    <!-- Customize Table Modal -->
+    <div id="customize-table"
+        class="fixed inset-0 z-[999] w-full items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+        <section
+            class="modal overflow-auto sm:w-[40%] w-[92%] z-[70] max-h-[98%] absolute mx-auto bg-white rounded-xl flex-col p-4">
+            <div class="flex justify-content-end w-full">
+                <button class="btn-close ml-auto" onclick="closeCustomizeTable()">
+                    <i class='bx bxs-x-circle text-3xl'></i>
+                </button>
+            </div>
+            <div class="mt-2 p-2">
+                <h3 class="mb-3">Add Column To Table</h3>
+                <div class="p-3 border rounded-lg">
+                    <table class="table table-auto w-full border-spacing-2 text-left text-sm">
+                        <thead class="bg-[#f2f2f2] rounded-tl-lg">
+                            <tr>
+                                <th class="font-normal pl-2 py-3 rounded-tl-lg">Title</th>
+                                <th class="font-normal py-3">Data</th>
+                                <th class="font-normal py-3 rounded-tr-lg">Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Driver's Name</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Driver's Name
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Year</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Vehicle Year Made<img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Make</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Vehicle Make
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Model</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Vehicle Model
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Available Date</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Coaches Available Date
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Available Drop-Offs</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Available Drop-Offs
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Availability status</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Availability status
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Config</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Tour Configuration
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" checked />
+                                    <span>Group</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Coaches Tour
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4 text-gray-400">
+                                    <input type="checkbox" />
+                                    <span>Trailer</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center text-gray-400">
+                                        Select Data
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4">
+                                    <input type="checkbox" />
+                                    <span>Drivers</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center">
+                                        Drivers
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-4 text-gray-400">
+                                    <input type="checkbox" />
+                                    <span>Add title</span>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2 items-center text-gray-400">
+                                        Select Data
+                                        <img src="../../assets/images/arrowdown.png" alt=""
+                                            class="h-[10px] w-[10px] object-scale-down" />
+                                    </div>
+                                </td>
+                                <td><img src="../../assets/images/drag.svg" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex w-full md:w-1/2 ml-auto gap-3">
+                    <button
+                        class="mt-2 border btn-close border-[#B5B5B5] w-full md:w-1/2 px-8 py-2 rounded-lg text-[#6d6d6d]"
+                        onclick="closeCustomizeTable()">
+                        Cancel
+                    </button>
+                    <button class="mt-2 btn-close bg-blue-700 px-8 py-2 w-full md:w-1/2 rounded-lg text-white">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- <div
+          class="overlay hidden bg-black/70 backdrop-blur-[2px] fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-[51]">
+        </div> -->
+    </div>
+
+    <!-- Processing Modal -->
+    <div id="processing-modal"
+        class="fixed inset-0 z-[999] items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg w-[400px] h-[335px] py-5 px-12">
+            <div class="flex flex-col justify-center items-center">
+                <div class="mt-3 flex justify-center animate-spin">
+                    <img src="../../assets/icons/spinner.svg" alt="">
+                </div>
+                <div class="flex justify-center text-2xl font-normal mb-3">Processing...</div>
+                <div class="flex justify-center text-xl font-light">Please wait for a few seconds as</div>
+                <div class="flex justify-center text-xl font-light">we are processing your request</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="success-modal" class="fixed inset-0 z-[999] items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg w-[400px] h-[350px] py-5 px-12">
+            <div class="flex flex-col justify-center items-center">
+                <div class="my-4 flex justify-center">
+                    <img src="../../assets/icons/success-icon.svg" alt="">
+                </div>
+                <div class="flex justify-center text-2xl font-normal mb-3">Tour Booked!</div>
+                <div class="flex justify-center text-gray-500 text-xl font-light">
+                    <div class="text-center">You have successfully booked a tour. You will be notified about your
+                        booking confirmation</div>
+                </div>
+                <a href="" id="leasing-agent-link" class="w-[70%] mt-5">
+                    <button
+                        class="flex justify-center w-full py-2 px-4 items-center text-blue-500 border border-blue-500 hover:border-blue-600 rounded-3xl">
+                        Leasing Agent
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="ml-2">
+                            <path
+                                d="M6.1977 0.245253L11.7949 5.84248L6.1977 11.4397L5.20069 10.4602L9.11875 6.54213L0.600479 6.54213L0.600479 5.14282L9.11875 5.14282L5.2007 1.22477L6.1977 0.245253Z"
+                                fill="#1877F2" />
+                        </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../leasing-agent/schedule/edit-tour-at-a-glance.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- <script src="tour.js"></script> -->
+    <script>
+        $(function () {
+            const currentDate = new Date().toISOString().slice(0, 10);
+            const dateInputs = document.getElementsByClassName("date");
+            Array.from(dateInputs).forEach(dateInput => {
+                dateInput.min = currentDate;
+            })
+        })
+
+        $(function () {
+            Array.from(document.getElementsByClassName("bunk-option")).forEach(elem => {
+                console.log(elem);
+                elem.addEventListener("click", (event) => {
+                    console.log(elem);
+                    document.getElementById("bunk-text-input").value = elem.innerHTML;
+                    document.getElementById("dropdown-content").classList.add("hidden");
+                })
+            })
+        })
+        function navigateToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+    <script>
+        const successbtn = document.querySelector(".submit-btn");
+
+
+        $(document).ready(function () {
+            $("#showTourInfoData").css("display", "block");
+            $("#showTourCoachesData").css("display", "none");
+            $("#showTourRoutingData").css("display", "none");
+            $("#showTourSummaryData").css("display", "none");
+            $("#hideMainText").css("display", "block");
+            $("#successActionDiv").css("display", "none");
+        });
+
+        // Dynamically set the route for the leasing agent site, depending on the environment (local or server)
+        document.addEventListener("DOMContentLoaded", () => {
+            let leasingAgentLink = document.getElementById('leasing-agent-link');
+            if (leasingAgentLink) {
+                let href = leasingAgentLink.getAttribute("href");
+                if (href !== null) {
+                    let isLocalDev = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+                    let hrefValue = isLocalDev ? "../../leasing-agent/registration/signin.html" : "https://leasing.teleportcoaches.app/registration/signin.html";
+
+                    leasingAgentLink.setAttribute("href", hrefValue);
+                }
+            }
+        })
+
+        function submit() {
+            const modal = document.getElementById('bookingModal');
+            const processingModal = document.getElementById("processing-modal");
+            const successModal = document.getElementById("success-modal");
+
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+
+            processingModal.classList.remove("hidden");
+            processingModal.classList.add("flex");
+
+            setTimeout(function () {
+                processingModal.classList.add("hidden");
+                successModal.classList.remove("hidden");
+                successModal.classList.add("flex");
+            }, 3000);
+        }
+
+        function showModal() {
+            const modal = document.getElementById('bookingModal');
+            const infoForm = document.getElementById('info')
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            infoForm.classList.remove('hidden');
+            infoForm.classList.add('flex');
+
+        }
+
+        function showleg() {
+            const noLeg = document.getElementById('noLeg');
+            const hasLeg = document.getElementById('hasLeg')
+
+            noLeg.classList.add('hidden');
+            noLeg.classList.remove('flex');
+            hasLeg.classList.remove('hidden');
+            hasLeg.classList.add('flex');
+
+        }
+
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            const infoForm = document.getElementById('info')
+            const coachesForm = document.getElementById('coaches');
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            infoForm.classList.remove('flex');
+            infoForm.classList.add('hidden');
+            coachesForm.classList.remove('flex');
+            coachesForm.classList.add('hidden');
+            routingForm.classList.remove('flex');
+            routingForm.classList.add('hidden');
+            additionForm.classList.remove('flex');
+            additionForm.classList.add('hidden');
+        }
+
+        function goToCoachesForm() {
+            const infoForm = document.getElementById('info')
+            const coachesForm = document.getElementById('coaches');
+            infoForm.classList.remove('flex');
+            infoForm.classList.add('hidden');
+            coachesForm.classList.remove('hidden');
+            coachesForm.classList.add('flex');
+
+        }
+
+        function goToRouteForm() {
+            const coachesForm = document.getElementById('coaches');
+            const routingForm = document.getElementById('routing');
+            coachesForm.classList.remove('flex');
+            coachesForm.classList.add('hidden');
+            routingForm.classList.remove('hidden');
+            routingForm.classList.add('flex');
+
+        }
+
+        function goToAdditionalDataForm() {
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            routingForm.classList.remove('flex');
+            routingForm.classList.add('hidden');
+            additionForm.classList.remove('hidden');
+            additionForm.classList.add('flex');
+
+        }
+
+        function goToSummaryForm() {
+            const additionForm = document.getElementById('addtion');
+            const summaryForm = document.getElementById('summary');
+            additionForm.classList.remove('flex');
+            additionForm.classList.add('hidden');
+            summaryForm.classList.remove('hidden');
+            summaryForm.classList.add('flex');
+
+        }
+
+        function goToPreviousForm() {
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+
+            additionForm.classList.remove('flex');
+            additionForm.classList.add('hidden');
+            routingForm.classList.remove('hidden');
+            routingForm.classList.add('flex');
+
+        }
+        function backToCoachesForm() {
+            const coachesForm = document.getElementById("coaches");
+            const infoForm = document.getElementById("info");
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            const summaryForm = document.getElementById("summary");
+
+            coachesForm.classList.remove("hidden");
+            coachesForm.classList.add("flex");
+
+            routingForm.classList.remove("flex");
+            routingForm.classList.add("hidden");
+            additionForm.classList.remove("flex");
+            additionForm.classList.add("hidden");
+            summaryForm.classList.remove("flex");
+            summaryForm.classList.add("hidden");
+            infoForm.classList.remove("flex");
+            infoForm.classList.add("hidden");
+        }
+
+        function backToAdditionForm() {
+            const coachesForm = document.getElementById("coaches");
+            const infoForm = document.getElementById("info");
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            const summaryForm = document.getElementById("summary");
+
+            coachesForm.classList.remove("flex");
+            coachesForm.classList.add("hidden");
+            routingForm.classList.remove("flex");
+            routingForm.classList.add("hidden");
+            summaryForm.classList.remove("flex");
+            summaryForm.classList.add("hidden");
+            infoForm.classList.remove("flex");
+            infoForm.classList.add("hidden");
+
+            additionForm.classList.add("flex");
+            additionForm.classList.remove("hidden");
+        }
+
+        function backToInfoForm() {
+            const coachesForm = document.getElementById("coaches");
+            const infoForm = document.getElementById("info");
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            const summaryForm = document.getElementById("summary");
+
+            coachesForm.classList.remove("flex");
+            coachesForm.classList.add("hidden");
+            routingForm.classList.remove("flex");
+            routingForm.classList.add("hidden");
+            additionForm.classList.remove("flex");
+            additionForm.classList.add("hidden");
+            summaryForm.classList.remove("flex");
+            summaryForm.classList.add("hidden");
+
+            infoForm.classList.remove("hidden");
+            infoForm.classList.add("flex");
+        }
+
+        function backToRoutingForm() {
+            const coachesForm = document.getElementById("coaches");
+            const infoForm = document.getElementById("info");
+            const routingForm = document.getElementById('routing');
+            const additionForm = document.getElementById('addtion');
+            const summaryForm = document.getElementById("summary");
+
+            coachesForm.classList.remove("flex");
+            coachesForm.classList.add("hidden");
+            infoForm.classList.add("hidden");
+            infoForm.classList.remove("flex");
+            additionForm.classList.add('hidden');
+            additionForm.classList.remove('flex');
+            summaryForm.classList.add('hidden');
+            summaryForm.classList.remove('flex');
+
+            routingForm.classList.add('flex');
+            routingForm.classList.remove('hidden');
+        }
+
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdown-content");
+            if (dropdown.classList.contains("hidden")) {
+                dropdown.classList.remove("hidden");
+            } else {
+                dropdown.classList.add("hidden");
+            }
+        }
+
+        const addStopBtn = document.getElementById("add-stop-btn");
+        const formFieldsContainer = document.getElementById("form-fields");
+        let stopCounter = 1;
+
+        // Add Stop Button
+        addStopBtn.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            const currentDate = new Date().toISOString().slice(0, 10);
+            const newStop = document.createElement("form-fields");
+            newStop.classList.add(
+                "w-full",
+                "my-6",
+                "gap-4",
+                "justify-center",
+                "items-center",
+                "stop"
+            );
+            newStop.innerHTML = `
+    <div class="modal-body">
+      <div>
+        <div class="m-auto">
+          <span><strong class="stop-header">Stop ${stopCounter}</strong> - Details</span>
+          <button class="remove-stop-btn ml-2 text-red-500">Remove Stop</button>
+          <hr class="w-32 h-1 my-1 bg-gray-100 border-0 rounded md:my-1 dark:bg-gray-600">
+        </div>
+        <div class="my-2 grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4 lg:justify-center lg:items-center">
+          <div>
+            <label for="location">Pickup Location</label>
+            <input type="text" name="location" id="pickupLocation" placeholder="Enter a location"
+              class="block my-2 w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+          </div>
+          <div class="md:hidden lg:block sm:hidden">
+            <span><br></span>
+          </div>
+          <div class="md:col-span-1 lg:col-span-1">
+            <label for="pickup-date">Pickup Date</label>
+            <div class="relative">
+              <input id="date pickup-date" type="date"
+                min="${currentDate}"
+                class="block my-2 md:w-full py-2 px-3 border border-gray-400 rounded-md leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                pattern="\d{4}-\d{2}-\d{2}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+            formFieldsContainer.appendChild(newStop);
+            // increment stop counter
+            stopCounter++;
+            // add event listener to remove button
+            const removeStopBtns = document.querySelectorAll(".remove-stop-btn");
+            removeStopBtns.forEach((btn) => {
+                btn.addEventListener("click", function () {
+                    const stopElem = btn.closest(".stop");
+                    formFieldsContainer.removeChild(stopElem);
+                    let newCounter = 1;
+                    Array.from(document.getElementsByClassName("stop-header")).forEach(elem => {
+                        elem.innerHTML = `Stop ${newCounter}`;
+                        newCounter += 1;
+                    })
+                    // decrement stop counter
+                    stopCounter = newCounter;
+                });
+            });
+        });
+        // Get references to the form and save button
+        const form = document.getElementById("myForm");
+        const saveBtn = document.getElementById("saveBtn");
+
+        // Add click event listener to the save button
+        saveBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Create an array to hold the stop data
+            const stops = [];
+
+            // Loop through all the stop elements
+            const stopElems = document.querySelectorAll(".stop");
+            stopElems.forEach(function (stopElem) {
+                // Get the pickup location and date from the stop element
+                const pickupLocation = stopElem.querySelector("#pickupLocation").value;
+                const pickupDate = stopElem.querySelector("#pickup-date").value;
+
+                // Create a new stop object with the data
+                const stop = { pickupLocation, pickupDate };
+
+                // Add the stop object to the stops array
+                stops.push(stop);
+            });
+
+            // Create the final form data object
+            const formData = {
+                name: form.name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                stops: stops
+            };
+
+            // Log the form data object to the console (for testing purposes)
+            console.log(formData);
+
+            // Send the form data to the server (replace with your own implementation)
+            // ...
+        });
+
+
+        function gotoDashboard() {
+            window.location.href = "../../leasing-agent/overview/index.html";
+        }
+
+        function customizeTable() {
+            const modal = document.getElementById("customize-table");
+            modal.classList.remove("hidden")
+            modal.classList.add("flex")
+        }
+
+        function closeCustomizeTable() {
+            const modal = document.getElementById("customize-table");
+            modal.classList.add("hidden")
+            modal.classList.remoce("flex")
+        }
+    </script>
+</body>
+
+</html>

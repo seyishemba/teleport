@@ -1,0 +1,8 @@
+<div class="w-full h-10 pt-1 relative">
+  <label [id]="floatingLabelId" for="{{inputBoxId}}" class="floating-label {{customLabelStyle}}"
+    #floatingLabelRef>{{label}}</label>
+  <input #inputBoxRef [id]="inputBoxId" type="{{formType}}" [attr.min]="formType === 'number' ? '0' : null"
+    class="input-box {{formType === 'date' || formType === 'time' ? 'webkit-datetime' : ''}} {{customInputStyle}}"
+    (keyup)="onInputChange($event)" (focus)="onFocus()" (blur)="onBlur()" [(ngModel)]="value"
+    [disabled]="isDisabled" autocomplete="off" autocapitalize="none" spellcheck="false" />
+</div>

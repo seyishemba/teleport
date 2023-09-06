@@ -1,0 +1,108 @@
+<form class="flex flex-col gap-4" [formGroup]="emergency" class="w-full gap-3 flex flex-col z-[9999]">
+    <h2 class="py-5">Emergency Contact</h2>
+    <p>PRIMARY CONTACT</p>
+    <div class="flex gap-4" formGroupName="primary">
+        <div class="w-full">
+            <label for="fullName">{{ 'FullName' | localize }} *</label>
+            <input id="fullName" type="text" name="fullName" class="form-control" formControlName="fullName" required
+                maxlength="64" />
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="emergency?.get('primary')?.get('fullName')?.touched && emergency?.get('primary')?.get('fullName')?.invalid">
+                    Please enter full name
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="relationship">{{ 'Relationship' | localize }}</label>
+            <select id="relationship" name="relationship" class="form-select" formControlName="relationship"
+                (blur)="onBlur('relationshipTouch')">
+                <option *ngFor="let option of relationshipOptions" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                    dropDownTouched?.relationshipTouch &&
+                                    emergency?.get('primary')?.get('relationship')?.value === null
+                                ">
+                    Please provide Marital Status
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label>{{'Phone Number' | localize}} *</label>
+            <input type="tel" class="form-control" formControlName="phoneNumber" required />
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="emergency?.get('primary')?.get('phoneNumber')?.touched && emergency?.get('primary')?.get('phoneNumber')?.invalid">
+                    Please enter a valid phone number
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <p>SECONDARY CONTACT</p>
+    <div class="flex gap-4" formGroupName="secondary">
+        <div class="w-full">
+            <label for="fullName">{{ 'FullName' | localize }} *</label>
+            <input id="fullName" type="text" name="fullName" class="form-control" formControlName="fullName" required
+                maxlength="64" />
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="emergency?.get('secondary')?.get('fullName')?.touched && emergency?.get('secondary')?.get('fullName')?.invalid">
+                    Please enter full name
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="relationship">{{ 'Relationship' | localize }}</label>
+            <select id="relationship" name="relationship" class="form-select" formControlName="relationship"
+                (blur)="onBlur('relationshipTouch')">
+                <option *ngFor="let option of relationshipOptions" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                    dropDownTouched?.secondaryRelationshipTouch &&
+                                    emergency?.get('secondary')?.get('relationship')?.value === null
+                                ">
+                    Please provide Marital Status
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label>{{'Phone Number' | localize}} *</label>
+            <input type="tel" class="form-control" formControlName="phoneNumber" required />
+
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="emergency?.get('secondary').get('phoneNumber')?.touched && emergency?.get('secondary').get('phoneNumber')?.invalid">
+                    Please enter a valid phone number
+                </span>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div class="flex w-full mt-5 justify-center">
+    <div class="flex w-full mt-5 justify-end gap-4">
+        <button class="my-btn btn-medium btn-outlined" (click)="goBack.emit()">
+            <span>PREVIOUS</span>
+        </button>
+        <button class="my-btn btn-large btn-filled gap-2" (click)="onNext()">
+            <span>NEXT</span>
+        </button>
+    </div>
+</div>

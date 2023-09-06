@@ -1,0 +1,1969 @@
+
+<div class="w-full border-b-2 mt-14 sm:mt-0">
+    <p class="text-3xl">Coaches</p>
+    <span class="text-gray-400">Manage all coaches/tours here</span>
+
+    <div class="flex my-3 justify-between flex-wrap ">
+
+        <div class="text-gray-500 flex items-center grow justify-end">
+
+            <div onclick="togglelayout('table-view-button')" id="table-view-button"
+                class="cursor-pointer h-7 w-7 rounded-lg flex items-center justify-center mr-3 text-white border-b-2 bg-blue-500  border-blue-700 hover:bg-blue-600">
+                <i class="fa fa-bars text-sm"></i>
+            </div>
+
+            <div onclick="togglelayout('grid-view-button')" id="grid-view-button"
+                class="fill-gray-500 mr-3 cursor-pointer h-7 w-7 rounded-lg flex items-center justify-center">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="currenttime"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.5 13.458H12.5L12.5 17.458H16.5V13.458ZM12.5 11.958H16.5C17.3284 11.958 18 12.6296 18 13.458V17.458C18 18.2864 17.3284 18.958 16.5 18.958H12.5C11.6716 18.958 11 18.2864 11 17.458V13.458C11 12.6296 11.6716 11.958 12.5 11.958Z" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7.5 4.45801H3.5L3.5 8.45801H7.5V4.45801ZM16.5 4.45801H12.5V8.45801H16.5V4.45801ZM7.5 13.458H3.5L3.5 17.458H7.5V13.458ZM7.5 2.95801H3.5C2.67157 2.95801 2 3.62958 2 4.45801V8.45801C2 9.28644 2.67157 9.95801 3.5 9.95801H7.5C8.32843 9.95801 9 9.28643 9 8.45801V4.45801C9 3.62958 8.32843 2.95801 7.5 2.95801ZM16.5 2.95801H12.5C11.6716 2.95801 11 3.62958 11 4.45801V8.45801C11 9.28644 11.6716 9.95801 12.5 9.95801H16.5C17.3284 9.95801 18 9.28643 18 8.45801V4.45801C18 3.62958 17.3284 2.95801 16.5 2.95801ZM3.5 11.958H7.5C8.32843 11.958 9 12.6296 9 13.458V17.458C9 18.2864 8.32843 18.958 7.5 18.958H3.5C2.67157 18.958 2 18.2864 2 17.458V13.458C2 12.6296 2.67157 11.958 3.5 11.958Z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col gap-5 my-5 justify-between lg:flex-row lg:flex-wrap lg:gap-5 hidden">
+        <div class="flex flex-wrap gap-5">
+            <div class="px-2 rounded-full w-full md:max-w-[10rem] border flex gap-1 items-center">
+                <i class='bx bx-search text-[#667085]'></i>
+                <input type="text" placeholder="Search within the table below"
+                    class="placeholder:text-xs text-xs xl:text-sm rounded-full text-[#667085] h-8 px-1 w-full focus:outline-none" />
+            </div>
+            <div class="flex gap-2 flex-wrap">
+                <div class="flex gap-2 items-center px-2 pl-4 py-1 rounded-full bg-[#F4F4F4]">
+                    <select class="bg-transparent text-sm">
+                        <option>Tour Status</option>
+                    </select>
+                </div>
+                <div class="flex gap-2 items-center px-2 pl-4 py-1 rounded-full bg-[#F4F4F4]">
+                    <select class="bg-transparent text-sm">
+                        <option>Coaches Type</option>
+                    </select>
+                </div>
+                <div class="flex gap-2 items-center px-2 pl-4 py-1 rounded-full bg-[#F4F4F4]">
+                    <select class="bg-transparent text-sm">
+                        <option>Availability</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between md:justify-end gap-10 lg:gap-3 lg:ml-auto">
+            <div class="flex items-center gap-2">
+                <span class="text-xs xl:text-sm">1-12 of 172</span>
+                <i class='bx bx-chevron-left text-xl leading-[1rem] text-[#101828] bg-[#D0D5DD]'></i>
+                <i class='bx bx-chevron-right text-xl leading-[1rem] text-[#101828] bg-[#D0D5DD]'></i>
+            </div>
+            <button id="add-column"
+                class="border border-[#013C9F] rounded-md px-2 lg:px-3 flex gap-3 items-center h-10 text-xs xl:text-sm lg:text-base"
+                onclick="customizeTable()">
+                <i class='bx bx-plus rounded-full text-s3 leading-[0.875rem] text-white bg-[#013C9F]'></i>
+                <span class="text-[#013C9F]">Add Column</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div id="table-view"
+            class="hidden md:border md:border-x-gray-300 md:rounded-md md:p-5 overflow-x-auto is-scrollbar-hidden w-full " style="display: none;">
+            <table class="is-hoverable w-full text-left text-sm font-light hidden md:table">
+                <thead class="bg-[#f2f2f2] ">
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <th class="whitespace-nowrap px-4 lg:px-5 rounded-tl-lg py-3 font-normal">
+                            Pinned
+                        </th>
+                        <th class="whitespace-nowrap py-3 font-normal">
+                            Tour Name
+                        </th>
+                        <th class="whitespace-nowrap py-3 font-normal">
+                            Coaches
+                        </th>
+                        <th class="whitespace-nowrap py-3 font-normal">
+                            Styles
+                        </th>
+                        <th class="whitespace-nowrap py-3 font-normal">
+                            <div class="flex gap-2 items-center justify-left">
+                                Assigned Driver
+                            </div>
+                        </th>
+                        <th class="whitespace-nowrap py-3 font-normal">
+                            <div class="flex gap-2 items-center justify-center">
+                                Status<img src="../../assets/images/arrowdown.png" alt=""
+                                    class="h-[10px] w-[10px] object-scale-down">
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Grand Canyon Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>Liberty Coach</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Luxury</span>
+
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>John S</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                    </tr>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>New York City Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>Star Coach</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Standard</span>
+
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>Sarah J</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Hollywood Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>Big Bus Tours</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Party Bus</span>
+
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>Mark D</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Pacific Coast Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>Explorer Coach</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Executive</span>
+
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>Emily W</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Miami Beach Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>Charter Bus</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Standard</span>
+
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>Michael L</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>San Francisco Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>City Sightseeing</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Open Top</span>
+
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>Samantha R</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Rocky Mountains Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>Mountain Shuttle</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Off-road</span>
+
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>David N</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr class="hover:bg-gray-100"
+                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                        <td class="flex gap-2 items-center pl-2 pt-4 px-4 lg:px-5">
+                            <!-- <div class=" w-1 bg-[#7D5252] h-7"></div> -->
+                            <div class="pin-checks">
+                                <span class="pin-check-off">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91023 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                                <span class="pin-check-on hidden">
+                                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.67891 1.11965C8.46424 0.994941 8.20882 0.960598 7.96883 1.02418C7.72884 1.08775 7.52392 1.24405 7.39915 1.45869C7.33394 1.57419 7.29391 1.70219 7.28169 1.83427C6.94993 3.60589 6.35875 4.71325 5.45336 5.51611C4.43546 6.40921 3.19668 7.17249 1.02617 7.75408C0.847852 7.80276 0.687803 7.90283 0.565958 8.04183C0.444113 8.18082 0.365857 8.35259 0.340939 8.53575C0.316891 8.71938 0.347786 8.90602 0.429725 9.07211C0.511664 9.23819 0.640973 9.37628 0.801327 9.46894L4.5201 11.616L1.88301 18.1869L6.25507 12.6177L9.9727 14.764C10.0794 14.8262 10.1976 14.8661 10.3201 14.8813C10.4428 14.8978 10.5669 14.8908 10.6845 14.8593C10.8021 14.8278 10.9131 14.7718 11.0111 14.6961C11.1583 14.584 11.2688 14.4306 11.3285 14.2554C11.3883 14.0803 11.3945 13.8913 11.3465 13.7125C10.765 11.542 10.8057 10.0878 11.0741 8.77808C11.3158 7.59279 11.9792 6.52714 13.3485 5.35377C13.4568 5.27758 13.5474 5.17891 13.6141 5.0645C13.7376 4.84912 13.7705 4.59352 13.7056 4.35389C13.6407 4.11426 13.4832 3.91024 13.2679 3.78668L8.67891 1.11965Z"
+                                            fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Las Vegas Strip Tour</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <span>Party Bus</span>
+                        </td>
+                        <td class="pt-4 text-start">
+                            <span>Party</span>
+                        </td>
+
+                        <td class="pt-4 text-start">
+                            <div class="flex items-center">
+                                <img src="../../assets/images/Avatar_.png" class="pr-2" alt="" />
+                                <span>Jennifer K</span>
+                            </div>
+                        </td>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--Tab View for table in mobile view-->
+            <div id="mobile-view" class="hidden">
+                <div class="w-full grid gap-5 md:hidden pb-16">
+                    <!--Tour Details for mobile and table view-->
+                    <div
+                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                        <!--First Column Data-->
+                        <div class="text-center grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]"></span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div class="grid px-8 py-5 sm:text-xs md:text-lg">
+                                        <img src="../../assets/icons/pinned.svg" alt="pinIcon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Assigned Driver</span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div
+                                        class="w-7 h-7 rounded-full flex justify-center items-center bg-cover bg-[url(/assets/images/user1.png)]">
+                                    </div>
+                                    <div class="grid sm:text-xs md:text-lg">
+                                        <p>John S</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                </div>
+                                <div class="grid sm:text-xs md:text-lg">
+                                    <span>Grand Canyon Tour</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Coaches </span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Liberty Coach</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Third Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                        <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="flex items-right">
+                                    <a href="../schedule/tour-at-a-glance.html"><i
+                                            class="fas fa-eye w-10"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Styles</span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Luxury</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                        <!--First Column Data-->
+                        <div class="text-center grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]"></span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div class="grid px-8 py-5 sm:text-xs md:text-lg">
+                                        <img src="../../assets/icons/pinned.svg" alt="pinIcon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Assigned Driver</span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div
+                                        class="w-7 h-7 rounded-full flex justify-center items-center bg-cover bg-[url(/assets/images/user1.png)]">
+                                    </div>
+                                    <div class="grid sm:text-xs md:text-lg">
+                                        <p>Sarah J</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                </div>
+                                <div class="grid sm:text-xs md:text-lg">
+                                    <span>New York City Tour</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Coaches </span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Star Coach</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Third Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                        <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="flex items-right">
+                                    <a href="../schedule/tour-at-a-glance.html"><i
+                                            class="fas fa-eye w-10"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Styles</span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Standard</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                        <!--First Column Data-->
+                        <div class="text-center grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]"></span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div class="grid px-8 py-5 sm:text-xs md:text-lg">
+                                        <img src="../../assets/icons/pinned.svg" alt="pinIcon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Assigned Driver</span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div
+                                        class="w-7 h-7 rounded-full flex justify-center items-center bg-cover bg-[url(/assets/images/user1.png)]">
+                                    </div>
+                                    <div class="grid sm:text-xs md:text-lg">
+                                        <p>Mark D</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                </div>
+                                <div class="grid sm:text-xs md:text-lg">
+                                    <span>Hollywood Tour</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Coaches </span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Big Bus Tours</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Third Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                        <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="flex items-right">
+                                    <a href="../schedule/tour-at-a-glance.html"><i
+                                            class="fas fa-eye w-10"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Styles</span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Party Bus</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                        <!--First Column Data-->
+                        <div class="text-center grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]"></span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div class="grid px-8 py-5 sm:text-xs md:text-lg">
+                                        <img src="../../assets/icons/pinned.svg" alt="pinIcon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Assigned Driver</span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div
+                                        class="w-7 h-7 rounded-full flex justify-center items-center bg-cover bg-[url(/assets/images/user1.png)]">
+                                    </div>
+                                    <div class="grid sm:text-xs md:text-lg">
+                                        <p>Emily W</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                </div>
+                                <div class="grid sm:text-xs md:text-lg">
+                                    <span>Pacific Coast Tour</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Coaches </span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Explorer Coach</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Third Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                        <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="flex items-right">
+                                    <a href="../schedule/tour-at-a-glance.html"><i
+                                            class="fas fa-eye w-10"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Styles</span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Executive</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                        <!--First Column Data-->
+                        <div class="text-center grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]"></span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div class="grid px-8 py-5 sm:text-xs md:text-lg">
+                                        <img src="../../assets/icons/pinned.svg" alt="pinIcon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Assigned Driver</span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div
+                                        class="w-7 h-7 rounded-full flex justify-center items-center bg-cover bg-[url(/assets/images/user1.png)]">
+                                    </div>
+                                    <div class="grid sm:text-xs md:text-lg">
+                                        <p>Michael L</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                </div>
+                                <div class="grid sm:text-xs md:text-lg">
+                                    <span>Miami Beach Tour</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Coaches </span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Charter Bus</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Third Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                        <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="flex items-right">
+                                    <a href="../schedule/tour-at-a-glance.html"><i
+                                            class="fas fa-eye w-10"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Styles</span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Standard</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-3 gap-6 py-2 px-2 md:px-4 border rounded-lg text-xs md:text-lg">
+                        <!--First Column Data-->
+                        <div class="text-center grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]"></span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div class="grid px-8 py-5 sm:text-xs md:text-lg">
+                                        <img src="../../assets/icons/pinned.svg" alt="pinIcon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Assigned Driver</span>
+                                </div>
+                                <div class="flex justify-left items-center">
+                                    <div
+                                        class="w-7 h-7 rounded-full flex justify-center items-center bg-cover bg-[url(/assets/images/user1.png)]">
+                                    </div>
+                                    <div class="grid sm:text-xs md:text-lg">
+                                        <p>Samantha R</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Tour Name </span>
+                                </div>
+                                <div class="grid sm:text-xs md:text-lg">
+                                    <span>San Francisco Tour</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Coaches </span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>City Sightseeing</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Third Column Data-->
+                        <div class="text-left grid grid-rows-2 gap-2">
+                            <div>
+                                <div class="my-2">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 md:px-4 rounded-full sm:text-sm md:text-xl bg-[#ECFDF3] text-[#027A48]">
+                                        <span class="h-2 w-2 bg-[#12B76A] rounded-full mr-1"></span>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="flex items-right">
+                                    <a href="../schedule/tour-at-a-glance.html"><i
+                                            class="fas fa-eye w-10"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="my-2">
+                                    <span id="headerTitle" class="text-[#667085]">Styles</span>
+                                </div>
+                                <div class="grid text-xs md:text-lg">
+                                    <p>Open Top</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Grid views -->
+        </div>
+        <div id="grid-view-current" class="hidden h-[65vh] overflow-y-auto">
+            <!-- <div class="w-full my-4 grid grid-cols-1 sm:flex flex-row justify-between items-center">
+                    <div>
+                        <div class="flex flex-row items-center justify-between space-x-3 my-4">
+                            <div class="flex flex-row items-center">
+                                <div
+                                    class=" py-2  border border-r-0 border-gray-200 hover:bg-gray-300 rounded-tl-xl rounded-bl-xl">
+                                    <div class=" px-4"><i class="fas fa-chevron-left"></i>
+                                    </div>
+                                </div>
+                                <div class="border-r-2 border-gray-600 h-6"></div>
+                                <div
+                                    class="py-2 px-4 border border-l-0 border-gray-200  rounded-tr-xl rounded-br-xl hover:bg-gray-300">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-100 py-2 px-4 rounded-xl">
+                                    Today
+                                </div>
+                            </div>
+                            <div class="flex flex-row space-x-3">
+                                <div><span>February</span></div>
+                                <div><span class="text-sm text-gray-300">2023</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-center justify-between space-x-3">
+                        <div class="flex flex-row items-center border rounded-xl">
+                            <div onclick="toggleCurrentView()" id="current-tab"
+                                class="py-2 px-4 rounded-xl text-white bg-blue-500 border-b-2 border-blue-700 border-r-2 w-20 text-center cursor-pointer">
+                                <span>Current</span>
+                            </div>
+                            <div onclick="toggleMonthView()" id="month-tab"
+                                class=" py-2 rounded-xl hover:bg-blue-500  hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <div class=" px-4"><span>Month</span>
+                                </div>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div onclick="toggleWeekView()" id="week-tab"
+                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <span>Week</span>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div onclick="toggleDayView()" id="day-tab"
+                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <span>Day</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div> -->
+
+            <!-- Full calendar -->
+            <div id="calendar" class="h-full">
+            </div>
+        </div>
+
+        <div id="grid-view-day" class="hidden">
+            <div class="flex flex-col">
+                <div class="w-full grid my-4 sm:flex flex-row justify-between items-center">
+                    <div class="flex flex-row items-center justify-between space-x-3">
+                        <div class="flex flex-row items-center">
+                            <div
+                                class=" py-2  border border-r-0 border-gray-200 hover:bg-gray-300 rounded-tl-xl rounded-bl-xl">
+                                <div class=" px-4"><i class="fas fa-chevron-left"></i>
+                                </div>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div
+                                class="py-2 px-4 border border-l-0 border-gray-200  rounded-tr-xl rounded-br-xl hover:bg-gray-300">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-gray-100 py-2 px-4 rounded-xl">
+                                Today
+                            </div>
+                        </div>
+                        <div class="flex flex-row space-x-3">
+                            <div><span>February</span></div>
+                            <div><span class="text-sm text-gray-300">2023</span></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-center justify-between space-x-3 my-3">
+                        <div class="flex flex-row items-center border rounded-xl">
+                            <div onclick="toggleCurrentView()" id="current-tab"
+                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <span>Current</span>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+
+                            <div onclick="toggleMonthView()" id="month-tab"
+                                class=" py-2 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <div class=" px-4"><span>Month</span>
+                                </div>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+
+                            <div onclick="toggleWeekView()" id="week-tab"
+                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <span>Week</span>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div onclick="toggleDayView()" id="day-tab"
+                                class="py-2 px-4 rounded-xl text-white bg-blue-500 border-b-2 border-blue-700 border-r-2 w-20 text-center cursor-pointer">
+                                <span>Day</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="py-3 w-full overflow-scroll sm:overflow-hidden">
+                    <div class="flex flex-row justify-between items-center border-t-2 border-b-1 py-2">
+
+                        <div class="w-[6%] text-center text-gray-500 p-2 ">
+                        </div>
+                        <div class="w-[94%] text-center text-gray-500 p-2"><span>Tuesday</span>
+                            <p>7</p>
+                        </div>
+
+                    </div>
+                    <div class="flex flex-row flex-wrap">
+                        <div
+                            class="w-[6%] text-center text-gray-500 p-2 border border-b-0 border-l-0 flex items-end pb-0">
+                            <span>01:00</span>
+                        </div>
+                        <div class="w-[94%] h-[60px] border text-right p-3"></div>
+
+
+                        <div class="w-[6%] text-center text-gray-500 p-2 flex items-end pb-0">
+                            <span>02:00</span>
+                        </div>
+
+                        <div class="w-[94%] h-[60px] border text-right p-3 relative ">
+                            <div
+                                class="rounded-xl bg-[#22cce22a] border-l-8 border-[#22CCE2] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-96 py-3 px-1">
+                                <div><span class="text-xs whitespace-nowrap">Robert Edwards</span></div>
+                                <div class=""><i class="fa-solid fa-ellipsis"></i></div>
+                            </div>
+
+                        </div>
+
+                        <div class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                            <span>03:00</span>
+                        </div>
+                        <div class="w-[94%] h-[60px] border text-right p-3"></div>
+
+                        <div class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                            <span>04:00</span>
+                        </div>
+
+                        <div class="w-[94%] h-[60px] border text-right p-3 relative">
+                            <div
+                                class="rounded-xl bg-[#49c96d34] border-l-8 border-[#49C96D] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-96 py-3 px-1">
+                                <div><span class="text-xs whitespace-nowrap">Robert Edwards</span></div>
+                                <div class=""><i class="fa-solid fa-ellipsis"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                            <span>05:00</span>
+                        </div>
+                        <div class="w-[12%] h-[60px] border border-r-0 text-right p-3"></div>
+                        <div class="w-[12%] h-[60px]   text-right p-3 relative">
+
+                        </div>
+                        <td class="pt-4 text-center">
+                            <div
+                                class="py-1 px-2 inline-flex flex-row items-center justify-around bg-[#ECFDF3] text-[#027A48] rounded-xl">
+                                <div class="h-2 w-2 mr-2 rounded-full bg-[#12B76A]"></div>
+                                <span class="text-sm">Active</span>
+                            </div>
+                        </td>
+
+                        <!-- </tr> -->
+                        <!-- </tbody> -->
+                        <!-- </table> -->
+                    </div>
+
+
+                    <!-- Grid views -->
+                    <div id="grid-view-current" class="hidden h-[65vh] overflow-y-auto">
+                        <!-- <div class="w-full my-4 grid grid-cols-1 sm:flex flex-row justify-between items-center">
+                <div>
+                    <div class="flex flex-row items-center justify-between space-x-3 my-4">
+                        <div class="flex flex-row items-center">
+                            <div
+                                class=" py-2  border border-r-0 border-gray-200 hover:bg-gray-300 rounded-tl-xl rounded-bl-xl">
+                                <div class=" px-4"><i class="fas fa-chevron-left"></i>
+                                </div>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div
+                                class="py-2 px-4 border border-l-0 border-gray-200  rounded-tr-xl rounded-br-xl hover:bg-gray-300">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-gray-100 py-2 px-4 rounded-xl">
+                                Today
+                            </div>
+                        </div>
+                        <div class="flex flex-row space-x-3">
+                            <div><span>February</span></div>
+                            <div><span class="text-sm text-gray-300">2023</span></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-center justify-between space-x-3 my-4">
+                        <div class="flex flex-row items-center border rounded-xl border-gray-200 p-0.5">
+                            <div onclick="toggleCurrentView()" id="current-tab"
+                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <span>Current</span>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div onclick="toggleMonthView()" id="month-tab"
+                                class=" py-2 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                <div class=" px-4"><span>Month</span>
+                                </div>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div onclick="toggleWeekView()" id="week-tab"
+                                class="py-2 px-4 rounded-xl text-white bg-blue-500 border-b-2 border-blue-700 border-r-2 w-20 cursor-pointer text-center">
+                                <span>Week</span>
+                            </div>
+                            <div class="border-r-2 border-gray-600 h-6"></div>
+                            <div onclick="toggleDayView()" id="day-tab"
+                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 text-center cursor-pointer">
+                                <span>Day</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="py-3 w-full overflow-scroll">
+                    <div class="flex flex-row justify-between items-center border-t-2 border-b-1 py-2">
+
+                        <div class="w-[6%] text-center text-gray-500 p-2 ">
+                        </div>
+                        <div class="w-[13.6%] text-center text-gray-500 p-2"><span>Mon</span>
+                            <p>6</p>
+                        </div>
+                        <div class="w-[13.6%] text-center text-gray-500 p-2"><span>Tues</span>
+                            <p>7</p>
+                        </div>
+                        <div class="w-[13.6%] text-center text-gray-500 p-2"><span>Weds</span>
+                            <p class="bg-[#1877F2] text-white py-2 px-3 rounded-xl w-10 m-auto">8</p>
+                        </div>
+                        <div class="w-[13.6%] text-center text-gray-500 p-2"><span>Thurs</span>
+                            <p>9</p>
+                        </div>
+                        <div class="w-[13.6%] text-center text-gray-500 p-2"><span>Fri</span>
+                            <p>10</p>
+                        </div>
+                        <div class="w-[13.6%] text-center text-gray-500 p-2"><span>Sat</span>
+                            <p>11</p>
+                        </div>
+                        <div class="w-[13.6%] text-center text-gray-500 p-2"><span>Sun</span>
+                            <p>12</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+
+                        <!-- Full calendar -->
+                        <div id="calendar" class="h-full">
+                            <!-- <img src="../../assets/images/gantt-chart2.png" alt=""> -->
+
+                        </div>
+                    </div>
+
+                    <div id="grid-view-day" class="hidden">
+                        <div class="flex flex-col">
+                            <div class="w-full grid my-4 sm:flex flex-row justify-between items-center">
+                                <div class="flex flex-row items-center justify-between space-x-3">
+                                    <div class="flex flex-row items-center">
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2 border border-b-0 border-l-0 flex items-end pb-0">
+                                            <span>01:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2 flex items-end pb-0">
+                                            <span>02:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+                                            <div
+                                                class="rounded-xl bg-[#22cce22a] border-l-8 border-[#22CCE2] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-32 py-1 px-1">
+                                                <div><span class="text-xs whitespace-nowrap">Robert
+                                                        Edwards</span></div>
+                                                <div class="flex justify-end w-full"><i
+                                                        class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>03:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+                                            <div
+                                                class="rounded-xl bg-[#22cce22a] border-l-8 border-[#22CCE2] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-32 py-3 px-1">
+                                                <div><span class="text-xs whitespace-nowrap">Robert
+                                                        Edwards</span></div>
+                                                <div class="flex justify-end w-full"><i
+                                                        class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>04:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+                                            <div
+                                                class="rounded-xl bg-[#49c96d34] border-l-8 border-[#49C96D] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-32 py-3 px-1">
+                                                <div><span class="text-xs whitespace-nowrap">Robert
+                                                        Edwards</span></div>
+                                                <div class="flex justify-end w-full"><i
+                                                        class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>05:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+                                            <div
+                                                class="rounded-xl bg-[#ffd24024] border-l-8 border-[#FFD240] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-32 py-3 px-1">
+                                                <div><span class="text-xs whitespace-nowrap">Robert
+                                                        Edwards</span></div>
+                                                <div class="flex justify-end w-full"><i
+                                                        class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>06:00</span>
+                                        </div>
+                                        <div class=" absolute top-[104%] left-[22.5%] z-50">
+                                            <img src="../../assets/images/currenttime.svg" alt="" />
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>07:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>08:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+                                            <div
+                                                class="rounded-xl bg-[#ff965d24] border-l-8 border-[#FF965D] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-32 py-3 px-1">
+                                                <div><span class="text-xs whitespace-nowrap">Robert
+                                                        Edwards</span></div>
+                                                <div class="flex justify-end w-full"><i
+                                                        class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>09:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+                                            <div
+                                                class="rounded-xl bg-[#49c96d23] border-l-8 border-[#49C96D] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-32 py-3 px-1">
+                                                <div><span class="text-xs whitespace-nowrap">Robert
+                                                        Edwards</span></div>
+                                                <div class="flex justify-end w-full"><i
+                                                        class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>10:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+                                            <div
+                                                class="rounded-xl bg-[#49c96d23] border-l-8 border-[#49C96D] text-sm flex flex-row flex-wrap justify-between absolute top-[10%] w-32 py-3 px-1">
+                                                <div><span class="text-xs whitespace-nowrap">Robert
+                                                        Edwards</span></div>
+                                                <div class="flex justify-end w-full"><i
+                                                        class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>11:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div
+                                            class="w-[6%] text-center text-gray-500 p-2  flex items-end pb-0">
+                                            <span>12:00</span>
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div
+                                            class="w-[13.4%] h-[60px] border text-right p-3 relative bg-[#1876f212]">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3 relative">
+
+                                        </div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+                                        <div class="w-[13.4%] h-[60px] border text-right p-3"></div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="grid-view-month" class="hidden overflow-scroll sm:overflow-hidden">
+                            <div class="flex flex-col ">
+                                <div class="w-full grid my-4 sm:flex flex-row justify-between items-center">
+                                    <div class="flex flex-row items-center justify-between space-x-3">
+                                        <div class="flex flex-row items-center">
+                                            <div
+                                                class=" py-2  border border-r-0 border-gray-200 hover:bg-gray-300 rounded-tl-xl rounded-bl-xl">
+                                                <div class=" px-4"><i class="fas fa-chevron-left"></i>
+                                                </div>
+                                            </div>
+                                            <div class="border-r-2 border-gray-600 h-6"></div>
+                                            <div
+                                                class="py-2 px-4 border border-l-0 border-gray-200  rounded-tr-xl rounded-br-xl hover:bg-gray-300">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="bg-gray-100 py-2 px-4 rounded-xl">
+                                                Today
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-row space-x-3">
+                                            <div><span>February</span></div>
+                                            <div><span class="text-sm text-gray-300">2023</span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-row items-center justify-between space-x-3 my-3">
+                                        <div
+                                            class="flex flex-row items-center border rounded-xl border-gray-200 p-0.5">
+                                            <div onclick="toggleCurrentView()" id="current-tab"
+                                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                                <span>Current</span>
+                                            </div>
+                                            <div class="border-r-2 border-gray-600 h-6"></div>
+
+                                            <div onclick="toggleMonthView()" id="month-tab"
+                                                class=" py-2 px-4 rounded-xl text-white bg-blue-500 border-b-2 border-blue-700 border-r-2 w-20 cursor-pointer text-center">
+                                                <span>Month</span>
+                                            </div>
+
+                                            <div onclick="toggleWeekView()" id="week-tab"
+                                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 cursor-pointer text-center">
+                                                <span>Week</span>
+                                            </div>
+
+                                            <div class="border-r-2 border-gray-600 h-6"></div>
+                                            <div onclick="toggleDayView()" id="day-tab"
+                                                class="py-2 px-4 rounded-xl hover:bg-blue-500 hover:border-b-2 hover:border-blue-700 hover:text-white w-20 text-center cursor-pointer">
+                                                <span>Day</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="py-3 w-full overflow-scroll">
+                                    <div
+                                        class="flex flex-row justify-between items-center border-t-2 border-b-1 py-2">
+                                        <div class="w-[13.6%] text-center text-gray-500 p-2">Monday</div>
+                                        <div class="w-[13.6%] text-center text-gray-500 p-2">Tuesday</div>
+                                        <div class="w-[13.6%] text-center text-gray-500 p-2">Wednesday</div>
+                                        <div class="w-[13.6%] text-center text-gray-500 p-2">Thursday</div>
+                                        <div class="w-[13.6%] text-center text-gray-500 p-2">Friday</div>
+                                        <div class="w-[13.6%] text-center text-gray-500 p-2">Saturday</div>
+                                        <div class="w-[13.6%] text-center text-gray-500 p-2">Sunday</div>
+                                    </div>
+                                    <div class="flex flex-row flex-wrap">
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3"
+                                            style="background-image: url(../../assets/images/hatching.svg);">
+                                            <span>30</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3"
+                                            style="background-image: url(../../assets/images/hatching.svg);">
+                                            <span>31</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3 relative">
+                                            <span>1</span>
+                                            <div
+                                                class="rounded-xl bg-[#f9d5c2] border-l-8 border-[#FF965D] text-sm flex flex-row justify-between absolute top-[50%] w-56 py-2 px-5">
+                                                <div><span class="text-sm">Robert Edwards</span></div>
+                                                <div><i class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                            <!-- <a onclick="myFunction()" class="cursor-pointer"><i
+                                    class="fa-solid fa-ellipsis-vertical"></i></a> -->
+                                            <!-- <div id=""
+                                class="bg-white rounded-lg absolute top-[30%] lg:top-[38%] right-0 w-45 shadow-lg text-left">
+                                <ul>
+                                    <li
+                                        class="text-[#333] hover:text-[#C7DFFF] hover:bg-[#F0FAFF] flex flex-row  rounded-tl-md rounded-tr-md px-3 pt-1 cursor-pointer">
+                                        <img class="mr-4" src="../../assets/images/unpin.svg" width="15"> Pin
+                                    </li>
+                                    <li
+                                        class="text-[#333] hover:text-[#C7DFFF] hover:bg-[#F0FAFF] flex flex-row  rounded-tl-md rounded-tr-md px-3 pt-1 cursor-pointer">
+                                        <img class="mr-4" src="../../assets/images/Show.svg" width="15"> View
+                                    </li>
+                                    <li
+                                        class="text-[#333] hover:text-[#C7DFFF] hover:bg-[#F0FAFF] flex flex-row  rounded-tl-md rounded-tr-md px-3 pt-1 cursor-pointer">
+                                        <img class="mr-4" src="../../assets/images/notes.svg" width="15" alt="">
+                                        Notes
+                                    </li>
+                                    <li
+                                        class="text-[#333] hover:text-[#C7DFFF] hover:bg-[#F0FAFF] flex flex-row  px-3 pt-1 cursor-pointer">
+                                        <img class="mr-4" src="../../assets/images/message.svg" width="15" alt="">
+                                        Message
+                                    </li>
+
+                                </ul>
+                            </div> -->
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>2</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>3</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>4</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>5</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>6</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>7</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3 bg-[#f4f5ff]">
+                                            <span
+                                                class="bg-[#1877F2] text-white py-2 px-3 rounded-xl">8</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3 relative">
+                                            <span>9</span>
+                                            <div
+                                                class="rounded-xl bg-[#c4f1f7] border-l-8 border-[#22CCE2] text-sm flex flex-row justify-between absolute top-[50%] left-0 w-56 py-2 px-5">
+                                                <div><span>Robert Edwards</span></div>
+                                                <div><i class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>10</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>11</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>12</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>13</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3 relative">
+                                            <span>14</span>
+                                            <div
+                                                class="rounded-xl bg-[#fff1c1] border-l-8 border-[#FFD240] text-sm flex flex-row justify-between absolute top-[50%] w-56 py-2 px-5">
+                                                <div><span>Randall Fisher</span></div>
+                                                <div><i class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>15</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>16</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>17</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>18</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>19</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>20</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>21</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>22</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3 relative">
+                                            <span>23</span>
+                                            <div
+                                                class="rounded-xl bg-[#ccfcda] border-l-8 border-[#49C96D] text-sm flex flex-row justify-between absolute top-[50%] w-56 py-2 px-5">
+                                                <div><span>Randall Fisher</span></div>
+                                                <div><i class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>24</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>25</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>26</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>27</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>28</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>29</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3">
+                                            <span>30</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3 relative"
+                                            style="background-image: url(../../assets/images/hatching.svg);">
+                                            <span>01</span>
+                                            <div
+                                                class="rounded-xl bg-[#c4f1f7] border-l-8 border-[#22CCE2] text-sm -z-10 flex flex-row justify-between absolute top-[50%] left-[90%] w-72 py-2 px-5">
+                                                <div><span>Robert Edwards</span></div>
+                                                <div><i class="fa-solid fa-ellipsis"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3"
+                                            style="background-image: url(../../assets/images/hatching.svg);">
+                                            <span>02</span>
+                                        </div>
+                                        <div class="w-[14.2%] h-[120px] border text-right p-3"
+                                            style="background-image: url(../../assets/images/hatching.svg);">
+                                            <span>03</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        <!-- Start modal customizing a column-->
+        <div class="mt-8 w-full hidden" id="customise-table">
+            <div class="w-full h-full absolute top-0 left-0 flex items-center justify-center">
+                <section
+                    class="modal w-[95%] md:w-[70%] lg:w-[40%] max-h-[95%] overflow-y-auto z-[70] absolute mx-auto bg-white rounded-xl flex-col p-4">
+                    <div class="flex justify-between w-full">
+                        <h3 class="my-3">Add Column To Table</h3>
+                        <button class="btn-close ml-auto h-8 w-8 rounded-full bg-black" id="close-customise"
+                            onclick="closeCustomizeTable()">
+                            <i class="fas fa-multiply text-white"></i>
+                        </button>
+                    </div>
+                    <div class="my-1 p-2">
+                        <div class="p-3 border rounded-lg">
+                            <table class="table table-auto w-full border-spacing-2 text-left text-sm">
+                                <thead class="bg-[#f2f2f2] rounded-tl-lg">
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <th class="font-normal pl-2 py-3 rounded-tl-lg">Title</th>
+                                        <th class="font-normal py-3">Data</th>
+                                        <th class="font-normal py-3 rounded-tr-lg">Order</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Driver's Name</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Driver's Name
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Year</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Vehicle Year Made<img
+                                                    src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Make</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Vehicle Make
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Model</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Vehicle Model
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Available Date</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Coaches Available Date
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Available Drop-Offs</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Available Drop-Offs
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Availability status</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Availability status
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Config</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Tour Configuration
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" checked />
+                                            <span>Group</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Coaches Tour
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4 text-gray-400">
+                                            <input type="checkbox" />
+                                            <span>Trailer</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center text-gray-400">
+                                                Select Data
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4">
+                                            <input type="checkbox" />
+                                            <span>Drivers</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center">
+                                                Drivers
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100"
+                                        onclick="navigateToPage('../schedule/tour-at-a-glance.html')">
+                                        <td class="pt-4 text-gray-400">
+                                            <input type="checkbox" />
+                                            <span>Add title</span>
+                                        </td>
+                                        <td>
+                                            <div class="flex gap-2 items-center text-gray-400">
+                                                Select Data
+                                                <img src="../../assets/images/arrowdown.png" alt=""
+                                                    class="h-[10px] w-[10px] object-scale-down" />
+                                            </div>
+                                        </td>
+                                        <td><img src="../../assets/images/drag.svg" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex w-full md:w-1/2 ml-auto gap-3">
+                            <button
+                                class="mt-2 border btn-close border-[#B5B5B5] w-full md:w-1/2 px-8 py-3 rounded-lg text-[#6d6d6d]">
+                                Cancel
+                            </button>
+                            <button
+                                class="mt-2 btn-close bg-blue-700 px-8 py-3 w-full md:w-1/2 rounded-lg text-white">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div
+                class="overlay bg-black/70 backdrop-blur-[2px] fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-[51]">
+            </div>
+        </div>
+        <!-- End of modal -->
+    </div>
+</div>

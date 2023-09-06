@@ -1,0 +1,143 @@
+<div appBsModal #createModal="bs-modal" (onShown)="onShown()"
+    style="width: 70%; max-width: 80%; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    class="modal fade" tabindex="-1" role="dialog" size="md" aria-labelledby="createModal" aria-hidden="true"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- <form #tenantCreateForm="ngForm" role="form" novalidate class="form-validation" *ngIf="active"
+                (submit)="save()"> -->
+
+            <div class="modal-body flex flex-col py-6">
+                <div class="w-full flex flex-col justify-center gap-y-5 mb-3">
+                    <!-- <div class="flex justify-end items-center w-full gap-4">
+                        <a
+                            class="bg-blue-200 hover:bg-blue-300 text-blue-600 font-semibold py-2 px-4 border text-xs border-blue-300 rounded-full flex items-center">Cancel</a>
+                        <a class="btn-default flex items-center">Add
+                            Vehicle</a>
+                    </div> -->
+
+                    <div class="  flex flex-col gap-y-4">
+                        <div class="flex flex-col gap-y-3">
+                            <h3 class="text-black text-lg font-bold">Add Vehicle</h3>
+                            <div class="flex gap-x-3">
+                                <div class="bg-[#8F8F8F]/20 h-20 w-20 rounded-md"></div>
+                                <div>
+                                    <h4 class="mb-0 font-semibold">Vehicle Name</h4>
+                                    <span class="text-xs text-gray-700">Ace Express</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Name</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Year</label>
+                                <input type="date" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Type</label>
+                                <select class="form-control form-control-sm">
+                                    <option>Select Coach Type</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Price Per Day</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Door Code</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Make</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Style</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">License Plate</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Model</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Trim</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">VIN</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-sm text-gray-500">Capacity</label>
+                                <input type="text" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="">
+                            <span class="text-gray-300 text-sm">Add Images</span>
+                            <div class="border rounded-lg p-2 flex gap-x-3">
+                                <div
+                                    class="bg-[#EDF6FF] w-12 h-12 rounded-md flex justify-center items-center cursor-pointer">
+                                    <mat-icon class="material-symbols-outlined mb-0 text-[#1877F2]">
+                                        add
+                                    </mat-icon>
+                                </div>
+                                <div
+                                    class="bg-[#D9D9D9] w-12 h-12 rounded-md flex justify-center items-center relative cursor-pointer">
+
+                                    <mat-icon
+                                        class="material-symbols-outlined absolute -right-2 -top-2 bg-white rounded-full w-2 h-2 p-2 !flex items-center justify-center border-2 border-[#EEEEEE] text-xs text-[#F03E3E]">
+                                        close
+                                    </mat-icon>
+                                </div>
+                                <div
+                                    class="bg-[#D9D9D9] w-12 h-12 rounded-md flex justify-center items-center relative cursor-pointer">
+                                    <div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <hr class="mb-2  text-gray-300" />
+                            <h5 class="uppercase font-thin text-gray-400">Coach Details</h5>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="form-group">
+                                    <label class="text-sm text-gray-500">Coach Type</label>
+                                    <select class="form-control form-control-sm">
+                                        <option>Driver type</option>
+                                        <option>Driver type2</option>
+                                        <option>Driver type3</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-sm text-gray-500">Bunk Configuration</label>
+                                    <input type="text" class="form-control form-control-sm" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 justify-between  gap-2 px-[1.75rem]">
+                    <div class=""> <button type="button" class="btn btn-light-primary fw-bold w-full" (click)="close()">
+                            {{ 'Cancel' | localize }}
+                        </button></div>
+                    <div class=""><button type="submit" class="btn btn-primary fw-bold w-full" [disabled]="">
+                            <i class="fa fa-save"></i>
+                            <span>{{ 'Add Vehicle' | localize }}</span>
+                        </button></div>
+                </div>
+            </div>
+
+            <!-- </form> -->
+        </div>
+    </div>
+</div>

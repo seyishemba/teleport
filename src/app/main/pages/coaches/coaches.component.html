@@ -1,0 +1,374 @@
+<div class="container" style="padding: 20px 50px;">
+    <div class="cssload-container" *ngIf="loading">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div class="flex flex-col my-3 justify-between">
+        <p class="text-3xl font-bold">Coaches</p>
+        <span class="text-gray-700">Manage all coaches here</span>
+    </div>
+    <div class="flex flex-col gap-5 my-5 justify-between container lg:flex-row lg:flex-wrap lg:gap-5"></div>
+    <div class="flex flex-col gap-5 my-5 justify-between lg:flex-row lg:flex-wrap lg:gap-5">
+        <div class="flex flex-no-wrap gap-5" style="justify-content: space-between; width: 70%; border: 1px solid #2d3d50de !important;
+        /* border-radius: 10px; */
+        padding: 5px 10px;
+        background: aliceblue;">
+            <div class="rounded-full flex gap-1 items-center" style="width: 100%;">
+                <!-- component -->
+                <div style="width: 100%;">
+                    <div class="inline-flex flex-col justify-center relative text-gray-500"
+                        style="width: 100%; align-items: center;">
+                        <div class="relative" style="margin-bottom: 0px; width: 100%; z-index: 999;">
+                            <input type="text" (focus)="hideList = false" (blur)="hideList = true"
+                                [(ngModel)]="searchBatch.title" placeholder="Search for coaches"
+                                (input)="onInputChange($event)"
+                                class="p-2 pl-8 rounded border border-gray-200 bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent"
+                                style="width: 100%; color: black; background: aliceblue; padding: 15px;">
+                            <div style="top: 11px; position: absolute; right: 20px; display: flex; gap: 20px;">
+                                <ng-container *ngFor="let t of searchBatch.tags; let i = index">
+
+                                    <button (click)="removeTag(t)"
+                                        class="pill bg-gray-50 border-0 hover:bg-primary300 hover:text-white cursor-pointer"
+                                        style="z-index: 99999 !important; top: 10px; background: #eaf4ff;
+                                z-index: 99999 !important;
+    border: 1.5px solid #2d3d5070 !important;
+    align-items: center;
+    justify-content: center;
+    ">
+                                        <span style="color: black; font-weight: bold; opacity: .8;">{{ t }}</span>
+                                    </button>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <h3 class="mt-2 text-sm" style="position: relative; top: -5px; left: 40px; display: none;">
+                            Gevonden:</h3>
+                        <!-- <ul *ngIf="!hideList" class="bg-white border border-gray-100 w-full mt-2" style="box-shadow: 2px 8px 7px 5px #8080804a; top: 50px; position: absolute; height: 200px; overflow: scroll; z-index: 999; border: 1px solid #0000002b;">
+                            <li *ngFor="let c of filteredList" class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900" style="color: black; opacity: .5; background: #e0f0ff3d;">
+                                <svg class="stroke-current absolute w-4 h-4 left-2 top-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>{{ c.title }}  {{ c | json }}</span>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <div>
+                <button (click)="multiFilter(searchBatch.title)"
+                    class="pill border-0 hover:bg-primary300 hover:text-white cursor-pointer"
+                    style="background: #2d3d50; color: white; padding: 10px 20px; border-radius: 10px; border: 2px solid black; font-size: 15px; gap: 15px;">
+                    <svg class="w-4 h-4 left-2.5 top-3.5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" style="top: 20px; left: 10px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    Search
+                </button>
+            </div>
+            <div>
+                <button (click)="searchBatch.tags.push(addTag())"
+                    class="pill border-0 hover:bg-primary300 hover:text-white cursor-pointer"
+                    style="background: #eaf4ff; color: black; padding: 10px 14px; border-radius: 10px; min-width: 120px; text-align: center; font-weight: bolder; border: 1.3px solid #00000033;">
+                    Add Tags
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="fc-header-toolbar fc-toolbar fc-toolbar-ltr"
+        style="background: #2d3d5012; padding: 20px 20px; display: flex; justify-content: space-between; flex-direction: row-reverse;">
+        <div class="flex gap-2 flex-no-wrap"
+            style="gap: 1px; display: flex; justify-content: flex-end; align-items: center; flex-direction: row;">
+            <div class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; padding: 0;">
+                <!-- <div style="padding: 6px 20px; border: 1px solid #80808082; border-radius: 5px; background: #eaf4ff;">Hide Filter</div> -->
+            </div>
+        </div>
+        <div class="flex gap-2 flex-no-wrap"
+            style="gap: 40px; display: flex; justify-content: flex-end; align-items: center; flex-direction: row;">
+            <div class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; padding: 0;">
+                <div>Filter by:</div>
+            </div>
+            <small class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; margin: 0;">
+                <!-- <input type="checkbox" name="type" #typeCheckBox> -->
+                Coach Type
+                <select [(ngModel)]="searchBatch.type" class="text-sm">
+                    <option value="crew">Crew</option>
+                </select>
+            </small>
+            <small class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; margin: 0;">
+                <!-- <input type="checkbox" name="type" #statusCheckBox (click)="onChange()" value="Availability"> -->
+                Coach Availability
+                <select class="text-sm" [(ngModel)]="searchBatch.availability">
+                    <option value="true">Available</option>
+                    <option value="false">Not Available</option>
+                </select>
+            </small>
+
+
+            <form [formGroup]="hi">
+                <span>
+                    From
+                </span>
+                <!-- <input placeholder="From Date" [(ngModel)]="searchBatch.events.from" type="date"> -->
+                <p-calendar
+                 placeholder="From Date"
+                 formControlName="date" 
+                 dateFormat="dd/mm/yy"
+                 [(ngModel)]="searchBatch.events.from"
+                 ></p-calendar>
+
+                <span>To</span>
+                <!-- <input placeholder="To Date" [(ngModel)]="searchBatch.events.to" type="date"> -->
+                <p-calendar 
+                placeholder="To Date" 
+                [(ngModel)]="searchBatch.events.to"
+                    dateFormat="dd/mm/yy">
+                </p-calendar>
+            </form>
+
+
+            <small
+                style="display: flex; background: #fad7d76b; align-items: center; justify-content: space-between; padding: 2px 10px; font-size: 12px; font-weight: bolder;"
+                (click)="clearFilter()">Clear Filters</small>
+
+            <button (click)="eventFilter();"
+                class="pill bg-gray-50 border-0 hover:bg-primary300 hover:text-white cursor-pointer"
+                style="z-index:  !important; top: 12px; border: 1.5px solid #2d3d5070; background: #eaf4ff;">
+                <span style="color: black; font-weight: bold; opacity: .8;"> Filter</span>
+            </button>
+        </div>
+    </div>
+    <div style="display: absolute; z-index: 9999999 !important; margin-top: -140px;">
+
+        <!-- <h2 style="
+        padding: 20px 10px;
+        background: #f6f8fa;
+    "><br>
+        <br>
+    
+           Main Data source - Coach, Driver, Trailers
+        </h2> -->
+        <div class="card" *ngIf="!hideList" style="
+        margin-top: 60px;
+    position: absolute;
+    z-index: 9999999;
+    box-shadow: 0px 9px 10px 3px grey;">
+            <p-table [value]="coachesList" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+                        <th pSortableColumn="id">Name <p-sortIcon field="id"></p-sortIcon></th>
+                        <th>Type</th>
+                        <th>Trailer</th>
+                        <th>Driver</th>
+                        <th>Tours</th>
+                        <th>
+                            Availability
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.Title }}</td>
+                        <td>{{ product.Type }}</td>
+                        <td>{{ product.Trailer }}</td>
+                        <td>{{ product.Driver }}</td>
+                        <td>{{ product.Tours }}</td>
+                        <td>{{ product.Availability }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="">
+
+        <div style="
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+">
+            <h3 class="" style="    position: absolute;
+margin-top: 210px;
+z-index: 9999;
+margin-left: 30px;
+">{{coachesList.length}} Results found</h3>
+            <div style="display: none">
+                <div style="
+    gap: 30px;
+    display: flex;
+">
+
+
+                    <button (click)="eventFilter();"
+                        class="pill bg-gray-50 border-0 hover:bg-primary300 hover:text-white cursor-pointer"
+                        style="z-index: 99999 !important; top: 12px; border: 1.5px solid #2d3d5070; background: #eaf4ff;">
+                        <span style="color: black; font-weight: bold; opacity: .8;"> Filter</span>
+                    </button>
+                    <small
+                        style="display: flex; background: #fad7d76b; align-items: center; justify-content: space-between; padding: 2px 10px; font-size: 12px; font-weight: bolder;"
+                        (click)="clearFilter()">Clear Filters</small>
+
+                    <!-- <button  (click)="defaultView = !defaultView" class="pill bg-gray-50 border-0 hover:bg-primary300 hover:text-white cursor-pointer" style="z-index: 99999 !important; top: 12px; border: 1.5px solid #2d3d5070; background: #eaf4ff;">
+        <span style="color: black; font-weight: bold; opacity: .8;"> Toggle View</span>
+    </button> -->
+                </div>
+            </div>
+
+        </div>
+        <div id="popup" (click)="startPop()" style="z-index: 99999 !important;z-index: 99999 !important;
+left: 862px;
+top: 706px;
+position: absolute;
+background: aliceblue;
+display: none;
+padding: 30px;
+border: 1px solid #426084 !important;
+border-radius: 8px;
+box-shadow: 0px 4px 10px 4px #243a5391;">Showing info for event on: </div>
+
+        <div class="card mt-2" [ngStyle]="defaultView ? {'display': 'none'} :  {'display': 'block'}">
+
+            <p-table [value]="events" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="code">ID <p-sortIcon field="code"></p-sortIcon></th>
+                        <th>Event Type</th>
+                        <th>Title</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Resource ID</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr *ngIf="product.type === 'Coach'" style="background: #0094ff38">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.type }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.start }}</td>
+                        <td>{{ product.end }}</td>
+                        <td>{{ product.resourceId }}</td>
+                    </tr>
+                    <tr *ngIf="product.type === 'Driver'" style="background: #ffd60069">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.type }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.start }}</td>
+                        <td>{{ product.end }}</td>
+                        <td>{{ product.resourceId }}</td>
+                    </tr>
+
+                    <tr *ngIf="product.type === 'Trailer'" style="background: ">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.type }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.start }}</td>
+                        <td>{{ product.end }}</td>
+                        <td>{{ product.resourceId }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <div class="card mt-4" [ngStyle]="defaultView ? {'display': 'none'} :  {'display': 'block'}">
+            <p-table [value]="filteredEvents" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="code">ID <p-sortIcon field="code"></p-sortIcon></th>
+                        <th>Event Type</th>
+                        <th>Title</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Resource ID</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr *ngIf="product.type === 'Coach'" style="background: #0094ff38">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.type }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.start }}</td>
+                        <td>{{ product.end }}</td>
+                        <td>{{ product.resourceId }}</td>
+                    </tr>
+                    <tr *ngIf="product.type === 'Driver'" style="background: #ffd60069">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.type }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.start }}</td>
+                        <td>{{ product.end }}</td>
+                        <td>{{ product.resourceId }}</td>
+                    </tr>
+
+                    <tr *ngIf="product.type === 'Trailer'" style="background: ">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.type }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.start }}</td>
+                        <td>{{ product.end }}</td>
+                        <td>{{ product.resourceId }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div [ngStyle]="!defaultView ? {'display': 'none'} :  {'display': 'block'}">
+        <div class="flex" style="gap: 40px;">
+            <!-- <div>
+          <p>Resources</p>
+          
+        </div> -->
+            <div style="display: block; margin-top: 180px">
+                <div class="card" style="padding: 20px;width: 1000px; 
+          display: flex;
+          flex-direction: row;">
+                    <div>
+                        <div class="card" style="padding: 0px; gap: 30px;display: flex;
+    background: aliceblue;
+    padding: 0;
+    flex-direction: row;
+    margin-top: 80px;">
+                            <!-- <button *ngIf="currentTimeline == 'coaches'" style="padding: 10px 20px; border-bottom: 2px solid green !important; background: aliceblue;">Coaches</button> -->
+                            <button style="padding: 10px 10px;">Coaches</button>
+                            <button style="padding: 10px 20px;">Trailer</button>
+                            <button style="padding: 10px 20px;">Drivers</button>
+                        </div>
+                        <div *ngFor="let r of coachesList; let i = index" class="card" style="padding: 0px;
+              gap: 30px;
+              display: flex;
+              padding: 0;
+              flex-direction: row;
+              margin-bottom: 0px;
+              align-items: center;
+              border-radius: 0px;
+              height: 31px;" [ngStyle]="i%2 === 0 ? {'background': 'white'} :  {'background': '#ebebeb'}">
+                            <!-- <button *ngIf="currentTimeline == 'coaches'" style="padding: 10px 20px; border-bottom: 2px solid green !important; background: aliceblue;">Coaches</button> -->
+                            <button style="padding: 10px 10px;     width: 80px;
+                padding: 4px;
+                overflow: hidden;
+                height: 20px;">{{r.Title}}</button>
+                            <button style="padding: 10px 10px;     width: 80px;
+                padding: 4px;
+                overflow: hidden;
+                height: 20px;">{{r.Trailer}}</button>
+                            <button style="padding: 10px 10px;     width: 80px;
+                padding: 4px;
+                overflow: hidden;
+                height: 20px;">{{r.Driver}}</button>
+                        </div>
+                    </div>
+
+                    <ng-container>
+                        <div id="filteredTimeline" class="h-[900px] w-[900px] "
+                            [ngStyle]="filteredEvents !== null ? {'display': 'block !important'} :  {'display': 'none !important'}">
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  <ng-container style="display: none">
+                <div id="timeline"  class="h-full" [ngStyle]="filteredEvents == null ? {'display': 'none !important'} :  {'display': 'block !important'}">
+                </div>
+            </ng-container> -->

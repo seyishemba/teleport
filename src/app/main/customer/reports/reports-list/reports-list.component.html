@@ -1,0 +1,38 @@
+<app-main-page [pageTitle]="'Reports'"
+               [filterPills]="filterPillsList"
+               (addFilterPill)="onAddFilterPill($event)"
+               [hasAddEntityCTA]="true"
+               [addEntityCTALabel]="'New Report'"
+               [hasTable]="true"
+               [dropDownSortingList]="dropDownSortingList"
+               [emptyTableIcon]="'request_quote'"
+               (addEntity)="onOpenAddReportModal()"
+               (removeFilterPill)="onRemoveFilterPill($event)"
+               [columns]="tableColumns"
+               [tableData]="reportList">
+
+    <pilgrim-table *ngIf="reportList.length > 0" [tableContainerClass]="''" [tableClass]="'w-full text-sm'"
+    [tableHeadClass]="'bg-gray-100'" [columns]="tableColumns"
+    [columnTemplates]="{ pin: pinColumn, status: statusColumn, type:typeColumn, action:actionColumn }"
+    [dataSource]="reportList"
+    [tableBodyRowClass]="'p-6 transition duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl'"></pilgrim-table>
+
+    <ng-template #pinColumn>
+        <img src="../../../../assets/icons/pin.svg" alt="">
+    </ng-template>
+
+    <ng-template #statusColumn let-item="item">
+        <app-state-pill *ngIf="item.status == 'Signed'" [pillText]="item.status"
+                        [pillStyle]="'table-state-pill table-state-pill-success'"></app-state-pill>
+        <app-state-pill *ngIf="item.status == 'Needs Approval'" [pillText]="item.status"
+                        [pillStyle]="'table-state-pill table-state-pill-error'"></app-state-pill>
+    </ng-template>
+
+    <ng-template #typeColumn let-item="item">
+        <span class="capitalize">{{item.type}}</span>
+    </ng-template>
+
+    <ng-template #actionColumn>
+        <span>Download</span>
+    </ng-template>
+</app-main-page>

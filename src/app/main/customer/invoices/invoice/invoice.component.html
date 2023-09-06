@@ -1,0 +1,72 @@
+<app-main-page [pageTitle]="'Invoices'" [hasTable]="true" [emptyTableIcon]="'request_quote'" [tableData]="invoiceList">
+    <!-- <div class="flex flex-col gap-10 max-w-[500px]">
+        <div></div>
+        <div class="flex justify-between gap-5 pb-0">
+            <div class="flex flex-col">
+                <span>Invoice#<span class="text-primary300">{{invoice?.id}}</span></span>
+                <span>{{invoice?.tour?.name}}</span>
+            </div>
+            <div class="flex flex-col">
+                <app-state-pill *ngIf="invoice?.status == 'Paid'" [pillText]="invoice?.status"
+                    [pillStyle]="'table-state-pill table-state-pill-success'"></app-state-pill>
+                <app-state-pill *ngIf="invoice?.status == 'Unpaid'" [pillText]="invoice?.status"
+                    [pillStyle]="'table-state-pill table-state-pill-error'"></app-state-pill>
+            </div>
+        </div>
+        <hr>
+        <div class="flex justify-between gap-5 pt-0">
+            <div class="flex flex-col">
+                <span>Attn:</span>
+                <span>{{invoice?.type}}</span>
+            </div>
+            <div class="flex flex-col">
+                <span>Issued On:</span>
+                <span>{{invoice?.issuanceDate}}</span>
+            </div>
+            <div class="flex flex-col">
+                <span>Due On:</span>
+                <span>{{invoice?.dueDate}}</span>
+            </div>
+            <div class="flex flex-col">
+                <span>Amount:</span>
+                <span>{{invoice?.totalAmount}}</span>
+            </div>
+        </div>
+        <div>
+            <span>Summary</span>
+            <p>
+                {{invoice?.summary}}
+            </p>
+        </div>
+        <div class="flex gap-4 mt-5">
+            <div class="flex flex-col">
+                <span class="text-gray-600 text-sm">Tour details:</span>
+                <a href="client/tours">
+                    <div class="flex items-center gap-1">
+                        <span class="text-primary300">View Tour</span>
+                        <img src="../../../../assets/icons/link-external.svg" class="w-4 h-4">
+                    </div>
+                </a>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-gray-600 text-sm">Contract details:</span>
+                <a href="client/contracts">
+                    <div class="flex items-center gap-1">
+                        <span class="text-primary300">View Contract</span>
+                        <img src="../../../../assets/icons/link-external.svg" class="w-4 h-4">
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex gap-5 justify-center">
+            <button class="btn btn-outlined flex gap-2 btn-small">
+                <mat-icon class="text-primary300">edit</mat-icon>
+                <span>Edit</span>
+            </button>
+            <button class="btn btn-filled btn-medium">
+                Submit
+            </button>
+        </div>
+    </div> -->
+</app-main-page>

@@ -1,0 +1,165 @@
+<div appBsModal #requestTimeOff="bs-modal"
+    style="width: 40%; max-width: 80%; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    class="modal fade" tabindex="-1" role="dialog" size="md" aria-labelledby="requestTimeOff" aria-hidden="true"
+    [config]="{ backdrop: 'static', keyboard: !saving }">
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div align="center">
+                    <p class="w-1/2 font-bold text-lg border-b-[1px] border-gray-500">Request Time Off</p>
+                </div>
+
+                <div class=" mt-10">
+                    <form [formGroup]="requestInfo">
+                        <p class="text-md my-8">Type of request <span class="text-red-700">*</span></p>
+                        <div class="w-full mb-16 flex gap-10 text-md text-gray-600">
+                            <div class="w-[50%] flex-col">
+                                <label class="flex mb-4 gap-4 text-md">
+                                    <input type="radio" name="personalLeave" value="Personal Leave"
+                                        formControlName="leave">
+                                    <span>Personal Leave</span>
+                                </label>
+                                <label class="flex mb-4 gap-4">
+                                    <input type="radio" name="bereavementLeave" value="Bereavement Leave"
+                                        formControlName="leave">
+                                    <span>Bereavement Leave</span>
+                                </label>
+                                <label class="flex mb-4 gap-4">
+                                    <input type="radio" name="juryDuty" value="Jury Duty" formControlName="leave">
+                                    <span>Jury Duty</span>
+                                </label>
+                            </div>
+                            <div class="w-[50%] flex-col">
+                                <label class="flex mb-4 gap-4">
+                                    <input type="radio" name="familyLeave" value="Family Leave" formControlName="leave">
+                                    <span>Family And Medial Leave</span>
+                                </label>
+                                <label class="flex mb-4 gap-4">
+                                    <input type="radio" name="militaryLeave" value="Military Leave"
+                                        formControlName="leave">
+                                    <span>Military Leave</span>
+                                </label>
+                                <label class="flex mb-4 gap-4">
+                                    <input type="radio" name="others" value="Others" formControlName="leave">
+                                    <span class=" border-b-[1px] border-gray-500">Other</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="w-[95%] text-center my-3">
+                            <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                                    requestInfo?.get('leave')?.touched &&
+                                                    requestInfo?.get('leave')?.invalid
+                                                    ">
+                                Type of request is required
+                            </span>
+                        </div>
+
+                        <div class="w-full mb-16 flex gap-10 text-md text-gray-600">
+                            <div class="w-[50%]">
+                                <label for="startDate" class="w-full py-2 relative">
+                                    {{ 'Start Date' | localize }} <span class="text-red-700">*</span>
+                                    <input id="startDate" type="text" #startDate name="startDate" class="form-control"
+                                        bsDatepicker datePickerLuxonModifier [bsConfig]="{ adaptivePosition: true }"
+                                        formControlName="startDate" placeholder="Start date" />
+                                    <mat-icon for="startDate" class="absolute top-10 right-3">calendar_today</mat-icon>
+                                </label>
+                                <div class="w-[95%] text-center my-3">
+                                    <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                                            requestInfo?.get('startDate')?.touched &&
+                                                            requestInfo?.get('startDate')?.invalid
+                                                            ">
+                                        Please enter start date
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-[50%]">
+                                <label for="endDate" class="w-full relative py-2">{{ 'End Date' | localize }} <span
+                                        class="text-red-700">*</span>
+
+                                    <input id="endDate" type="text" #endDate name="endDate" class="form-control"
+                                        bsDatepicker datePickerLuxonModifier [bsConfig]="{ adaptivePosition: true }"
+                                        formControlName="endDate" placeholder="End date" />
+                                    <mat-icon class="absolute top-10 right-3">calendar_today</mat-icon>
+                                </label>
+
+                                <div class="w-[95%] text-center my-3">
+                                    <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                                            requestInfo?.get('endDate')?.touched &&
+                                                            requestInfo?.get('endDate')?.invalid
+                                                            ">
+                                        Please enter end date
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full mb-16 flex gap-10 text-md text-gray-600">
+                            <div class="w-full">
+                                <label for="availableAt" class="w-full relative py-2">{{ 'End Date' | localize }} <span
+                                        class="text-red-700">*</span>
+
+                                    <input id="availableAt" type="text" #availableAt name="availableAt"
+                                        class="form-control" bsDatepicker datePickerLuxonModifier
+                                        [bsConfig]="{ adaptivePosition: true }" formControlName="availableAt"
+                                        placeholder="End date" />
+                                    <mat-icon class="absolute top-10 right-3">calendar_today</mat-icon>
+                                </label>
+
+                                <div class="w-[95%] text-center my-3">
+                                    <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                                            requestInfo?.get('availableAt')?.touched &&
+                                                            requestInfo?.get('availableAt')?.invalid
+                                                            ">
+                                        Please enter availability time
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full mb-16 text-md text-gray-600">
+                            <div class="w-full ">
+                                <label class="text-base w-full" for="groupName">
+                                    <span class="py-2">Comment <span class="text-red-700">*</span></span>
+                                    <textarea formControlName="comments" name="groupName" rows="5" class="
+                                            w-full
+                                            px-[20px]
+                                            py-[10px]
+                                            text-sm
+                                            font-light
+                                            border border-gray-300
+                                            rounded-md
+                                            focus:outline-none focus:shadow-outline
+                                        " type="text" formControlName="comments"></textarea>
+
+                                </label>
+                                <div class="w-[95%] text-center my-3">
+                                    <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                                            requestInfo?.get('comments')?.touched &&
+                                                            requestInfo?.get('comments')?.invalid
+                                                            ">
+                                        Please enter comments
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="w-full text-md text-gray-600">
+                            <div class="flex w-full justify-end gap-4">
+                                <button class="my-btn btn-medium btn-outlined" (click)="modal.hide()">
+                                    <span>Cancel</span>
+                                </button>
+                                <button class="my-btn btn-medium btn-filled" (click)="submit()">
+                                    <span>Submit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

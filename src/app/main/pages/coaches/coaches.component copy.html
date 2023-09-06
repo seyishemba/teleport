@@ -1,0 +1,234 @@
+<div style="padding: 20px 50px;" class="" id="">
+    <div *ngIf="loading" class="cssload-container">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div class="flex my-3 justify-between flex-wrap" style="display: flex; flex-direction: column;">
+        <p class="text-3xl">Coaches</p>
+        <span class="text-gray-700">Manage all coaches here</span>
+    </div>
+    <div  class="flex flex-col gap-5 my-5 justify-between lg:flex-row lg:flex-wrap lg:gap-5" style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        gap: 20px;
+        align-items: center;
+    ">
+        <div  class="flex flex-no-wrap gap-5" style="justify-content: space-between; width: 100%;">
+            <div  class="rounded-full flex gap-1 items-center" style="
+                width: 100%;
+            ">
+                <!-- component -->
+                <div class="" style="
+                    width: 100%;
+                ">
+                    <div class="inline-flex flex-col justify-center relative text-gray-500" style="
+                        width: 100%;
+                        align-items: center;
+                    ">
+                        <div class="relative" style="
+                            margin-bottom: 0px;
+                            width: 100%;
+                            z-index: 999;
+                        ">
+                            <input type="text" [(ngModel)]="searchParams" placeholder="Search for coaches" class="p-2 pl-8 rounded border border-gray-200 bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" placeholder="search..." value="" (focus)="hideList = false" (blur)="hideList = true" style="
+                                width: 100%;
+                                color: black;
+                                background: aliceblue;
+                                padding: 15px;
+                            "> 
+                            <div style="
+                                top: 11px;
+                                position: absolute;
+                                right: 20px;
+                                display: flex;
+                                gap: 20px;
+                            ">
+                                <button *ngFor="let t of this.searchBatch.tags; let i = index" (click)="removeTag(t)" class="pill bg-gray-50 border-0 hover:bg-primary300 hover:text-white cursor-pointer" style="
+                                    z-index: 99999 !important;
+                                    top: 12px;
+                                    border: 1.5px solid #2d3d5070;
+                                    background: #eaf4ff;
+                                ">
+                                    <span  style="
+                                        color: black;
+                                        font-weight: bold;
+                                        opacity: .8;
+                                    ">{{ t }}</span>
+                                    <!-- <mat-icon  role="img" class="mat-icon notranslate hover:text-white material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" style="
+                                        color: #000000cf;
+                                    ">cancel</mat-icon> -->
+                                </button>
+                            </div>     
+                        </div>
+                        <h3 class="mt-2 text-sm" style="
+                            position: relative;
+                            top: -5px;
+                            left: 40px;
+                            display: none;
+                        ">Gevonden:</h3>
+                        <ul *ngIf="!hideList" class="bg-white border border-gray-100 w-full mt-2" style="
+                            box-shadow: 2px 8px 7px 5px #8080804a;
+                            top: 50px;
+                            position: absolute;
+                            height: 200px;
+                            overflow: scroll;
+                            z-index: 999;
+                            border: 1px solid #0000002b;
+                        ">
+                            <!-- <li *ngFor="let c of this.filteredList">{{c.title}} {{ c | json}} <hr><br></li> -->
+                            <li *ngFor="let c of this.filteredList" class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900" style="
+                                color: black;
+                                opacity: .5;
+                                background: #e0f0ff3d;
+                            ">
+                                <svg class="stroke-current absolute w-4 h-4 left-2 top-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>{{c.title}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="
+        display: flex;
+        gap: 20px;
+    ">
+        <div>
+            <button (click)="multiFilter(searchParams)"  class="pill border-0 hover:bg-primary300 hover:text-white cursor-pointer" style="
+                background: #2d3d50;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 10px;
+                border: 2px solid black;
+                font-size: 15px;
+                gap: 15px;
+            ">
+                <svg class="w-4 h-4 left-2.5 top-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="
+                    top: 20px;
+                    left: 10px;
+                ">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                Search
+            </button>
+        </div>
+        <div>
+            <button (click)="searchBatch.tags.push(addTag())" class="pill border-0 hover:bg-primary300 hover:text-white cursor-pointer" style="
+                background: #eaf4ff;
+                color: black;
+                padding: 10px 14px;
+                border-radius: 10px;
+                min-width: 120px;
+                text-align: center;
+                font-weight: bolder;
+                border: 1.3px solid #00000033;
+            ">
+                Add Tags
+            </button>
+        </div>
+    </div>
+</div>
+<div  class="fc-header-toolbar fc-toolbar fc-toolbar-ltr" style="background: #2d3d5012; padding: 20px 20px; display: flex; justify-content: space-between; flex-direction: row-reverse;">
+    <div   class="flex gap-2 flex-no-wrap" style="gap: 1px; display: flex; justify-content: flex-end; align-items: center; flex-direction: row;">
+        <div   class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; padding: 0;">
+            <!-- 
+            <div  style="
+                padding: 6px 20px;
+                border: 1px solid #80808082;
+                border-radius: 5px;
+                background: #eaf4ff;
+            ">Hide Filter</div> -->
+        </div>
+    </div>
+    <div   class="flex gap-2 flex-no-wrap" style="gap: 40px; display: flex; justify-content: flex-end; align-items: center; flex-direction: row;">
+        <div   class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; padding: 0;">
+            <div >Filter by:</div>
+        </div>
+        <small   class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; margin: 0;">
+            <input type="checkbox" name="type" #typeCheckBox>Coach Type
+            <select   class="bg-transparent text-sm">
+                <option  >Crew</option>
+            </select>
+        </small>
+        <small   class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="display: flex; margin: 0;">
+            <input type="checkbox" name="type" #statusCheckBox (click)="onChange()" value="Availability"> Coach Availability
+            <select   class="bg-transparent text-sm">
+                <option  >Available</option>
+            </select>
+        </small>
+        <small  style="display: flex; background: #fad7d76b; align-items: center; justify-content: space-between; padding: 2px 10px; font-size: 12px; font-weight: bolder;" (click)="clearFilter()">Clear Filters 
+            <!--     
+            <mat-icon role="img"   aria-hidden="true" data-mat-icon-type="font" class="mat-icon notranslate hover:text-white material-icons mat-ligature-font mat-icon-no-color" style="color: #000000cf;">cancel</mat-icon> -->
+        </small>
+    </div>
+</div>
+<br>
+<br>
+<!-- <div class="fc-header-toolbar fc-toolbar fc-toolbar-ltr" style="
+    background: #2d3d5012;
+    margin-top: 50px;
+    padding: 30px 20px;
+"><div  class="flex gap-2 flex-no-wrap" style="
+    gap: 1px;
+    display: flex;
+"><div  class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+">
+    <div>Filter by:
+    </div>
+     <small style="
+    display: flex;
+    background: #fad7d76b;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: bolder;
+">Clear Filters <mat-icon  role="img" class="mat-icon notranslate hover:text-white material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" style="
+    color: #000000cf;
+">cancel</mat-icon>
+    </small>
+</div><small  class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="
+    display: flex;
+    flex-direction: column;
+    font-weight: 900;
+    /* margin: 0; */
+">Coach Status
+<select  class="bg-transparent text-sm"><option >Available</option></select></small><small  class="flex gap-2 items-left px-2 pl- py-1 rounded-full" style="
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+">Coach Type
+<select  class="bg-transparent text-sm"><option >Medium</option></select></small></div><div class="fc-toolbar-chunk"><h2 class="" id="" style="
+    text-align: center;
+    font-size: 14px;
+">Timeline</h2><h2 class="fc-toolbar-title" id="fc-dom-1" style="
+    text-align: right;
+">February – April 2023</h2></div><div class="fc-toolbar-chunk"><div class="fc-button-group"><button type="button" title="day view" aria-pressed="false" class="fc-resourceTimelineDay-button fc-button fc-button-primary">day</button><button type="button" title="week view" aria-pressed="false" class="fc-resourceTimelineWeek-button fc-button fc-button-primary" style="
+">week</button><button type="button" title="3 Months view" aria-pressed="true" class="fc-resourceTimelineThreeDays-button fc-button fc-button-primary fc-button-active">3 Months</button></div></div></div> -->
+<!-- <button (click)="Rerender()" class="pill border-0 hover:bg-primary300 hover:text-white cursor-pointer" style="
+    background: #eaf4ff;
+    color: black;
+    padding: 10px 14px;
+    border-radius: 10px;
+    min-width: 120px;
+    text-align: center;
+    font-weight: bolder;
+    border: 1.3px solid #00000033;
+">
+    <input type="checkbox">
+    Rerender
+</button> -->
+<div id="calendar" (click)="render()" class="h-full">
+    <!-- <div id="calendar" (click)="showDetails = !showDetails" class="h-full"> -->
+    <!-- <app-modal *ngIf="showDetails">
+       <app-details></app-details>
+    </app-modal> -->
+</div>

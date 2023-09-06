@@ -1,0 +1,115 @@
+<div appBsModal #createModal="bs-modal" (onShown)="onShown()"
+    style="width: 50%; max-width: 80%; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    class="modal fade" tabindex="-1" role="dialog" size="md" aria-labelledby="createModal" aria-hidden="true"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- <form #tenantCreateForm="ngForm" role="form" novalidate class="form-validation" *ngIf="active"
+                (submit)="save()"> -->
+
+            <div class="modal-body flex flex-col gap-y-6">
+                <div class="  flex flex-col gap-y-4">
+                    <div class="flex justify-between gap-y-3">
+                        <h3 class="text-black text-lg font-bold"> Vehicle Details</h3>
+                        <!-- <div class="flex  gap-x-3">
+                            <div>
+                                <div
+                                    class=" bg-[#CED4DA] hover:bg-red-600 cursor-pointer rounded-full w-6 h-6 p-2 flex items-center justify-center ">
+                                    <mat-icon class="material-symbols-outlined text-[19px] text-white">
+                                        close
+                                    </mat-icon>
+                                </div>
+                            </div>
+                        </div> -->
+
+                    </div>
+                    <div class="flex gap-x-3">
+                        <div class="bg-[#8F8F8F]/20 h-20 w-20 rounded-md"></div>
+                        <div>
+                            <h4 class="mb-0 font-semibold">Vehicle Name</h4>
+                            <span class="text-xs text-gray-700">Ace Express</span>
+                            <div class="flex gap-x-3">
+                                <div class="bg-[#8F8F8F]/20 h-8 w-8 rounded-md"></div>
+                                <div class="bg-[#8F8F8F]/20 h-8 w-8 rounded-md"></div>
+                                <div class="bg-[#8F8F8F]/20 h-8 w-8 rounded-md"></div>
+                                <div class="bg-[#8F8F8F]/20 h-8 w-8 rounded-md"></div>
+                                <div class="bg-[#8F8F8F]/20 h-8 w-8 rounded-md"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-y-3 gap-x-2">
+                        <div>
+                            <h5>Name</h5>
+                            <span class="uppercase text-gray-400 text-sm">Viking</span>
+                        </div>
+                        <div>
+                            <h5>Year</h5>
+                            <span class="uppercase text-gray-400 text-sm">2007</span>
+                        </div>
+                        <div>
+                            <h5>Vehicle Type</h5>
+                            <span class="uppercase text-gray-400 text-sm">Coach</span>
+                        </div>
+                        <div>
+                            <h5>Door Code</h5>
+                            <span class="uppercase text-gray-400 text-sm">928189</span>
+                        </div>
+                        <div>
+                            <h5>Style</h5>
+                            <span class="uppercase text-gray-400 text-sm">Standard</span>
+                        </div>
+                        <div>
+                            <h5>Capacity</h5>
+                            <span class="uppercase text-gray-400 text-sm">20</span>
+                        </div>
+                        <div>
+                            <h5>Price Per Day</h5>
+                            <span class="uppercase text-gray-400 text-sm">77c2GA</span>
+                        </div>
+                        <div>
+                            <h5>License Plate</h5>
+                            <span class="uppercase text-gray-400 text-sm">a034-ba</span>
+                        </div>
+                        <div>
+                            <h5>Make</h5>
+                            <span class="uppercase text-gray-400 text-sm">Prevost</span>
+                        </div>
+                        <div>
+                            <h5>Vin</h5>
+                            <span class="uppercase text-gray-400 text-sm">2PCY3349161028</span>
+                        </div>
+                        <div>
+                            <h5>Trim</h5>
+                            <span class="uppercase text-gray-400 text-sm">92</span>
+                        </div>
+                        <div>
+                            <h5>Owner</h5>
+                            <span class="uppercase text-gray-400 text-sm">TJC</span>
+                        </div>
+                        <div>
+                            <h5>Coach Type</h5>
+                            <span class="uppercase text-gray-400 text-sm">Non-slides</span>
+                        </div>
+                        <div>
+                            <h5>Bunk Configuration</h5>
+                            <span class="uppercase text-gray-400 text-sm">TJC</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="grid grid-cols-2 justify-between  gap-x-2 ">
+                    <div class=""> <button type="button" class="btn btn-danger fw-bold w-full" (click)="close()">
+                            <i class="fa fa-trash text-white"></i> {{ 'Delete' | localize }}
+                        </button></div>
+                    <div class=""><button type="submit" class="btn btn-primary fw-bold w-full" [disabled]="">
+                            <i class="fa fa-pen"></i>
+                            <span>{{ 'Edit Vehicle' | localize }}</span>
+                        </button></div>
+                </div>
+            </div>
+
+            <!-- </form> -->
+        </div>
+    </div>
+</div>

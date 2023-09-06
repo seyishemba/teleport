@@ -1,0 +1,192 @@
+<form class="flex flex-col gap-4" [formGroup]="personalInfo" class="w-full gap-3 flex flex-col z-[9999]">
+    <h2 class="py-5">Personal Information</h2>
+    <div class="flex gap-4">
+        <div class="w-full">
+            <div class="mb-2">
+                <label for="fullName">{{ 'FullName' | localize }} *</label>
+                <input id="fullName" type="text" name="fullName" class="form-control" formControlName="fullName"
+                    required maxlength="64" />
+
+                <div class="w-[95%] text-center my-3">
+                    <span class="mt-1 text-error text-xs font-normal"
+                        *ngIf="personalInfo?.get('fullName')?.touched && personalInfo?.get('fullName')?.invalid">
+                        Please enter full name
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="nickName">{{ 'NickName' | localize }} *</label>
+            <input id="nickName" type="text" name="nickName" class="form-control" formControlName="nickName" required
+                maxlength="64" />
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="personalInfo?.get('nickName')?.touched && personalInfo?.get('nickName')?.invalid">
+                    Please enter nick name
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex gap-4">
+        <div class="w-full relative">
+            <label class="w-full relative" for="dateOFBirth">{{ 'Date of birth' | localize }} <span
+                    class="text-red-700">*</span>
+
+                <input id="dateOFBirth" type="text" #dateOFBirth name="dateOFBirth"
+                class="form-control" bsDatepicker
+                    [maxDate] = "maxDate"
+                    datePickerLuxonModifier [bsConfig]="{ adaptivePosition: true }"
+                    formControlName="dateOFBirth"
+                    placeholder="Date of birth" />
+
+                <mat-icon class="absolute top-8 right-3">calendar_today</mat-icon>
+            </label>
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                        personalInfo?.get('dateOFBirth')?.touched &&
+                                        personalInfo?.get('dateOFBirth')?.invalid
+                                        ">
+                    Please enter date
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="shirtSize">{{ 'Shirt Size' | localize }}</label>
+            <select id="shirtSize" name="shirtSize" class="form-select" formControlName="shirtSize"
+                (blur)="onBlur('shirtSizeTouch')">
+                <option *ngFor="let option of shirtOptions" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                            dropDownTouched?.shirtSizeTouch &&
+                                    personalInfo?.get('shirtSize')?.value === null
+                                ">
+                    Please provide shirt size
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="flex gap-4">
+        <div class="w-full">
+            <label for="email">{{'Email' | localize}} *</label>
+            <input id="email" type="email" formControlName="email" name="email" class="form-control" required
+                pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" maxlength="256" />
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="personalInfo?.get('email')?.touched && personalInfo?.get('email')?.invalid">
+                    Please enter you email address
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="address">{{ 'Address' | localize }} *</label>
+            <input id="address" type="text" name="address" class="form-control" formControlName="address" required
+                maxlength="64" />
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="personalInfo?.get('address')?.touched && personalInfo?.get('address')?.invalid">
+                    Please enter Address
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex gap-4">
+        <div class="w-full">
+            <label>{{'Phone Number' | localize}} *</label>
+            <input type="tel" class="form-control" formControlName="phoneNumber" required />
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="personalInfo?.get('phoneNumber')?.touched && personalInfo?.get('phoneNumber')?.invalid">
+                    Please enter a valid phone number
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label>{{'Home Number' | localize}} *</label>
+            <input type="tel" class="form-control" formControlName="homeNumber" required />
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="personalInfo?.get('homeNumber')?.touched && personalInfo?.get('homeNumber')?.invalid">
+                    Please enter a valid phone number
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="flex gap-4">
+        <div class="w-full relative">
+            <span class=" ">Upload image</span>
+            <label class="text-base w-full h-full">
+                <span class="
+                            flex
+                            items-center
+                            justify-center
+                            w-full
+                            px-2
+                            transition
+                            bg-white
+                            border-[1px] border-gray-300
+                            rounded-md
+                            appearance-none
+                            cursor-pointer
+                            hover:border-gray-400
+                            focus:outline-none
+                        ">
+                    <span class="flex w-full">
+                        <span class="p-3 w-full h-12 flex justify-between items-center rounded-full">
+                            <span *ngIf="!file" class="top-3 text-sm text-gray-500">Select Image</span>
+                            <mat-icon *ngIf="!file" class="right-3 top-3 text-lg">upload</mat-icon>
+                            <span *ngIf="file">{{file.name}}</span>
+                        </span>
+                        <input (change)="onAddMedia($event)" type="file" name="file_upload" class="hidden"
+                            accept=".jpg, .jpeg, .png, .gif, .pdf" />
+                    </span>
+                </span>
+            </label>
+        </div>
+
+        <div class="w-full">
+            <label for="cdlClass">{{ 'CDL Class' | localize }}</label>
+            <select id="cdlClass" name="cdlClass" class="form-select" formControlName="cdlClass"
+                (blur)="onBlur('cdlClassTouch')">
+                <option *ngFor="let option of starBunkOptions" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                    dropDownTouched?.cdlClassTouch &&
+                                    personalInfo?.get('cdlClass')?.value === null
+                                ">
+                    Please provide cdl class
+                </span>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div class="flex w-full mt-5 justify-center">
+    <button class="my-btn btn-large btn-filled gap-2" (click)="onNext()">
+        <span>NEXT</span>
+    </button>
+</div>

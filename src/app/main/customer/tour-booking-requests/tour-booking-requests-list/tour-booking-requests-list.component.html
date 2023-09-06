@@ -1,0 +1,102 @@
+<div class="relative">
+    <app-main-page
+        [pageTitle]="'Requests'"
+        [filterPills]="filterPillsList"
+        (addFilterPill)="onAddFilterPill($event)"
+        [hasAddEntityCTA]="true"
+        [addEntityCTALabel]="'REQUEST QUOTE'"
+        [hasTable]="true"
+        [tableData]="bookings"
+        [dropDownSortingList]="dropDownSortingList"
+        [emptyTableIcon]="'directions_bus'"
+        (addEntity)="onAddEntity()"
+        (removeFilterPill)="onRemoveFilterPill($event)"
+        (searchTable)="onSearchTable($event)"
+        class="relative"
+    >
+        <pilgrim-table
+            *ngIf="bookings.length > 0"
+            [tableContainerClass]="''"
+            [tableClass]="'w-full text-sm'"
+            [tableHeadClass]="'bg-gray-100'"
+            [columns]="tableColumns"
+            [columnTemplates]="{
+                pinned: pinnedColumn,
+                status: statusColumn,
+                primaryDriver: primarydriverColumn,
+                coDriver: codriverColumn,
+                'contract.status': contractStatus,
+                view: viewColumn
+            }"
+            [dataSource]="bookings"
+            (onRowClick)="onViewClick($event)"
+            [tableBodyRowClass]="'p-6 transition duration-300 transform-gpu hover:-translate-y-1 hover:shadow-xl'"
+        ></pilgrim-table>
+
+        <ng-template #pinnedColumn let-item="item">
+            <img src="../../../../assets/icons/pin.svg" alt="" />
+        </ng-template>
+
+        <ng-template #statusColumn let-item="item">
+            <app-state-pill
+                *ngIf="item.status == 'completed' || item.status == 'submitted'"
+                [pillText]="item.status"
+                [pillStyle]="'table-state-pill table-state-pill-success'"
+            ></app-state-pill>
+            <app-state-pill
+                *ngIf="item.status == 'pending' || item.status == 'in review'"
+                [pillText]="item.status"
+                [pillStyle]="'table-state-pill table-state-pill-warning'"
+            ></app-state-pill>
+            <app-state-pill
+                *ngIf="item.status == 'rejected'"
+                [pillText]="item.status"
+                [pillStyle]="'table-state-pill table-state-pill-error'"
+            ></app-state-pill>
+        </ng-template>
+
+        <ng-template #contractStatus let-item="item">
+            <app-state-pill
+                *ngIf="item.contract.status == 'Signed'"
+                [pillText]="item.contract.status"
+                [pillStyle]="'table-state-pill table-state-pill-success'"
+            ></app-state-pill>
+            <app-state-pill
+                *ngIf="item.contract.status == 'Draft'"
+                [pillText]="item.contract.status"
+                [pillStyle]="'table-state-pill table-state-pill-warning'"
+            ></app-state-pill>
+            <app-state-pill
+                *ngIf="item.contract.status == 'Expired'"
+                [pillText]="item.contract.status"
+                [pillStyle]="'table-state-pill table-state-pill-error'"
+            ></app-state-pill>
+        </ng-template>
+
+        <ng-template #primarydriverColumn let-item="item">
+            <div class="flex gap-1 items-center">
+                <img
+                    [src]="item.coachAssignments[0]?.primaryDriver?.profileImage"
+                    class="h-10 w-10 rounded-full"
+                    alt="Driver"
+                />
+                <span>{{ item.coachAssignments[0]?.primaryDriver?.name }}</span>
+            </div>
+        </ng-template>
+
+        <ng-template #codriverColumn let-item="item">
+            <div class="flex gap-1 items-center">
+                <img
+                    [src]="item.coachAssignments[0]?.coDriver?.profileImage"
+                    class="h-10 w-10 rounded-full"
+                    alt="Driver"
+                />
+                <span>{{ item.coachAssignments[0]?.coDriver?.name }}</span>
+            </div>
+        </ng-template>
+
+        <ng-template #viewColumn let-item="item">
+            <app-table-view-btn></app-table-view-btn>
+        </ng-template>
+    </app-main-page>
+</div>

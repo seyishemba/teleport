@@ -1,0 +1,202 @@
+<form class="flex flex-col gap-4" [formGroup]="otherDetails" class="w-full gap-3 flex flex-col z-[9999]">
+    <h2 class="py-5">Other Details</h2>
+    <div class="flex gap-4">
+        <div class="w-full">
+            <label for="maritalStatus">{{ 'Marital Status' | localize }}</label>
+            <select id="maritalStatus" name="maritalStatus" class="form-select" formControlName="maritalStatus"
+                (blur)="onBlur('maritalStatusTouch')">
+                <option *ngFor="let option of maritalOptions" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                    dropDownTouched?.maritalStatusTouch &&
+                                    otherDetails?.get('maritalStatus')?.value === null
+                                ">
+                    Please provide Marital Status
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="homeAddress">{{'Home Airport' | localize}} *</label>
+            <input id="homeAddress" type="text" formControlName="homeAddress" name="homeAddress" class="form-control"
+                required maxlength="256" />
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="otherDetails?.get('homeAddress')?.touched && otherDetails?.get('homeAddress')?.invalid">
+                    Please enter home airport address
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex gap-4">
+        <div class="w-full">
+            <label>{{'TSA Pre-Check/KTN' | localize}} *</label>
+            <input type="number" class="form-control" formControlName="preCheck" required />
+
+            <!-- <app-input-box formControlName="preCheck" [formType]="'number'" [inputBoxId]="'pre-check'"
+                [label]="'TSA Pre-Check/KTN'" [floatingLabelId]="'preCheck'"></app-input-box> -->
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                            otherDetails?.get('preCheck')?.touched &&
+                            otherDetails?.get('preCheck')?.invalid
+                                    ">
+                    Please enter TSA Pre-Check/KTN
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="seatPreference">{{ 'Seat Preference' | localize }}</label>
+            <select id="seatPreference" name="seatPreference" class="form-select" formControlName="seatPreference"
+                (blur)="onBlur('seatPreferenceTouch')">
+                <option *ngFor="let option of starBunkOptions" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                    dropDownTouched?.seatPreferenceTouch &&
+                                    otherDetails?.get('seatPreference')?.value === null
+                                ">
+                    Please provide seat preference
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex gap-4">
+        <div class="w-full">
+            <label for="allergies">{{ 'Allergies' | localize }} *</label>
+            <input id="allergies" type="text" name="allergies" class="form-control" formControlName="allergies" required
+                maxlength="64" />
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="otherDetails?.get('allergies')?.touched && otherDetails?.get('allergies')?.invalid">
+                    Please provide allergies
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="doYouSmoke">{{ 'Do You Smoke' | localize }}</label>
+            <select id="doYouSmoke" name="doYouSmoke" class="form-select" formControlName="doYouSmoke"
+                (blur)="onBlur('doYouSmokeTouch')">
+                <option *ngFor="let option of smokeOptions" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                    dropDownTouched?.doYouSmokeTouch &&
+                                    otherDetails?.get('doYouSmoke')?.value === null
+                                ">
+                    Please select option
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex gap-4">
+        <div class="w-full">
+            <label for="passportNumber">{{ 'Passport Number' | localize }} *</label>
+            <input id="passportNumber" type="text" name="passportNumber" class="form-control"
+                formControlName="passportNumber" required maxlength="64" />
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal"
+                    *ngIf="otherDetails?.get('passportNumber')?.touched && otherDetails?.get('passportNumber')?.invalid">
+                    Please enter a valid Passport Number
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full relative">
+            <label class="w-full relative" for="passportIssueDate">{{ 'Passport Issue Date' | localize }} <span
+                    class="text-red-700">*</span>
+
+                <input id="passportIssueDate"
+                [maxDate] = "maxDate"
+                type="text" #passportIssueDate name="passportIssueDate"
+                    class="form-control" bsDatepicker datePickerLuxonModifier [bsConfig]="{ adaptivePosition: true }"
+                    formControlName="passportIssueDate" placeholder="Passport Issue Date" />
+                <mat-icon class="absolute top-8 right-3">calendar_today</mat-icon>
+            </label>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                            otherDetails?.get('passportIssueDate')?.touched &&
+                            otherDetails?.get('passportIssueDate')?.invalid
+                                        ">
+                    Please enter passport issue date
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="flex gap-4">
+        <div class="w-full relative">
+            <label class="w-full relative" for="passportExpireDate">{{ 'Passport Expire Date' | localize }} <span
+                    class="text-red-700">*</span>
+
+                <input id="passportExpireDate"
+                type="text" #passportExpireDate name="passportExpireDate"
+                [minDate] = "maxDate"
+                    class="form-control" bsDatepicker datePickerLuxonModifier [bsConfig]="{ adaptivePosition: true }"
+                    formControlName="passportExpireDate" placeholder="Passport Issue Date" />
+                <mat-icon class="absolute top-8 right-3">calendar_today</mat-icon>
+            </label>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                            otherDetails?.get('passportExpireDate')?.touched &&
+                            otherDetails?.get('passportExpireDate')?.invalid
+                                        ">
+                    Please enter passport expiration date
+                </span>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="passportCountry">{{ 'Passport Country of Issue' | localize }}</label>
+            <select id="passportCountry" name="passportCountry" class="form-select" formControlName="passportCountry"
+                (blur)="onBlur('passportCountryTouch')">
+                <option *ngFor="let option of countries" [value]="option.value">
+                    {{ option.label }}
+                </option>
+            </select>
+
+            <div class="w-[95%] text-center my-3">
+                <span class="mt-1 text-error text-xs font-normal" *ngIf="
+                                    dropDownTouched?.passportCountryTouch &&
+                                    otherDetails?.get('passportCountry')?.value === null
+                                ">
+                    Please provide passport country
+                </span>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div class="flex w-full mt-5 justify-end gap-4">
+    <button class="my-btn btn-medium btn-outlined" (click)="goBack.emit()">
+        <span>PREVIOUS</span>
+    </button>
+    <button class="my-btn btn-large btn-filled gap-2" (click)="onNext()">
+        <span>NEXT</span>
+    </button>
+</div>

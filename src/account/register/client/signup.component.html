@@ -1,0 +1,95 @@
+<div class="w-full h-screen flex justify-center items-center bg-cover bg-bottom bg-[url(./assets/images/registration-page-img.webp)]">
+  <div class="w-[80vw] desktop:w-[30vw] flex flex-col gap-10 p-8 bg-white rounded-2xl">
+    <div class="flex justify-center">
+      <img src="./assets/images/logo-black.webp" alt="">
+    </div>
+    <form [formGroup]="signupForm!">
+      <div>
+        <app-input-box [label]="'First Name'" [inputBoxId]="'first-name'" [floatingLabelId]="'first-name'"
+          formControlName="firstName">
+        </app-input-box>
+        <div class="w-[95%] text-center my-3">
+          <span class="mt-1 text-error text-xs font-normal"
+            *ngIf="signupForm?.get('firstName')?.value !== '' && signupForm?.get('firstName')?.invalid">
+            Please enter your first name
+          </span>
+        </div>
+      </div>
+      <div>
+        <app-input-box [label]="'Last Name'" [inputBoxId]="'last-name'" [floatingLabelId]="'last-name'"
+          formControlName="lastName">
+        </app-input-box>
+        <div class="w-[95%] text-center my-3">
+          <span class="mt-1 text-error text-xs font-normal"
+            *ngIf="signupForm?.get('lastName')?.value !== '' && signupForm?.get('lastName')?.invalid">
+            Please enter your last name
+          </span>
+        </div>
+      </div>
+      <div>
+        <app-input-box [label]="'Email Address'" [inputBoxId]="'new-email'" [floatingLabelId]="'new-email'"
+          formControlName="email" [isDisabled]="isEmailDisabled" class="disabled:pointer-events-none bg-background-state-disabled">
+        </app-input-box>
+        <div class="w-[95%] text-center my-3">
+          <span class="mt-1 text-error text-xs font-normal"
+            *ngIf="signupForm?.get('email')?.value !== '' && signupForm?.get('email')?.invalid">
+            Please enter a valid email address
+          </span>
+        </div>
+      </div>
+      <div>
+        <app-input-box [label]="'Phone Number'" [inputBoxId]="'phone'" [floatingLabelId]="'phone'"
+          formControlName="phone">
+        </app-input-box>
+        <div class="w-[95%] text-center my-3">
+          <span class="mt-1 text-error text-xs font-normal"
+            *ngIf="signupForm?.get('phone')?.value !== '' && signupForm?.get('phone')?.invalid">
+            Please enter a valid phone number
+          </span>
+        </div>
+      </div>
+      <div>
+        <div class="relative">
+          <app-input-box [formType]="inputType" [label]="'Password'" [inputBoxId]="'auth-password'" [floatingLabelId]="'auth-password'"
+            formControlName="password">
+          </app-input-box>
+          <mat-icon class="absolute top-3 right-3 cursor-pointer" (click)="toggleVisibility()">{{ isVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </div>
+        <div class="w-[95%] text-center my-3">
+          <span class="mt-1 text-error text-xs font-normal"
+            *ngIf="signupForm?.get('password')?.value !== '' && signupForm?.get('password')?.invalid">
+            Please enter a valid password
+          </span>
+        </div>
+      </div>
+      <div>
+        <div class="relative">
+          <app-input-box [formType]="inputType" [label]="'Confirm Password'" [inputBoxId]="'auth-confirm-password'" [floatingLabelId]="'auth-confirm-password'"
+            formControlName="confirmPassword">
+          </app-input-box>
+          <mat-icon class="absolute top-3 right-3 cursor-pointer" (click)="toggleVisibility()">{{ isVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </div>
+        <div class="w-[95%] text-center my-3">
+          <span class="mt-1 text-error text-xs font-normal"
+            *ngIf="signupForm?.get('confirmPassword')?.value !== '' && signupForm?.get('confirmPassword')?.invalid">
+            Please confirm your password
+          </span>
+          <span class="mt-1 text-error text-xs font-normal"
+            *ngIf="signupForm?.errors?.['mismatch']">
+            Passwords do not match
+          </span>
+        </div>
+      </div>
+    </form>
+
+    <div class="flex flex-col gap-5">
+      <div>
+        <button class="my-btn btn-large btn-filled w-full" (click)="onSignUp()" [disabled]="signupForm?.invalid">sign up</button>
+      </div>
+      <div class="flex justify-center gap-1 text-xs">
+        <span class="text-primary100">Powered by </span><span
+          class="border-b border-black cursor-pointer">Teleport</span>
+      </div>
+    </div>
+  </div>
+</div>

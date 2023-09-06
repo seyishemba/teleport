@@ -1,0 +1,65 @@
+    <div class="flex flex-col gap-y-3 bg-white rounded-2xl">
+      <div class="flex justify-center">
+        <h1>Sign Up</h1>
+      </div>
+      <form class="flex flex-col gap-y-2">
+        <div>
+          <!-- <label>First Name</label> -->
+          <input placeholder="First Name" class="px-2 py-2 placeholder-sm w-full border rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"/>
+        </div>
+        <div>
+          <!-- <label>Last Name</label> -->
+          <input placeholder="Last Name" class="px-2 py-2 placeholder-sm w-full border rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"/>
+        </div>
+        <div>
+          <!-- <label>Email</label> -->
+          <input placeholder="Email" class="px-2 py-2 placeholder-sm w-full border rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"/>
+        </div>
+        <div>
+          <!-- <label>Phone Number</label> -->
+          <input placeholder="Phone Number" class="px-2 py-2 placeholder-sm w-full border rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"/>
+        </div>
+        <div>
+          <!-- <label>Password</label> -->
+          <div class="relative flex items-center">
+            <input placeholder="Password" class="px-2 py-2 placeholder-sm w-full border rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"/>
+            <mat-icon class="absolute top-2 right-3 cursor-pointer">{{ isVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </div>
+        </div>
+        <div>
+            <!-- <label>Confirm Password</label> -->
+            <div class="relative flex items-center">
+              <input placeholder="Confirm Password" class="px-2 py-2 placeholder-sm w-full border rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500"/>
+              <mat-icon class="absolute top-2 right-3 cursor-pointer">{{ isVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </div>
+        </div>
+      </form>
+  
+      <div class="flex flex-col gap-y-5">
+        <div>
+          <button class="btn w-100 btn-primary fw-bolder fs-h6 px-8 py-2 my-3 me-3">Sign Up</button>
+        </div>
+        <div class="flex gap-x-2">
+          <a
+              class="py-3 px-4 flex justify-center items-center gap-2 bg-gray-50 rounded-3xl text-subtitle hover:text-primaryA hover:border-primaryA cursor-pointer">
+              <img src="assets/images/apple.svg" alt="" />
+
+              <span class="uppercase text-[8px] flex-nowrap">Sign In with Apple</span>
+          </a>
+          <a
+              class="py-3 px-4 flex justify-center items-center gap-2 bg-gray-50 rounded-3xl text-subtitle hover:text-primaryA hover:border-primaryA cursor-pointer">
+              <img src="assets/images/google.svg" alt="" />
+              <span class="uppercase text-[8px] flex-nowrap">Sign In with GOOGLE</span>
+          </a>
+      </div>
+        <div class="flex justify-center gap-1 text-xs">
+          <span class="text-primary100">Powered by </span><span
+            class="border-b border-black cursor-pointer">Teleport</span>
+        </div>
+        <div class="flex justify-center gap-1 text-xs">
+          <span class="text-gray-400 uppercase">Already Have An Account? </span><span
+            class="text-primary300 cursor-pointer uppercase">Sign In</span>
+        </div>
+      </div>
+    </div>
+  

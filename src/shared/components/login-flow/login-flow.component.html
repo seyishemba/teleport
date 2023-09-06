@@ -1,0 +1,102 @@
+<section class="page-wrapper w-full h-screen flex justify-center items-center">
+    <div class="bg-white rounded-md p-8 flex items-center flex-col gap-y-8">
+        <!-- logo section -->
+        <div class="relative flex justify-center w-full">
+            <!-- arrow back icon -->
+            <mat-icon class="material-symbols-outlined absolute top-1 left-0">arrow_back</mat-icon>
+            <!-- teleport logo -->
+            <img src="assets/images/logo.png" alt="" />
+        </div>
+        <!--End of logo section -->
+        <!-- profile image section -->
+        <div *ngIf="emailExist" class="rounded-full w-20 h-20 custom-blue-shadow">
+            <img src="assets/images/user.jpg" class="w-full h-full rounded-full object-fit-cover" alt="" />
+        </div>
+        <!--End of profile image section -->
+        <!-- form input fields -->
+        <form class="flex flex-col w-full gap-y-3" [formGroup]="loginForm">
+            <!-- email input -->
+            <input type="text" class="
+                    px-2
+                    py-2
+                    placeholder-sm
+                    w-full
+                    border
+                    rounded-md
+                    border-gray-300
+                    focus:ring-blue-500 focus:border-blue-500
+                " placeholder="Email Address" id="email" formControlName="email" />
+
+            <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+                <div *ngIf="loginForm.get('email').errors?.required">Email is required.</div>
+                <div *ngIf="loginForm.get('email').errors?.email">Invalid email format.</div>
+            </div>
+            <!-- password input -->
+            <div class="relative" *ngIf="emailExist">
+                <input type="password" id="password" formControlName="password" class="
+                        w-full
+                        py-2
+                        px-2
+                        pr-10
+                        rounded-md
+                        border border-gray-300
+                        focus:ring-blue-500 focus:border-blue-500
+                    " placeholder="Password" />
+                <a onclick="togglePasswordVisibility()"
+                    class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none cursor-pointer">
+                    <mat-icon class="material-symbols-outlined text-gray-400">visibility</mat-icon>
+                </a>
+                <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
+                    <div *ngIf="loginForm.get('password').errors?.required">Password is required.</div>
+                    <div *ngIf="loginForm.get('password').errors?.minlength">
+                        Password must be at least 6 characters long.
+                    </div>
+                </div>
+            </div>
+            <!-- Sing in button -->
+            <button  [buttonBusy]="submitting" [busyText]="l('SavingWithThreeDot')" (click)="checkForEmail()" *ngIf="!emailExist" class="
+            btn btn-sm btn-primary fw-bolder py-2 mb-2 ml-0 me-2
+                ">
+                Next
+            </button>
+            <button (click)="login()" *ngIf="emailExist"
+                class="btn btn-sm btn-light-primary fw-bolder py-2 mb-2 ml-0 me-2">
+                Sign in
+            </button>
+            <!--End Sing in button -->
+            <!-- Social logins -->
+            <div class="flex gap-x-2">
+                <a
+                    class="py-3 px-4 flex justify-center items-center gap-2 bg-gray-50 rounded-3xl text-subtitle hover:text-primaryA hover:border-2 hover:border-primaryA cursor-pointer">
+                    <img src="assets/images/apple.svg" alt="" />
+
+                    <span class="uppercase text-[8px] flex-nowrap">Sign In with Apple</span>
+                </a>
+                <a
+                    class="py-3 px-4 flex justify-center items-center gap-2 bg-gray-50 rounded-3xl text-subtitle hover:text-primaryA hover:border-2 hover:border-primaryA cursor-pointer">
+                    <img src="assets/images/google.svg" alt="" />
+                    <span class="uppercase text-[8px] flex-nowrap">Sign In with GOOGLE</span>
+                </a>
+            </div>
+            <!--End of Social logins -->
+        </form>
+        <!-- End of form input fields -->
+        <!-- Forgot password section -->
+        <div class="flex flex-col gap-2 text-center text-sm">
+            <a class="text-[#667085]">Forgot Password ?</a>
+            <p class="text-[#ADB5BD]">
+                Powered by
+                <a class="text-[#101828] underline cursor-pointer hover:text-primaryA">Teleport</a>
+            </p>
+        </div>
+        <!--End of Forgot password section -->
+        <!-- Sing up button -->
+        <div>
+            <p class="text-[#ADB5BD] uppercase text-sm">
+                don’t have an account?
+                <a class="text-[#1877F2]">Sign Up</a>
+            </p>
+        </div>
+        <!--End Sing up button -->
+    </div>
+</section>
